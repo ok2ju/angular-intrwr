@@ -3,7 +3,7 @@ import 'angular-ui-router';
 import Common from './common/common';
 import Components from './components/components';
 import AppComponent from './app.component';
-import introTemplate from './intro.tpl.html';
+import entryTemplate from './entry.tpl.html';
 import mainTemplate from './main.tpl.html';
 
 angular.module('app', [
@@ -20,14 +20,14 @@ angular.module('app', [
     $stateProvider
       .state('intro', {
         abstract: true,
-        template: introTemplate
+        template: entryTemplate
       })
       .state('app', {
         abstract: true,
         template: mainTemplate
       });
   })
-  .run(($rootScope, $state) => {
+  .run(() => {
     "ngInject";
 
   })

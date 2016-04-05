@@ -1,6 +1,6 @@
 @charset 'UTF-8';
 
-@import '../../../node_modules/reset-css/reset';
+@import '~reset-css/reset';
 // 1.Base
 @import 'base/index';
 // 2.Layouts
@@ -10,4 +10,4 @@
 // 4.Pages
 @import 'pages/index';
 
-@import '../../node_modules/fullcalendar/dist/fullcalendar.css';
+@import '~fullcalendar/dist/fullcalendar.css';

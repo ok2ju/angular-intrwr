@@ -1,0 +1,189 @@
+// imports
+@import '../utils/index';
+
+.user-cards {
+  @include make-row;
+}
+
+.ui-card {
+  border: none;
+  margin-bottom: 2em;
+  position: relative;
+  float: left;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 100%;
+
+  @media only screen and (min-width: 468px) {
+    width: 50%;
+  }
+
+  @include respond-to('small') {
+    width: 50%;
+  }
+
+  @include respond-to('medium') {
+    width: 33.33333%;
+  }
+
+  @include respond-to('large') {
+    width: 25%;
+  }
+
+  @media (min-width: 1400px) {
+    width: 20%;
+  }
+}
+
+.ui-card-inner {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .22);
+}
+
+.card-image {
+  display: block;
+  position: relative;
+  padding: 0;
+  background: rgba(0, 0, 0, .05);
+  overflow: hidden;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: .2857rem .2857rem 0 0;
+    border: none;
+    transition: .3s -webkit-filter ease-out;
+  }
+
+  &:hover {
+
+    .card-overlay {
+      visibility: visible;
+      transition: all .3s ease-in-out;
+      opacity: 1;
+    }
+
+    img {
+      filter: blur(5px) grayscale(.7);
+    }
+  }
+}
+
+.card-content {
+  background: 0 0;
+  margin: 0;
+  padding: 6px 12px;
+  box-shadow: none;
+  font-size: 1em;
+  border: none;
+  border-radius: 0;
+
+  h1 {
+    @include font-size(14px);
+    color: $primary-font-color;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .meta {
+    @include font-size(12px);
+    color: rgba(0,0,0,0.70);
+  }
+
+  .indicate {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+  }
+
+  .group {
+    color: $secondary-font-color;
+    display: inline-block;
+  }
+
+  .description {
+    @include font-size(12px);
+    margin-top: .5em;
+    text-align: left;
+  }
+}
+
+.test-result {
+  @include font-size(12px);
+  @include clearfix;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 6px 12px;
+}
+
+.card-footer:nth-child(2) {
+  margin-left: 5px;
+}
+
+.test-score {
+  @include font-size(11px);
+  color: #999;
+}
+
+.test-text {
+  float: right;
+  margin-right: 5px;
+}
+
+.card-overlay {
+  position: absolute;
+  border-radius: .2857rem .2857rem 0 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  visibility: hidden;
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.6);
+  text-align: center;
+
+  .btns-wrap {
+    @include center(xy);
+    width: 100%;
+    position: absolute;
+
+    :last-child {
+      margin-left: 10px;
+    }
+  }
+
+  .card-overlay-link {
+    @include font-size(12px);
+    color: #fff;
+    display: inline-block;
+    padding: 6px 8px;
+    border: 2px solid #fff;
+    border-radius: 2px;
+    width: 75px;
+
+    &:hover {
+      background-color: #fff;
+      color: rgba(0, 0, 0, .87);
+    }
+  }
+
+  .interview-appointed-date,
+  .interview-appointed-time {
+    color: #fff;
+    font-weight: 100;
+  }
+
+  .interview-appointed-date {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+
+  .interview-appointed-time {
+    font-size: 35px;
+  }
+}

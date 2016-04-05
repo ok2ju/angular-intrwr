@@ -1,0 +1,113 @@
+// variables
+$content-header-bg-color: rgba(242, 242, 242, .3);
+
+.s-content-head {
+  padding: 15px 30px;
+  background-color: $content-header-bg-color;
+  margin-bottom: 30px;
+  box-shadow: rgba(0, 0, 0, .04) 0 1px;
+}
+
+.s-content-head__header {
+  @include font-size(13px);
+  font-weight: 400;
+}
+
+.settings-form {
+  padding: 0 15px;
+}
+
+.settings-form__row {
+  @include clearfix;
+}
+
+.form-fields {
+  @include make-col(12);
+
+  @include respond-to('medium') {
+    @include make-col(8);
+  }
+}
+
+.form-photo {
+  @include make-col(12);
+
+  @include respond-to('medium') {
+    @include make-col(4);
+  }
+}
+
+.form-photo__col {
+  @include make-col(6);
+}
+
+#up-photo {
+  display: none;
+  visibility: hidden;
+}
+
+.form-photo-inner {
+  padding: 15px;
+  text-align: center;
+
+  img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 20px;
+  }
+}
+
+.form-photo-info {
+  @include clearfix;
+
+  p {
+    @include font-size(13px);
+    margin-bottom: 12px;
+
+    &:last-child {
+      margin-top: 10px;
+    }
+  }
+
+  hr {
+    margin: 10px 0;
+    border: 0;
+    border-top: 1px solid #eeeeee;
+  }
+
+  span {
+    @include font-size(13px);
+    color: #666;
+  }
+}
+
+.upload-btn {
+  @include font-size(13px);
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  border-color: #e7e9ed;
+  color: #666;
+}
+
+.btn-col,
+.exp-row {
+  padding: 0 15px;
+}
+
+.inc-exp-form {
+  text-align: center;
+}
+
+.row-box {
+  margin-bottom: 15px;
+}
+
+.tab-btn {
+  @extend .btn;
+  @extend .btn-default;
+  padding: .5em .57em;
+}

@@ -1,0 +1,60 @@
+.filter {
+  @include clearfix;
+  margin-bottom: 20px;
+  background-color: darken($body-color, 3%);
+  padding: 15px 30px;
+  box-shadow: rgba(0, 0, 0, .05) 0 1px;
+}
+
+.filter-group {
+  display: block;
+  padding: 0 15px;
+  float: left;
+  width: 200px;
+
+  &.filter-group--left {
+    padding-left: 0;
+  }
+
+  &.filter-group--right {
+    padding-right: 0;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  .selectize-input,
+  .ui.selection.dropdown {
+    padding: 5px 10px !important;
+  }
+
+  .selectize-input {
+    border-left: 1px solid rgba(34, 36, 38, 0.15) !important;
+    border-top-left-radius: 3px !important;
+    border-bottom-left-radius: 3px !important;
+  }
+}
+
+.filter-group__label {
+  @include font-size(13px);
+  font-weight: 600;
+  color: #666;
+  margin-right: 10px;
+}
+
+.filter-group-input {
+  display: block;
+
+  input {
+    height: 30px;
+    cursor: text !important;
+    line-height: 30px !important;
+    padding: 0 10px;
+    color: #666;
+  }
+}
+
+.sortBox {
+
+}

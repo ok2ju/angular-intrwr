@@ -1,0 +1,113 @@
+.feedbackBox {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.feedbackBox__header {
+  padding: 30px;
+  border-bottom: 1px solid #e5e5e5;
+
+  h2 {
+    @include font-size(24px);
+    font-weight: 100;
+  }
+
+  p {
+    @include font-size(13px);
+    margin-top: 5px;
+  }
+}
+
+.feedbackBox__body {
+  padding: 30px;
+
+  &--form {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+}
+
+.feedbackInfo-group {
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+
+  &.v-skills-group {
+    margin-top: 30px;
+  }
+
+  label {
+    @include font-size(14px);
+    display: block;
+    margin-bottom: 15px;
+    font-weight: 700;
+    color: #000;
+    text-transform: uppercase;
+  }
+
+  p {
+    @include font-size(13px);
+    color: #999;
+  }
+}
+
+.feedback-skills {
+  @include font-size(14px);
+  width: 100%;
+  table-layout: fixed;
+}
+
+.feedback-skills__col {
+  padding-bottom: 10px;
+}
+
+.feedback-rating {
+  .feedback-rating__star {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #e5e5e5;
+    display: inline-block;
+    margin: 0 2px;
+
+    &--filled {
+      background: #0e6f98;
+    }
+  }
+}
+
+.feedback-form {
+  .inputAdd-item {
+    @include font-size(13px);
+    min-width: 80px;
+    text-align: right;
+  }
+}
+
+.feedbackForm-row {
+  margin-bottom: 15px;
+}
+
+.feedbackForm-group-header {
+  margin-bottom: 15px;
+}
+
+.feedback-form__skills-row {
+  padding-bottom: 15px;
+}
+
+.feedback-form__remove-btn {
+  @include font-size(13px);
+  color: red;
+  display: block;
+  text-align: right;
+}
+
+.feedback-form__addnew-btn {
+  @include font-size(13px);
+  display: block;
+  text-align: center;
+  max-width: 200px;
+  margin: 0 auto;
+}

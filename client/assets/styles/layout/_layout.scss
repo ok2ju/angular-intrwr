@@ -1,0 +1,61 @@
+// variables
+$header-bg-color: #9bd8f1;
+$header-font-color: #fff;
+
+.container {
+  @include clearfix;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  @include respond-to('small') {
+    width: 750px;
+  }
+
+  @include respond-to('medium') {
+    width: 970px;
+  }
+
+  @include respond-to('large') {
+    width: 1170px;
+  }
+}
+
+.row {
+  @include make-row;
+}
+
+.content {
+  padding-left: 65px;
+  padding-top: 60px;
+  position: relative;
+
+  @include respond-to('medium') {
+    padding-left: 230px;
+  }
+}
+
+.content-inner {
+  @include make-row;
+}
+
+.main-area {
+  margin: 0 auto;
+}
+
+.full-col {
+  width: 100%;
+  padding: 30px;
+}
+
+.content-header {
+  @include clearfix;
+  margin-bottom: 20px;
+}
+
+.content-header__name {
+  @include font-size(24px);
+  color: $primary-font-color;
+  font-weight: 300;
+}

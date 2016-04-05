@@ -1,0 +1,24 @@
+// imports
+@import '../utils/index';
+
+// variables
+$icons-font-color: #666;
+
+.ico-controll {
+  color: $icons-font-color;
+  font-size: 14px !important;
+  line-height: 60px;
+
+  @media only screen and (max-width: 768px) {
+    display: none !important;
+  }
+}
+
+.ico-company-locate {
+	margin-right: 3px;
+}
+
+.i-card {
+  @include font-size(11px);
+  color: #999;
+}

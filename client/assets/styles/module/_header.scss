@@ -1,0 +1,278 @@
+// imports
+@import '../utils/index';
+
+// variables
+$company-page-header-bg-color: #fff;
+$header-border-bottom-color: rgba(137,137,137,0.3);
+
+.c-header-wrapper {
+  background-color: $company-page-header-bg-color;
+  border-bottom: 1px solid #e5e5e5;
+  height: 60px;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: all .3s ease-in-out;
+  width: 100%;
+  z-index: 4;
+  padding-left: 0;
+
+  padding-left: 65px;
+
+  @include respond-to('medium') {
+    padding-left: 230px;
+  }
+}
+
+.header-inner {
+  height: 60px;
+  position: relative;
+}
+
+.navbar-header {
+  float: left;
+  position: relative;
+  top: 17px;
+  left: 60px;
+
+  @include respond-to('small') {
+    left: 30px;
+  }
+}
+
+.c-header__name {
+  @include font-size(14px);
+  color: rgba(0, 0, 0, .35);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.aside-toggle-wrapper {
+  color: transparent;
+  cursor: pointer;
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  top: 0;
+  white-space: nowrap;
+  width: 60px;
+  position: absolute;
+  display: block;
+
+  @include respond-to('small') {
+    display: none;
+  }
+}
+
+.aside-toggle-wrapper.active .btn-aside-toggle {
+  background-color: transparent;
+}
+
+.aside-toggle-wrapper.active .btn-aside-toggle:before,
+.aside-toggle-wrapper.active .btn-aside-toggle:after {
+  top: 0;
+}
+
+.aside-toggle-wrapper.active .btn-aside-toggle:before {
+  transform: rotate(45deg);
+}
+
+.aside-toggle-wrapper.active .btn-aside-toggle:after {
+  transform: rotate(-45deg);
+}
+
+.btn-aside-toggle {
+  position: absolute;
+  width: 20px;
+  top: 50%;
+  left: 50%;
+  margin-left: -10px;
+  transition: background-color .3s .3s;
+  background-color: $primary-font-color;
+  height: 1px;
+  margin-top: 0;
+}
+
+.btn-aside-toggle:before,
+.btn-aside-toggle:after {
+  background-color: $primary-font-color;
+  content: '';
+  height: 100%;
+  position: absolute;
+  transition: transform .3s .3s;
+  width: 100%;
+}
+
+.btn-aside-toggle:before {
+  transform: translateY(-5px);
+}
+
+.btn-aside-toggle:after {
+  transform: translateY(5px);
+}
+
+.navbar-btns {
+  float: left;
+  height: 60px;
+  margin-right: 15px;
+
+  .drop-profile {
+    display: none;
+
+    @media only screen and (max-width: 768px) {
+      display: block;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    display: none;
+    position: absolute;
+    height: auto;
+    background-color: #fff;
+    top: 44px;
+    right: 0;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    margin-right: 0;
+    z-index: 5;
+  }
+}
+
+.navbar-btns__item {
+  display: inline-block;
+  margin-right: 10px;
+  position: relative;
+
+  @media only screen and (max-width: 768px) {
+    margin-right: 0;
+    display: block;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.04);
+    }
+  }
+}
+
+.navbar-ico {
+  i:hover {
+    //color: #59728e;
+    color: #000;
+  }
+
+  &.img-replace {
+    @include font-size(0px);
+    overflow: hidden;
+    color: transparent;
+    white-space: nowrap;
+
+    @media only screen and (max-width: 768px) {
+      @include font-size(11px);
+      color: #333;
+      overflow: auto;
+      white-space: normal;
+      display: block;
+      padding: 10px;
+    }
+  }
+
+  .hide-svg {
+    display: none;
+  }
+
+  &.show-text {
+    @include font-size(12px);
+    color: #000;
+  }
+}
+
+.acc-photo {
+  position: absolute;
+  right: 30px;
+
+  &:hover > .navbar-btns,
+  &:focus > .navbar-btns,
+  &:active > .navbar-btns {
+    display: block;
+  }
+
+  .acc-photo-link {
+    display: block;
+    float: left;
+    margin-top: 14px;
+  }
+
+  @media only screen and (max-width: 768px) {
+    top: 0;
+    float: right;
+  }
+}
+
+.icon-down-dir {
+  vertical-align: middle;
+  display: none;
+
+  @media only screen and (max-width: 768px) {
+    display: inline;
+  }
+}
+
+.acc-photo__img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.icon-down-open-big {
+  display: none;
+  cursor: pointer;
+  transition: all .2s linear;
+
+  &.active {
+    transform: rotate(180deg);
+  }
+
+  @media only screen and (max-width: 768px) {
+    display: inline-block;
+  }
+}
+
+.header-userinfo {
+  float: left;
+  text-align: right;
+  margin-right: 10px;
+
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
+}
+
+.header-userinfo__name {
+  @include font-size(14px);
+  color: $primary-font-color;
+  line-height: 32px;
+}
+
+.header-userinfo__email {
+  @include font-size(11px);
+  font-weight: 500;
+  color: $secondary-font-color;
+  line-height: 11px;
+}
+
+.actions-indicator {
+  position: relative;
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #f0ad4e;
+    top: 0;
+    right: 2px;
+  }
+}

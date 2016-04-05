@@ -1,0 +1,207 @@
+// imports
+@import '../utils/index';
+
+// variables
+$company-page-bg-color: #f9f9f9;
+$company-page-header-bg-color: #fff;
+$grid-controls-hover-color: #59728e;
+
+// "c" prefix means that this class applies only to "company page"
+
+.c-header {
+  float: left;
+}
+
+.grid-controls {
+  float: right;
+  margin-top: 5px;
+
+  .grid-controls__label {
+    @include font-size(11px);
+    vertical-align: middle;
+    text-transform: uppercase;
+  }
+
+  i {
+    @include font-size(18px);
+    cursor: pointer;
+    color: #999;
+    vertical-align: middle;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &.active {
+      color: #000;
+    }
+  }
+
+  i:hover {
+    color: #000;
+  }
+}
+
+// ## Switcher panel
+
+.switcher-panel {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.switcher-panel-inner {
+  width: 80%;
+  margin: 0 auto;
+  padding: 10px;
+  background: darken($body-color, 3%);
+}
+
+.switcher-panel__control {
+  @include font-size(14px);
+  color: $secondary-font-color;
+  padding: 0 15px;
+  display: inline-block;
+
+  &:after {
+    display:block;
+    content: '';
+    padding-bottom:5px;
+    border-bottom: solid 1px #FFA411;
+    transform: scaleX(0.0001);
+    transition: transform 350ms ease-in-out;
+  }
+
+  &:hover:after {
+    transform: scaleX(1);
+  }
+
+  &.active {
+
+    &:after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+// Validation fields errors!
+
+.v-form-error {
+  @include font-size(11px);
+  position: absolute;
+  top: -16px;
+  color: #d9534f;
+}
+
+
+// New Company Profile Styles
+
+.c-profile-header {
+  position: relative;
+  background: url("/images/companies/google-office.jpg") no-repeat;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  padding-top: 230px;
+}
+
+.c-profile-header__inner {
+  @include clearfix;
+  width: 80%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.c-profile-photo {
+  width: 150px;
+  float: left;
+  margin-right: 20px;
+
+  img {
+    border-radius: 50%;;
+  }
+}
+
+.c-profile-main-info {
+  overflow: hidden;
+}
+
+.c-profile-main-info__header {
+  @include font-size(26px);
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.c-profile-info__sm {
+  @include font-size(14px);
+  color: $secondary-font-color;
+  font-weight: 600;
+}
+
+.c-profile-add-info {
+  position: relative;
+  background: #fff;
+  padding: 20px 0;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
+}
+
+.c-profile-add-info__inner {
+  width: 80%;
+  margin: 0 auto;
+
+}
+
+.c-profile-about {
+  p {
+    @include font-size(14px);
+    color: #999;
+  }
+}
+
+.c-profile-addition {
+  margin-bottom: 15px;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.c-profile-addition__list {
+  li {
+    @include font-size(14px);
+    color: #999;
+    display: inline-block;
+    padding: 0 15px;
+
+    strong {
+      display: block;
+      color: #000;
+    }
+  }
+}
+
+.c-profile-info__spec {
+  @include font-size(14px);
+  display: inline-block;
+  color: #fff;
+  margin-top: 15px;
+
+  strong {
+    font-weight: 600;
+  }
+
+  span {
+
+    &:after {
+      content: ', ';
+    }
+
+    &:last-child {
+      &:after {
+        content: '';
+      }
+    }
+  }
+}
+
+.c-vacancies__inner {
+  width: 80%;
+  margin: 0 auto;
+}

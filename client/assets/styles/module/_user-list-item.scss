@@ -1,0 +1,128 @@
+// imports
+@import '../utils/index';
+
+$progress-empty-bg: #eee;
+$progress-fill-bg: #8dc63f;
+
+.user-card-item {
+  @include clearfix;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .22);
+  margin-bottom: 10px;
+}
+
+.u-main-info {
+  @include clearfix;
+  float: left;
+
+  .u-main-info-link {
+    @include clearfix;
+    display: block;
+    float: none;
+    width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+
+    @include respond-to('small') {
+      float: left;
+    }
+  }
+}
+
+.user-card-item__photo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  float: left;
+
+  &:hover {
+    border: 2px solid #5bc0de;
+    transition: all .2s ease-in-out;
+  }
+}
+
+.user-card-item__name {
+  @include font-size(14px);
+  color: rgba(0, 0, 0, 0.87);
+  font-weight: 500;
+  line-height: 50px;
+  margin-left: 15px;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.u-second-info {
+  @include clearfix;
+  float: right;
+  line-height: 50px;
+
+  :first-child {
+    .card-list__test-score {
+      margin-left: 15px;
+    }
+  }
+}
+
+.card-list-indicate {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.u-main-info-pos {
+  margin-left: 52px;
+  float: none;
+
+  @include respond-to('small') {
+    float: left;
+    margin-left: 30px;
+    line-height: 50px;
+  }
+}
+
+.card-list-group {
+  @include font-size(12px);
+  color: $secondary-font-color;
+  display: inline-block;
+}
+
+.progress-bg {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  width: 100px;
+  height: 4px;
+  border-radius: 2px;
+  overflow: hidden;
+  background: $progress-empty-bg;
+}
+
+.progress-fg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  margin: 0;
+  background: $progress-fill-bg;
+}
+
+.card-list__test-score {
+  @include font-size(12px);
+  color: #999;
+}
+
+.card-list__ico-wrapper {
+  float: right;
+  width: 100px;
+  margin-left: 20px;
+}
+
+.uc-interview-date {
+  @include font-size(14px);
+}

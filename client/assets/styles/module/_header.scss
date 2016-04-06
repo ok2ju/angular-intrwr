@@ -21,6 +21,10 @@ $header-border-bottom-color: rgba(137,137,137,0.3);
 
   &.active {
     transform: translateX(230px);
+
+    @include respond-to('medium') {
+      transform: translateX(0);
+    }
   }
 }
 

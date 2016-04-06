@@ -47,6 +47,10 @@ $header-font-color: #fff;
 
   &.active {
     transform: translateX(230px);
+
+    @include respond-to('medium') {
+      transform: translateX(0);
+    }
   }
 }
 

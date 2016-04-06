@@ -50,7 +50,27 @@ angular.module('app', [
       })
       .state('app', {
         abstract: true,
-        template: mainTemplate
+        template: mainTemplate,
+        resolve: {
+          metaResource: 'metaResource',
+          userResource: 'userResource',
+
+          countries(metaResource) {
+            return metaResource.getCountries();
+          },
+
+          categories(metaResource) {
+            return metaResource.getCategories();
+          },
+
+          positions(metaResource) {
+            return metaResource.getVacancyPosition();
+          },
+
+          vacancyTypes(metaResource) {
+            return metaResource.getVacancyType();
+          }
+        }
       });
   })
   .run(($rootScope, $state, store, jwtHelper) => {

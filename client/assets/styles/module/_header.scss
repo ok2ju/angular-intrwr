@@ -1,6 +1,3 @@
-// imports
-@import '../utils/index';
-
 // variables
 $company-page-header-bg-color: #fff;
 $header-border-bottom-color: rgba(137,137,137,0.3);
@@ -42,7 +39,7 @@ $header-border-bottom-color: rgba(137,137,137,0.3);
 }
 
 .c-header__name {
-  @include font-size(14px);
+  font-size: rem(1.4);
   color: rgba(0, 0, 0, .35);
   font-weight: 600;
   text-transform: uppercase;
@@ -156,18 +153,17 @@ $header-border-bottom-color: rgba(137,137,137,0.3);
 
 .navbar-ico {
   i:hover {
-    //color: #59728e;
     color: #000;
   }
 
   &.img-replace {
-    @include font-size(0px);
+    font-size: rem(0);
     overflow: hidden;
     color: transparent;
     white-space: nowrap;
 
     @media only screen and (max-width: 768px) {
-      @include font-size(11px);
+      font-size: rem(1.1);
       color: #333;
       overflow: auto;
       white-space: normal;
@@ -181,7 +177,7 @@ $header-border-bottom-color: rgba(137,137,137,0.3);
   }
 
   &.show-text {
-    @include font-size(12px);
+    font-size: rem(1.2);
     color: #000;
   }
 }
@@ -249,13 +245,13 @@ $header-border-bottom-color: rgba(137,137,137,0.3);
 }
 
 .header-userinfo__name {
-  @include font-size(14px);
+  font-size: rem(1.4);
   color: $primary-font-color;
   line-height: 32px;
 }
 
 .header-userinfo__email {
-  @include font-size(11px);
+  font-size: rem(1.1);
   font-weight: 500;
   color: $secondary-font-color;
   line-height: 11px;

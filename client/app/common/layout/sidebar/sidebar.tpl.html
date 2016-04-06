@@ -1,0 +1,44 @@
+<aside class="sideblock">
+  <div class="sideblock-header">
+    <a href="#" class="sideblock-header__text">
+      <img class="big-logo" src="/images/icons/interviewr_3.svg" alt="interviewr">
+      <img class="min-logo" src="/images/icons/interviewr_2.svg" alt="interviewr">
+    </a>
+  </div>
+  <section class="int-section">
+    <h2 class="int-section__header">Basic</h2>
+    <ul class="int-section__list">
+      <li ng-repeat="item in vm.items" ui-sref-active="active" class="item">
+        <a ui-sref="{{item.state}}">
+          <i class="sidebar-ico {{item.icon}}"></i>
+          <span class="sidebar-item-text">{{item.name}}</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+  <section class="int-section">
+    <h2 class="int-section__header">Company</h2>
+    <ul class="int-section__list">
+      <li ng-repeat="citem in vm.company" ui-sref-active="active" class="item">
+        <a ui-sref="{{citem.state}}">
+          <i class="sidebar-ico {{citem.icon}}"></i>
+          <span class="sidebar-item-text">{{citem.name}}</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+  <footer class="aside-footer">
+    <div class="aside-footer__inner">
+      <a class="aside-footer-link" href="#">
+        <span class="aside-footer-codeico">
+          <i class="sidebar-ico icon-code"></i>
+        </span>
+        with
+        <span class="aside-footer-heartico">
+          <i class="sidebar-ico icon-heart"></i>
+        </span>
+        by interviewr
+      </a>
+    </div>
+  </footer>
+</aside>

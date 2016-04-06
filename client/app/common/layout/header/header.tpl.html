@@ -1,0 +1,65 @@
+<header class="c-header-wrapper">
+    <div class="header-inner">
+        <a class="aside-toggle-wrapper">
+            <span class="btn-aside-toggle"></span>
+        </a>
+        <div class="navbar-header">
+            <a href="#" class="c-header__name">{{vm.pageName}}</a>
+        </div>
+        <div class="acc-photo">
+            <ul class="navbar-btns">
+                <li class="navbar-btns__item">
+                    <a ui-sref="app.userProfile" class="navbar-ico img-replace drop-profile">PROFILE</a>
+                </li>
+                <li class="navbar-btns__item">
+                  <a href="#" aria-label="Messages" class="navbar-ico img-replace tooltip-v">
+                    MESSAGES
+                    <md-tooltip md-autohide>MESSAGES</md-tooltip>
+                    <i class="ico-controll icon-chat"></i>
+                  </a>
+                </li>
+                <li class="navbar-btns__item">
+                  <a click-anywhere-but-here="vm.clickedSomewhereElse()" ng-click="vm.toggleActivity()" aria-label="Actions" class="navbar-ico img-replace tooltip-v">
+                    ACTIONS
+                    <md-tooltip md-autohide>ACTIONS</md-tooltip>
+                    <i class="ico-controll icon-bell-alt" ng-class="{'actions-indicator': vm.upcomingInterviews.length}"></i>
+                  </a>
+                  <ul class="activity-dropdown" ng-class="{'active': vm.isActivity}">
+                    <li ng-repeat="interview in vm.upcomingInterviews | limitTo:3" class="activity-dropdown__item">
+                      <a href="">
+                        <h1 ui-sref="app.userProfile({id: interview.candidate._id})" class="activity-header">{{interview.title}}</h1>
+                        <a ui-sref="app.vacanciesProfile({id: interview.vacancy._id})" class="activity-info">{{interview.vacancy.title}}</a>
+                        <a ng-click="vm.openConferenceRoom(interview._id)" class="activity-info activity-info--interivew">Start</a>
+                        <span class="activity-time">{{interview.date | fromNow}}</span>
+                      </a>
+                    </li>
+                    <li ng-show="!vm.upcomingInterviews.length" class="activity-dropdown__item">
+                      <h1 class="activity-header">No upcoming interviews</h1>
+                    </li>
+                  </ul>
+                </li>
+                <li class="navbar-btns__item">
+                  <a ui-sref="app.userSettings.general" aria-label="Settings" class="navbar-ico img-replace tooltip-v">
+                    SETTINGS
+                    <md-tooltip md-autohide>SETTINGS</md-tooltip>
+                    <i class="ico-controll icon-cog-alt"></i>
+                  </a>
+                </li>
+                <li class="navbar-btns__item">
+                  <a href="javascript:void(0)" ng-click="vm.logout()" aria-label="Logout" class="navbar-ico img-replace tooltip-v">
+                    LOGOUT
+                    <md-tooltip md-autohide>LOGOUT</md-tooltip>
+                    <i class="ico-controll icon-logout"></i>
+                  </a>
+                </li>
+            </ul>
+            <a ui-sref="app.userProfile({id: vm.user._id})" class="acc-photo-link">
+                <i class="icon-down-dir"></i>
+                <div class="header-userinfo">
+                    <p class="header-userinfo__name">{{vm.user.username}}</p>
+                </div>
+                <img ng-src="{{vm.getImageUrl()}}" class="acc-photo__img">
+            </a>
+        </div>
+    </div>
+</header>

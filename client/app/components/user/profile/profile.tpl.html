@@ -1,0 +1,125 @@
+<div class="u-p-bg">
+  <div class="u-p-bg__overlay"></div>
+  <div class="u-p-bg-content">
+    <div class="u-p-bg-content__img">
+      <img ng-src="{{vm.getImageUrl()}}" alt="user photo">
+    </div>
+    <div class="u-p-bg-content__info">
+      <div class="title">
+        <h1 class="u-name">{{vm.user.name}} {{vm.user.surname}}</h1>
+        <a href="#" class="follow-btn">Follow</a>
+        <p class="u-followers">6.5k Followers<em>•</em><a href="#">133 Following</a></p>
+      </div>
+    </div>
+    <div class="u-preferences">
+      <p class="u-preferences__user-time">22:20:41 <span>FET</span></p>
+      <p class="u-preferences__user-date">Saturday, 12 September 2015</p>
+    </div>
+  </div>
+</div>
+<div class="u-p-body">
+
+  <div ng-show="vm.user.skills.length" class="u-p-body-sect">
+    <h2 class="u-p-body-sect__head">Skills</h2>
+    <div class="u-skills">
+      <ul class="vacancies">
+        <li ng-repeat="skill in vm.user.skills" class="vacancies__item"><span class="vacancies-label label-success">{{skill.text}}</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="u-p-body-sect">
+    <h2 class="u-p-body-sect__head">About</h2>
+    <p class="u-p-body-sect__text-about">{{vm.user.about}}</p>
+  </div>
+
+  <div class="u-p-body-sect">
+    <h2 class="u-p-body-sect__head">General</h2>
+    <div class="u-bs-row">
+      <div class="u-bs-col">
+        <table>
+          <tr>
+            <td>First Name:</td>
+            <td>{{vm.user.name}}</td>
+          </tr>
+          <tr>
+            <td>Last Name:</td>
+            <td>{{vm.user.surname}}</td>
+          </tr>
+          <tr>
+            <td>Phone:</td>
+            <td>{{vm.user.phone}}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="u-bs-col">
+        <table>
+          <tr>
+            <td>Birthday:</td>
+            <td>{{vm.user.dob | moment: 'DD.MM.YYYY'}} ({{vm.user.age}} y.o.)</td>
+          </tr>
+          <tr>
+            <td>Country:</td>
+            <td>{{vm.user.country}}</td>
+          </tr>
+          <tr>
+            <td>Email:</td>
+            <td>{{vm.user.email}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="u-p-body-sect">
+    <h2 class="u-p-body-sect__head">Work experience</h2>
+    <ul class="timeline">
+      <li class="timeline__item" ng-repeat='exp in vm.user.experiences'>
+        <div class="date">
+          <h3>{{exp.organization}}</h3>
+          <span>{{exp.startPeriod}} - {{exp.endPeriod}}</span>
+        </div>
+        <div class="ico"></div>
+        <div class="info">
+          <h2>{{exp.position}}</h2>
+          <p>{{exp.about}}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="u-p-body-sect">
+    <h2 class="u-p-body-sect__head">Social</h2>
+    <div class="u-bs-row">
+      <div class="u-bs-col">
+        <p class="u-social-wrap">
+          <a href="{{vm.user.social.twitter}}" class="u-social-link">
+            <i class="sidebar-ico icon-twitter"></i>
+            <span>{{vm.user.social.twitter}}</span>
+          </a>
+        </p>
+        <p class="u-social-wrap">
+          <a href="{{vm.user.social.facebook}}" class="u-social-link">
+            <i class="sidebar-ico icon-facebook"></i>
+            <span>{{vm.user.social.facebook}}</span>
+          </a>
+        </p>
+      </div>
+      <div class="u-bs-col">
+        <p class="u-social-wrap">
+          <a href="{{vm.user.social.linkedin}}" class="u-social-link">
+            <i class="sidebar-ico icon-linkedin"></i>
+            <span>{{vm.user.social.linkedin}}</span>
+          </a>
+        </p>
+        <p class="u-social-wrap">
+          <a href="{{vm.user.social.github}}" class="u-social-link">
+            <i class="sidebar-ico icon-github-circled"></i>
+            <span>{{vm.user.social.github}}</span>
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>

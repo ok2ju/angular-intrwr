@@ -1,0 +1,80 @@
+<div class="form-content">
+  <div class="s-content-head">
+    <h2 class="s-content-head__header">Add your work experience.</h2>
+  </div>
+
+  <form name="fillFormExp" ng-submit="vm.updateProfile(fillFormExp.$valid)" class="settings-form" novalidate>
+    <div class="settings-form__row">
+
+      <div class="exp-row" ng-repeat="experience in vm.user.experiences">
+
+        <div class="grid">
+          <div class="grid-cell">
+            <div class="inputAdd">
+              <div class="v-form-error" ng-messages="fillFormExp.expOrganization.$error" ng-if="fillFormExp.expOrganization.$dirty || fillFormExp.$submitted">
+                <div ng-message="required">You did not enter a organization</div>
+                <div ng-message="minlength">Your organization title is too short</div>
+                <div ng-message="maxlength">Your organization title is too long</div>
+              </div>
+              <span class="inputAdd-item"><i class="sidebar-ico icon-user"></i></span>
+              <input ng-model="experience.organization" name="expOrganization" type="text" id="up-name" class="inputAdd-field" placeholder="Organization" ng-minlength="3" ng-maxlength="25" required>
+            </div>
+            <div class="inputAdd">
+              <div class="v-form-error" ng-messages="fillFormExp.expPosition.$error" ng-if="fillFormExp.expPosition.$dirty || fillFormExp.$submitted">
+                <div ng-message="required">You did not enter a position</div>
+                <div ng-message="minlength">Your position title is too short</div>
+                <div ng-message="maxlength">Your position title is too long</div>
+              </div>
+              <span class="inputAdd-item"><i class="sidebar-ico icon-user"></i></span>
+              <input ng-model="experience.position" name="expPosition" type="text" id="up-name" class="inputAdd-field" placeholder="Position" ng-minlength="3" ng-maxlength="25" required>
+            </div>
+          </div>
+          <div class="grid-cell">
+            <div class="inputAdd">
+              <div class="v-form-error" ng-messages="fillFormExp.expStart.$error" ng-if="fillFormExp.expStart.$dirty || fillFormExp.$submitted">
+                <div ng-message="required">You did not enter a start year</div>
+                <div ng-message="pattern">Must be a valid year</div>
+              </div>
+              <span class="inputAdd-item"><i class="sidebar-ico icon-calendar"></i></span>
+              <input ng-model="experience.startPeriod" type="text" name="expStart" class="inputAdd-field" placeholder="Start year" ng-pattern="/^(199[2-9]|200[0-9]|201[0-6])$/" required>
+            </div>
+            <div class="inputAdd">
+              <div class="v-form-error" ng-messages="fillFormExp.expEnd.$error" ng-if="fillFormExp.expEnd.$dirty || fillFormExp.$submitted">
+                <div ng-message="required">You did not enter a end year</div>
+                <div ng-message="pattern">Must be a valid year</div>
+              </div>
+              <span class="inputAdd-item"><i class="sidebar-ico icon-calendar"></i></span>
+              <input ng-model="experience.endPeriod" type="text" name="expEnd" class="inputAdd-field" placeholder="End year" ng-pattern="/^(199[2-9]|200[0-9]|201[0-6])$/" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="grid-cell">
+            <div class="inputAdd">
+              <div class="v-form-error" ng-messages="fillFormExp.expAbout.$error" ng-if="fillFormExp.expAbout.$dirty || fillFormExp.$submitted">
+                <div ng-message="required">You did not enter about filed</div>
+                <div ng-message="minlength">About field is too short</div>
+              </div>
+              <textarea type="text" class="inputAdd-field" placeholder="About" ng-model="experience.about" name="expAbout" id="up-about" ng-minlength="50" required></textarea>
+            </div>
+          </div>
+        </div>
+
+        <a ng-click="vm.deleteExperience(experience._id)" class="btn-defaul">Delete</a>
+
+      </div>
+
+    </div>
+
+    <div class="btn-col inc-exp-form">
+      <a ng-click="vm.addNewExperience()">Add another job experience</a>
+    </div>
+
+    <div class="btn-col">
+      <button type="submit" class="form-row-group__submit-btn btn-info">Save</button>
+    </div>
+
+  </form>
+
+</div>

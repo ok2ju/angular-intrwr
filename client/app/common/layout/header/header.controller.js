@@ -52,9 +52,7 @@ function LayoutHeaderController($state, $scope, store, imageService, authService
 
   function toggleSidebar() {
     vm.isToggled = !vm.isToggled;
-    $rootScope.$broadcast('sidebarToggleEvent', {
-      isToggled: vm.isToggled
-    });
+    $rootScope.isToggled = vm.isToggled;
   }
 }
 

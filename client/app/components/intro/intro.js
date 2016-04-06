@@ -13,7 +13,10 @@ let introModule = angular.module('intro', [
   $stateProvider
     .state('intro.landing', {
       url: '/',
-      template: introTemplate
+      template: introTemplate,
+      data: {
+        pageTitle: 'Landing'
+      }
     });
 });
 

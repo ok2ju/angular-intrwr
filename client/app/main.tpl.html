@@ -1,5 +1,4 @@
-<header-nav user="user"></header-nav>
-<main role="main" class="content">
-  <side-bar></side-bar>
-  <main-area></main-area>
-</main>
+<div class="layout-row">
+  <side-bar ng-class="{'active': appCtrl.isToggled}"></side-bar>
+  <main-area class="content" ng-class="{'active': appCtrl.isToggled}"></main-area>
+</div>

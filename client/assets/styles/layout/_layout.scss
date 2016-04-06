@@ -2,6 +2,10 @@
 $header-bg-color: #9bd8f1;
 $header-font-color: #fff;
 
+app {
+  height: 100%;
+}
+
 .container {
   @include clearfix;
   margin-left: auto;
@@ -22,28 +26,27 @@ $header-font-color: #fff;
   }
 }
 
+.layout-row {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
 .row {
   @include make-row;
 }
 
 .content {
-  padding-left: 0;
-  padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   position: relative;
-  transition: padding-left .2s ease-in-out;
+  transition: transform .2s ease-in-out;
+  transform: translateX(0);
 
   @include respond-to('medium') {
-    padding-left: 230px;
+    
   }
-}
-
-.content-inner {
-  @include make-row;
-}
-
-.main-area {
-  margin: 0 auto;
-  transition: transform .2s ease-in-out;
 
   &.active {
     transform: translateX(230px);
@@ -52,6 +55,26 @@ $header-font-color: #fff;
       transform: translateX(0);
     }
   }
+}
+
+.content-inner {
+  @include make-row;
+}
+
+.main-area {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+
+
+  /*&.active {
+    transform: translateX(230px);
+
+    @include respond-to('medium') {
+      transform: translateX(0);
+    }
+  }*/
 }
 
 .full-col {

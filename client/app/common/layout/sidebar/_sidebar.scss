@@ -1,36 +1,28 @@
 // variables
 $sideblock-bg-color: #161616;
 
-side-bar {
+.sideblock {
   background-color: $sideblock-bg-color;
-  overflow-x: hidden;
+  bottom: 0;
+  color: #fff;
+  overflow-y: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
   overflow-y: auto;
+  width: 230px;
   transform: translateX(-230px);
   transition: transform .2s ease-in-out;
-  position: fixed;
 
   @include respond-to('medium') {
     transform: translateX(0);
-    position: static;
+    display: block;
   }
 
   &.active {
     transform: translateX(0);
-  }
-}
-
-.sideblock {
-  background-color: $sideblock-bg-color;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  width: 230px;
-  min-height: 100vh;
-
-  section {
-    &:nth-last-of-type(1) {
-      flex: 1;
-    }
+    display: block;
   }
 }
 
@@ -153,13 +145,15 @@ side-bar {
 }
 
 .aside-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
   padding-bottom: 5px;
   padding-top: 10px;
   text-align: center;
   width: 230px;
   background-color: #161616;
   display: block;
-  align-self: flex-end;
 }
 
 .aside-footer-link {

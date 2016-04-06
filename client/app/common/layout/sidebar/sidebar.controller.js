@@ -1,10 +1,6 @@
 function LayoutSidebarController($scope) {
   const vm = this;
 
-  $scope.$on('sidebarToggleEvent', (event, data) => {
-    vm.isToggled = data.isToggled;
-  });
-
   vm.items = [{
     name: 'Interview Room',
     icon: 'fa fa-video-camera',

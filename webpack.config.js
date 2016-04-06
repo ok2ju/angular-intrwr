@@ -12,7 +12,7 @@ module.exports = {
       { test: /\.html$/, loader: 'raw' },
       { test: /\.scss$/, loader: ExtractTextPlugin.extract(['css', 'sass']) },
       {
-        test: /\.(eot|ttf|svg|woff|woff2)$/,
+        test: /\.(eot|svg|ttf|woff(2)?)(\?v=\d+\.\d+\.\d+)?/,
         loader: 'file?name=fonts/[name].[ext]'
       },
       {

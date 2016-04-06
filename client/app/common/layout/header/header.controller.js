@@ -3,6 +3,8 @@ function LayoutHeaderController($state, $scope, store, imageService, authService
   const {moment} = Vendor;
 
   vm.openConferenceRoom = openRequestedPopupService.openRequestedPopup;
+  vm.toggleSidebar = toggleSidebar;
+  vm.isToggled = false;
 
   authService.me().then((myself) => {
     vm.user = myself;
@@ -47,6 +49,13 @@ function LayoutHeaderController($state, $scope, store, imageService, authService
   vm.clickedSomewhereElse = function() {
     vm.isActivity = false;
   };
+
+  function toggleSidebar() {
+    vm.isToggled = !vm.isToggled;
+    $rootScope.$broadcast('sidebarToggleEvent', {
+      isToggled: vm.isToggled
+    });
+  }
 }
 
 export default LayoutHeaderController;

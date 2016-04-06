@@ -1,40 +1,44 @@
-function LayoutSidebarController() {
+function LayoutSidebarController($scope) {
   const vm = this;
+
+  $scope.$on('sidebarToggleEvent', (event, data) => {
+    vm.isToggled = data.isToggled;
+  });
 
   vm.items = [{
     name: 'Interview Room',
-    icon: 'icon-videocam',
+    icon: 'fa fa-video-camera',
     state: 'app.iroom'
   },
   {
     name: 'Vacancies',
-    icon: 'icon-newspaper',
+    icon: 'fa fa-newspaper-o',
     state: 'app.vacanciesList'
   },
   {
     name: 'Calendar',
-    icon: 'icon-calendar',
+    icon: 'fa fa-calendar',
     state: 'app.calendar'
   },
   {
     name: 'Companies',
-    icon: 'icon-building',
+    icon: 'fa fa-building-o',
     state: 'app.companies'
   }];
 
   vm.company = [{
     name: 'My Companies',
-    icon: 'icon-hospital',
+    icon: 'fa fa-hospital-o',
     state: 'app.manageCompany'
   },
   {
     name: 'Candidates',
-    icon: 'icon-users',
+    icon: 'fa fa-users',
     state: 'app.candidatesDashboard'
   },
   {
     name: 'Vacancy',
-    icon: 'icon-newspaper',
+    icon: 'fa fa-newspaper-o',
     state: 'app.vacanciesManage.companies'
   }];
 }

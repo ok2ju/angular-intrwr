@@ -1,6 +1,6 @@
-<header class="c-header-wrapper">
+<header class="c-header-wrapper" ng-class="{'active': vm.isToggled}">
     <div class="header-inner">
-        <a class="aside-toggle-wrapper">
+        <a ng-click="vm.toggleSidebar()" id="aside-toggler" class="aside-toggle-wrapper" ng-class="{'active': vm.isToggled}">
             <span class="btn-aside-toggle"></span>
         </a>
         <div class="navbar-header">
@@ -15,14 +15,14 @@
                   <a href="#" aria-label="Messages" class="navbar-ico img-replace tooltip-v">
                     MESSAGES
                     <md-tooltip md-autohide>MESSAGES</md-tooltip>
-                    <i class="ico-controll icon-chat"></i>
+                    <i class="ico-controll fa fa-comments"></i>
                   </a>
                 </li>
                 <li class="navbar-btns__item">
                   <a click-anywhere-but-here="vm.clickedSomewhereElse()" ng-click="vm.toggleActivity()" aria-label="Actions" class="navbar-ico img-replace tooltip-v">
                     ACTIONS
                     <md-tooltip md-autohide>ACTIONS</md-tooltip>
-                    <i class="ico-controll icon-bell-alt" ng-class="{'actions-indicator': vm.upcomingInterviews.length}"></i>
+                    <i class="ico-controll fa fa-bell" ng-class="{'actions-indicator': vm.upcomingInterviews.length}"></i>
                   </a>
                   <ul class="activity-dropdown" ng-class="{'active': vm.isActivity}">
                     <li ng-repeat="interview in vm.upcomingInterviews | limitTo:3" class="activity-dropdown__item">
@@ -42,14 +42,14 @@
                   <a ui-sref="app.userSettings.general" aria-label="Settings" class="navbar-ico img-replace tooltip-v">
                     SETTINGS
                     <md-tooltip md-autohide>SETTINGS</md-tooltip>
-                    <i class="ico-controll icon-cog-alt"></i>
+                    <i class="ico-controll fa fa-cogs"></i>
                   </a>
                 </li>
                 <li class="navbar-btns__item">
                   <a href="javascript:void(0)" ng-click="vm.logout()" aria-label="Logout" class="navbar-ico img-replace tooltip-v">
                     LOGOUT
                     <md-tooltip md-autohide>LOGOUT</md-tooltip>
-                    <i class="ico-controll icon-logout"></i>
+                    <i class="ico-controll fa fa-sign-out"></i>
                   </a>
                 </li>
             </ul>

@@ -27,9 +27,10 @@ $header-font-color: #fff;
 }
 
 .content {
-  padding-left: 65px;
+  padding-left: 0;
   padding-top: 60px;
   position: relative;
+  transition: padding-left .2s ease-in-out;
 
   @include respond-to('medium') {
     padding-left: 230px;
@@ -42,6 +43,11 @@ $header-font-color: #fff;
 
 .main-area {
   margin: 0 auto;
+  transition: transform .2s ease-in-out;
+
+  &.active {
+    transform: translateX(230px);
+  }
 }
 
 .full-col {

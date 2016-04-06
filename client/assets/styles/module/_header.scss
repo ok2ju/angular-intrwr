@@ -10,15 +10,17 @@ $header-border-bottom-color: rgba(137,137,137,0.3);
   position: fixed;
   right: 0;
   top: 0;
-  transition: all .3s ease-in-out;
+  transition: all .2s ease-in-out;
   width: 100%;
   z-index: 4;
   padding-left: 0;
 
-  padding-left: 65px;
-
   @include respond-to('medium') {
     padding-left: 230px;
+  }
+
+  &.active {
+    transform: translateX(230px);
   }
 }
 
@@ -33,7 +35,7 @@ $header-border-bottom-color: rgba(137,137,137,0.3);
   top: 17px;
   left: 60px;
 
-  @include respond-to('small') {
+  @include respond-to('medium') {
     left: 30px;
   }
 }
@@ -57,7 +59,7 @@ $header-border-bottom-color: rgba(137,137,137,0.3);
   position: absolute;
   display: block;
 
-  @include respond-to('small') {
+  @include respond-to('medium') {
     display: none;
   }
 }
@@ -111,7 +113,7 @@ $header-border-bottom-color: rgba(137,137,137,0.3);
 
 .navbar-btns {
   float: left;
-  height: 60px;
+  margin-top: 18px;
   margin-right: 15px;
 
   .drop-profile {

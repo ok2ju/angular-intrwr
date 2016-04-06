@@ -11,10 +11,17 @@ $sideblock-bg-color: #161616;
   left: 0;
   z-index: 5;
   overflow-y: auto;
-  width: 65px;
+  width: 230px;
+  transform: translateX(-230px);
+  transition: transform .2s ease-in-out;
 
   @include respond-to('medium') {
-    width: 230px;
+    transform: translateX(0);
+    display: block;
+  }
+
+  &.active {
+    transform: translateX(0);
     display: block;
   }
 }
@@ -37,27 +44,7 @@ $sideblock-bg-color: #161616;
   color: #fff;
   font-weight: 400;
   display: inline-block;
-  width: 28px;
-
-  .big-logo {
-    display: none;
-
-    @include respond-to('medium') {
-      display: block;
-    }
-  }
-
-  .min-logo {
-    display: block;
-
-    @include respond-to('medium') {
-      display: none;
-    }
-  }
-
-  @include respond-to('medium') {
-    width: 120px;
-  }
+  width: 120px;
 }
 
 .int-section {
@@ -154,11 +141,7 @@ $sideblock-bg-color: #161616;
 }
 
 .sidebar-item-text {
-  display: none;
-
-  @include respond-to('medium') {
-    display: inline-block;
-  }
+  display: inline-block;
 }
 
 .aside-footer {
@@ -170,11 +153,7 @@ $sideblock-bg-color: #161616;
   text-align: center;
   width: 230px;
   background-color: #161616;
-  display: none;
-
-  @include respond-to('medium') {
-    display: block;
-  }
+  display: block;
 }
 
 .aside-footer-link {

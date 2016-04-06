@@ -1,11 +1,8 @@
-// imports
-@import '../utils/index';
-
 // variables
 $landing-primary-font-color: #fff;
 
 .wrapper {
-  background-image: url('../assets/images/bg.jpg');
+  background-image: url('/images/bg.jpg');
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -23,8 +20,6 @@ $landing-primary-font-color: #fff;
 }
 
 .land-container {
-  /*@include center(xy);
-  position: absolute;*/
   width: 300px;
 
   margin-left: auto;
@@ -36,24 +31,14 @@ $landing-primary-font-color: #fff;
 }
 
 .landing-about {
-  @include font-size(14px);
+  font-size: rem(1.4);
   color: $landing-primary-font-color;
   font-weight: 400;
   margin-bottom: 50px;
   text-align: center;
 }
 
-.landing-name {
-  @include font-size(25px);
-  color: $landing-primary-font-color;
-  font-family: 'Tw Cen MT', sans-serif;
-  font-weight: 300;
-  margin-bottom: 100px;
-  text-align: center;
-}
-
 .logo {
-  /* margin-bottom: 40px; */
   text-align: center;
 }
 

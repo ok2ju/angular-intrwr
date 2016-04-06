@@ -1,0 +1,40 @@
+<div class="form-container">
+  <form class="form" name="signupForm" method="post" autocomplete="off" ng-submit="vm.register()" novalidate>
+    <div class="auth-form-body">
+      <div class="form-group">
+        <input ng-model="vm.user.username" name="username" type="text" placeholder="USERNAME" class="input-block login-field" ng-class="{ 'has-success' : signupForm.username.$valid && signupForm.username.$dirty, 'has-error' : signupForm.username.$invalid && signupForm.username.$dirty }" ng-minlength="3" ng-maxlength="12" required>
+        <div class="text-danger" ng-if="signupForm.username.$dirty" ng-messages="signupForm.username.$error">
+          <span ng-message="required" class="error-message">Username is required</span>
+          <span ng-message="minlength" class="error-message">Username is too short</span>
+          <span ng-message="maxlength" class="error-message">Username is too long</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <input ng-model="vm.user.email" name="email" type="email" placeholder="EMAIL" class="input-block email-field" ng-class="{ 'has-success' : signupForm.email.$valid && signupForm.email.$dirty, 'has-error' : signupForm.email.$invalid && signupForm.email.$dirty }" required>
+        <div class="text-danger" ng-if="signupForm.email.$dirty" ng-messages="signupForm.email.$error">
+          <span ng-message="required" class="error-message">Email is required</span>
+          <span ng-message="email" class="error-message">Invalid Email</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <input ng-model="vm.user.password" name="password" type="password" placeholder="PASSWORD" class="input-block password-field" ng-class="{ 'has-success' : signupForm.password.$valid && signupForm.password.$dirty, 'has-error' : signupForm.password.$invalid && signupForm.password.$dirty }" required>
+        <div class="text-danger" ng-if="signupForm.password.$dirty" ng-messages="signupForm.password.$error">
+          <span ng-message="required" class="error-message">Password is required</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <input ng-model="vm.user.confirmPassword" name="confirmPassword" repeat-password="password" type="password" placeholder="CONFIRM PASSWORD" class="input-block password-field" ng-class="{ 'has-success' : signupForm.confirmPassword.$valid && signupForm.confirmPassword.$dirty, 'has-error' : signupForm.confirmPassword.$invalid && signupForm.confirmPassword.$dirty }" required>
+        <div class="text-danger" ng-if="signupForm.confirmPassword.$dirty" ng-messages="signupForm.confirmPassword.$error">
+          <span ng-message="required" class="error-message">You must confirm password</span>
+          <span ng-message="repeat" class="error-message">Passwords do not match</span>
+        </div>
+      </div>
+      <div class="help-btns-wrapper">
+        <p class="register-with">Register with:</p>
+        <div class="social-btns"><a href="#"><i class="facebook-ico"></i></a><a href="#"><i class="google-ico"></i></a></div>
+      </div>
+      <button type="submit" ng-disabled="signupForm.$invalid" class="register-button">Sign up</button>
+      <p class="dha">Have an account? - <a ui-sref="intro.login">Sign in</a></p>
+    </div>
+  </form>
+</div>

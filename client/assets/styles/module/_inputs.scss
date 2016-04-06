@@ -3,12 +3,12 @@ $input-color: #676a6c;
 $input-label-color: #59728e;
 
 .c-form-label {
-  @include font-size(12px);
+  font-size: rem(1.2);
   color: $primary-font-color;
 }
 
 .input {
-  @include font-size(13px);
+  font-size: rem(1.3);
   border: 1px solid #cfd9db !important;
   border-radius: 2px;
   width: 100%;
@@ -22,7 +22,7 @@ $input-label-color: #59728e;
 }
 
 .input-field {
-  @include font-size(13px);
+  font-size: rem(1.3);
   flex: 1;
   border: 1px solid #e8e8e8;
   border-radius: 3px;

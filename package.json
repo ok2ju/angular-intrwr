@@ -46,6 +46,7 @@
     "gulp-template": "^3.1.0",
     "gulp-util": "^3.0.7",
     "html-webpack-plugin": "^2.14.0",
+    "js-logger": "^1.2.0",
     "ng-annotate-loader": "^0.1.0",
     "node-sass": "^3.4.2",
     "raw-loader": "^0.5.1",

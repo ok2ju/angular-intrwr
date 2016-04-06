@@ -1,167 +1,157 @@
-// imports
-@import '../utils/index';
 // variables
 $form-container-bg-color: #fff;
 $submit-btn-container-color: #118b7e;
 $submit-btn-color: #fff;
+
 .form-container {
-    position: relative;
+  position: relative;
 }
 
 .auth-form-body {
-    padding: 35px 20px 0 20px;
+  padding: 35px 20px 0 20px;
 
-    p {
-        position: relative;
-    }
+  p {
+    position: relative;
+  }
 
-    .form-group {
-        position: relative;
-        margin-bottom: 20px;
-    }
+  .form-group {
+    position: relative;
+    margin-bottom: 20px;
+  }
 }
 
 .input-block {
-    @include font-size(11px);
-    border: 0;
-    border-bottom: 1px solid rgba(255, 255, 255, .2);
-    background: none;
-    color: rgba(255, 255, 255, .5);
-    display: block;
-    padding: 10px 0;
-    text-align: center;
-    width: 100%;
+  font-size: rem(1.1);
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, .2);
+  background: none;
+  color: rgba(255, 255, 255, .5);
+  display: block;
+  padding: 10px 0;
+  text-align: center;
+  width: 100%;
 
-    &:focus {
-        border-bottom: solid 1px #969696
-    }
+  &:focus {
+    border-bottom: solid 1px #969696
+  }
 
-    &.has-success {
-        border-bottom: 1px solid #539665;
-    }
+  &.has-success {
+    border-bottom: 1px solid #539665;
+  }
 
-    &.has-error {
-        border-bottom: 1px solid #d76666;
-    }
+  &.has-error {
+    border-bottom: 1px solid #d76666;
+  }
 }
 
 .error-message {
-    @include font-size(11px);
-    display: inline-block;
-    position: absolute;
-    background: rgba(215, 102, 102, 0.9);
-    padding: 4px;
-    z-index: 2;
-    color: #FFF;
-    border-radius: .25em;
-    pointer-events: none;
-    visibility: visible;
-    opacity: 1;
-    top: -15px;
+  font-size: rem(1.1);
+  display: inline-block;
+  position: absolute;
+  background: rgba(215, 102, 102, 0.9);
+  padding: 4px;
+  z-index: 2;
+  color: #FFF;
+  border-radius: .25em;
+  pointer-events: none;
+  visibility: visible;
+  opacity: 1;
+  top: -15px;
 
-    &:after {
-        content: '';
-        position: absolute;
-        left: 22px;
-        bottom: -5px;
-        height: 0;
-        width: 0;
-        border-left: 5px solid transparent;
-        border-right: 5px solid transparent;
-        border-top: 5px solid rgba(215, 102, 102, 0.9);
-    }
+  &:after {
+    content: '';
+    position: absolute;
+    left: 22px;
+    bottom: -5px;
+    height: 0;
+    width: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid rgba(215, 102, 102, .9);
+  }
 }
 
 .alert-danger,
 .alert-success,
 .alert-info {
-  @include font-size(11px);
+  font-size: rem(1.1);
   text-align: center;
 }
 
-/* .alert-danger {
-  color: rgba(215, 102, 102, 0.9);
-}
-
-.alert-success {
-  color: rgba(82, 215, 114, 0.9);
-} */
-
 .forgot-pass {
-    @include font-size(11px);
-    color: rgba(255, 255, 255, .5);
+  font-size: rem(1.1);
+  color: rgba(255, 255, 255, .5);
 
-    &:hover {
-        text-decoration: underline;
-    }
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .help-btns-wrapper {
-    @include clearfix;
-    margin-bottom: 20px;
+  @include clearfix;
+  margin-bottom: 20px;
 }
 
 .login-button {
-    @extend .btn-block;
-    @extend .btn-lg;
-    @extend .btn-info;
-    @include font-size(14px);
-    background-color: #0c6b95;
-    border: 0;
-    border-radius: 2px;
-    color: $submit-btn-color;
-    cursor: pointer;
-    margin-bottom: 15px;
-    outline: none;
-    padding: 10px 0;
-    text-align: center;
-    width: 100%;
+  @extend .btn-block;
+  @extend .btn-lg;
+  @extend .btn-info;
+  font-size: rem(1.4);
+  background-color: #0c6b95;
+  border: 0;
+  border-radius: 2px;
+  color: $submit-btn-color;
+  cursor: pointer;
+  margin-bottom: 15px;
+  outline: none;
+  padding: 10px 0;
+  text-align: center;
+  width: 100%;
 }
 
 .social-btns {
-    @include clearfix();
-    display: inline-block;
-    margin-left: 90px;
-    vertical-align: middle;
-    float: right;
-    ;
+  @include clearfix();
+  display: inline-block;
+  margin-left: 90px;
+  vertical-align: middle;
+  float: right;
 }
 
 .facebook-ico {
-    background: url('/images/icons/social/l-facebook.svg');
-    background-size: cover;
-    display: block;
-    float: left;
-    height: 20px;
-    width: 20px;
+  background: url('/images/icons/social/l-facebook.svg');
+  background-size: cover;
+  display: block;
+  float: left;
+  height: 20px;
+  width: 20px;
 }
 
 .google-ico {
-    background: url('/images/icons/social/l-google.svg');
-    background-size: cover;
-    display: block;
-    float: left;
-    height: 20px;
-    margin-left: 10px;
-    width: 20px;
+  background: url('/images/icons/social/l-google.svg');
+  background-size: cover;
+  display: block;
+  float: left;
+  height: 20px;
+  margin-left: 10px;
+  width: 20px;
 }
 
 .dha {
-    @include font-size(11px);
-    color: rgba(255, 255, 255, .5);
-    text-align: center;
-    a {
-        color: rgba(255, 255, 255, .8);
-    }
+  font-size: rem(1.1);
+  color: rgba(255, 255, 255, .5);
+  text-align: center;
+  a {
+      color: rgba(255, 255, 255, .8);
+  }
 }
 
 .register-button {
-    @extend .login-button;
+  @extend .login-button;
 }
 
 .register-with {
-    @include font-size(11px);
-    color: rgba(255, 255, 255, .5);
-    float: left;
-    line-height: 20px;
+  font-size: rem(1.1);
+  color: rgba(255, 255, 255, .5);
+  float: left;
+  line-height: 20px;
 }

@@ -8,9 +8,6 @@ function SettingsController($state, config, countries, authService, imageService
   const vm = this;
   vm.user = {};
 
-  // Fetch countries for dropdown
-  vm.countries = countries.data;
-
   vm.updateProfile = updateProfile;
   vm.addNewExperience = addNewExperience;
   vm.deleteExperience = deleteExperience;
@@ -53,6 +50,31 @@ function SettingsController($state, config, countries, authService, imageService
         /*toastr.error('Error while updating.', 'Error!');*/
       });
     }
+  }
+
+  // Select component
+  vm.countries = loadCountries();
+  vm.isDisabled = false;
+  vm.noCache = true;
+
+  vm.querySearch = function(query) {
+    let results = query ? vm.countries.filter( vm.createFilterFor(query) ) : vm.countries;
+    return results;
+  };
+
+  vm.createFilterFor = function(query) {
+    let lowercaseQuery = angular.lowercase(query);
+    return function filterFn(state) {
+      return (state.value.indexOf(lowercaseQuery) === 0);
+    };
+  };
+
+  function loadCountries() {
+    let countriesArray = countries.data;
+    return countriesArray.map((country) => {
+      country.value = country.name.toLowerCase();
+      return country;
+    });
   }
 }
 

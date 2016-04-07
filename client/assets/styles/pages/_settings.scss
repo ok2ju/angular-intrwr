@@ -9,7 +9,7 @@ $content-header-bg-color: rgba(242, 242, 242, .3);
 }
 
 .s-content-head__header {
-  @include font-size(13px);
+  font-size: 1.3rem;
   font-weight: 400;
 }
 
@@ -63,7 +63,7 @@ $content-header-bg-color: rgba(242, 242, 242, .3);
   @include clearfix;
 
   p {
-    @include font-size(13px);
+    font-size: 1.3rem;
     margin-bottom: 12px;
 
     &:last-child {
@@ -78,13 +78,13 @@ $content-header-bg-color: rgba(242, 242, 242, .3);
   }
 
   span {
-    @include font-size(13px);
+    font-size: 1.3rem;
     color: #666;
   }
 }
 
 .upload-btn {
-  @include font-size(13px);
+  font-size: 1.3rem;
   display: inline-block;
   padding: 5px 10px;
   border-radius: 3px;

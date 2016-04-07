@@ -1,4 +1,4 @@
-function SettingsController($state, config, countries, authService, imageService, Vendor) {
+function SettingsController($state, config, countries, authService, imageService, Vendor, $mdToast) {
   "ngInject";
 
   const {$} = Vendor;
@@ -42,12 +42,23 @@ function SettingsController($state, config, countries, authService, imageService
   }
 
   function updateProfile(isValid) {
+
     if(isValid) {
       vm.user.put().then(function() {
         $state.go($state.current, {}, { reload: true });
         /*toastr.success('Your settings was successfully updated.', 'Yay!');*/
+        $mdToast.show(
+          $mdToast.simple()
+            .textContent('Yay! Success')
+            .position('bottom right')
+        );
       }, function(err) {
         /*toastr.error('Error while updating.', 'Error!');*/
+        $mdToast.show(
+          $mdToast.simple()
+            .textContent('Error!')
+            .position('bottom right')
+        );
       });
     }
   }

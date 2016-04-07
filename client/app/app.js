@@ -3,6 +3,7 @@ import 'angular-ui-router';
 import 'angular-jwt';
 import 'angular-storage';
 import 'angular-messages';
+import 'angular-material';
 import Common from './common/common';
 import Components from './components/components';
 import AppComponent from './app.component';
@@ -14,6 +15,7 @@ angular.module('app', [
     'angular-jwt',
     'angular-storage',
     'ngMessages',
+    'ngMaterial',
     Common.name,
     Components.name
   ])

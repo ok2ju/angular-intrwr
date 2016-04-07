@@ -37,6 +37,7 @@ app {
 }
 
 .content {
+  background-color: $body-color;
   display: flex;
   flex-direction: column;
   flex: 1;

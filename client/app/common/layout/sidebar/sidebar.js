@@ -1,7 +1,7 @@
 import angular from 'angular';
-import sidebarDirective from './sidebar.directive';
+import sidebarComponent from './sidebar.component';
 
 let sidebarModule = angular.module('sidebar', [])
-.directive('sideBar', sidebarDirective);
+.component('sideBar', sidebarComponent);
 
 export default sidebarModule;

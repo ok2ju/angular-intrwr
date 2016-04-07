@@ -1,4 +1,4 @@
-function LayoutSidebarController($scope) {
+function LayoutSidebarController() {
   const vm = this;
 
   vm.items = [{

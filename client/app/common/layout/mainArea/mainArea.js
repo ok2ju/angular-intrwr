@@ -1,7 +1,7 @@
 import angular from 'angular';
-import mainAreaDirective from './mainArea.directive';
+import mainAreaComponent from './mainArea.component';
 
 let mainAreaModule = angular.module('mainArea', [])
-.directive('mainArea', mainAreaDirective);
+.component('mainArea', mainAreaComponent);
 
 export default mainAreaModule;

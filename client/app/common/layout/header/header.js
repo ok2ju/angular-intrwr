@@ -1,9 +1,9 @@
 import angular from 'angular';
-import headerDirective from './header.directive';
+import headerComponent from './header.component';
 import clickAnywhereButHereDirective from './clickAnywhere.directive';
 
 let headerModule = angular.module('header', [])
-.directive('headerNav', headerDirective)
+.component('headerNav', headerComponent)
 .directive('clickAnywhereButHere', clickAnywhereButHereDirective);
 
 export default headerModule;

@@ -15,7 +15,7 @@
                 <div ng-message="maxlength">Your name is too long</div>
               </div>
               <span class="inputAdd-item"><i class="sidebar-ico fa fa-user"></i></span>
-              <input ng-model="vm.user.name" name="name" type="text" id="up-name" class="inputAdd-field" placeholder="Name" ng-minlength="3" ng-maxlength="25" required>
+              <input ng-model="vm.user.name" name="name" type="text" id="up-name" class="inputAdd-field" placeholder="Name" ng-minlength="3" ng-maxlength="25" autocomplete="off" required>
             </div>
             <div class="inputAdd">
               <div class="v-form-error" ng-messages="fillForm.surname.$error" ng-if="fillForm.surname.$dirty || fillForm.$submitted">

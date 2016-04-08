@@ -1,4 +1,4 @@
-function LoginController($state, Vendor, authService) {
+function LoginController($state, Vendor, authService, notificationService) {
   "ngInject";
   
   const vm = this;
@@ -10,10 +10,10 @@ function LoginController($state, Vendor, authService) {
   function login() {
     authService.login(vm.user).then((user) => {
       $state.go('app.userSettings.general', {});
-      /*toastr.success('You have successfully logged in.', 'Cheers!');*/
+      notificationService.showNotification('You have successfully logged in!');
       logger.debug('login success: ', user);
     }).catch((err) => {
-      /*toastr.error('Invalid username or password.', 'Error!');*/
+      notificationService.showNotification('Invalid username or password!');
       logger.error('login err: ', err);
     });
   }

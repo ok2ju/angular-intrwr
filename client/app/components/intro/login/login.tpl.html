@@ -2,10 +2,10 @@
   <form class="form" name="loginForm" autocomplete="off" ng-submit="vm.login()">
     <div class="auth-form-body">
       <div class="form-group">
-        <input ng-model="vm.user.username" name="username" type="text" placeholder="USERNAME" class="input-block login-field" required>
+        <input ng-model="vm.user.username" name="username" type="text" placeholder="USERNAME" class="input-block login-field" autocomplete="off" required>
       </div>
       <div class="form-group">
-        <input ng-model="vm.user.password" name="password" type="password" placeholder="PASSWORD" class="input-block password-field" required>
+        <input ng-model="vm.user.password" name="password" type="password" placeholder="PASSWORD" class="input-block password-field" autocomplete="off" required>
       </div>
       <div class="help-btns-wrapper"><a href="#" class="forgot-pass">Forgot password?</a>
         <div class="social-btns"><a href="#"><i class="facebook-ico"></i></a><a href="#"><i class="google-ico"></i></a></div>

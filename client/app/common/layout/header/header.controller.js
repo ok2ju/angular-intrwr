@@ -1,4 +1,4 @@
-function LayoutHeaderController($state, $scope, store, imageService, authService, $rootScope, interviewResource, Vendor, openRequestedPopupService, uiState) {
+function LayoutHeaderController($state, $scope, store, imageService, authService, $rootScope, interviewResource, Vendor, openRequestedPopupService, uiState, notificationService) {
   const vm = this;
   const {moment} = Vendor;
 
@@ -38,7 +38,7 @@ function LayoutHeaderController($state, $scope, store, imageService, authService
   vm.logout = function() {
     authService.logout();
     $state.go('intro.login');
-    /*toastr.info('You have been logged out.', 'Info!');*/
+    notificationService.showNotification('You successfully logged out!');
   };
 
   vm.toggleActivity = function() {

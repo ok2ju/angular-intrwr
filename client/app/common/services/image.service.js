@@ -2,8 +2,8 @@ export function ImageService(config, Vendor) {
   const {_} = Vendor;
 
   const CONSTANTS = {
-    USER_DEFAULT_IMAGE: 'assets/images/user-default.png',
-    COMPANY_DEFAULT_IMAGE: 'assets/images/companies/default.png'
+    USER_DEFAULT_IMAGE: 'images/user-default.png',
+    COMPANY_DEFAULT_IMAGE: 'images/companies/default.png'
   };
 
   function getImageUrl(entry, defaultUrl) {
@@ -11,7 +11,7 @@ export function ImageService(config, Vendor) {
     if(entry && entry.imageId) {
       res = `${config.API_URL}/api/v1/images/${entry.imageId}`;
     } else if(defaultUrl) {
-      res = `${config.ROOT_DIR}/${defaultUrl}`;
+      res = `${defaultUrl}`;
     }
     return res;
   }

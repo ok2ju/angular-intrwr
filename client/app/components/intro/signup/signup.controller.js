@@ -1,4 +1,4 @@
-function SignupController (userResource, store, $state) {
+function SignupController (userResource, store, $state, notificationService) {
   "ngInject";
 
   const vm = this;
@@ -10,9 +10,9 @@ function SignupController (userResource, store, $state) {
     userResource.create(vm.user).then(function(user) {
       store.set('jwt', user.id_token);
       $state.go('app.userSettings.general');
-      /*toastr.success('Your account has been created.', 'Congratulations!');*/
+      notificationService.showNotification('Your account has been created!');
     }, function(err) {
-        /*toastr.error('Something goes wrong.', 'Error!');*/
+      notificationService.showNotification('Something goes wrong!');
     });
   }
 }

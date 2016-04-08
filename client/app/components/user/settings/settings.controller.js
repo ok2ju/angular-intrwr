@@ -8,6 +8,7 @@ function SettingsController($state, config, countries, authService, imageService
   const vm = this;
   vm.user = {};
 
+  vm.getImageUrl = getImageUrl;
   vm.updateProfile = updateProfile;
   vm.addNewExperience = addNewExperience;
   vm.deleteExperience = deleteExperience;
@@ -27,9 +28,9 @@ function SettingsController($state, config, countries, authService, imageService
     }
   });
 
-  vm.getImageUrl = function() {
+  function getImageUrl() {
     return imageService.getUserImageUrl(vm.user);
-  };
+  }
 
   function addNewExperience() {
     const newItemId = vm.user.experiences.length + 1;

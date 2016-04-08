@@ -25,9 +25,7 @@ function UIState($rootScope, Vendor, $q) {
 
   function checkScreenWidth() {
     if($win.width() >= 992) {
-      $rootScope.$apply(function() {
-        self.setState(false);
-      });
+      self.setState(false);
     }
   }
 

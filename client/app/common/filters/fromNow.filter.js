@@ -1,6 +1,6 @@
-import moment from 'moment';
-
-function FromNowFilter() {
+function FromNowFilter(Vendor) {
+  const {moment} = Vendor;
+  
   return function(date) {
     return moment(date).fromNow();
   };

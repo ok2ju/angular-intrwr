@@ -1,9 +1,14 @@
-function LayoutHeaderController($state, $scope, store, imageService, authService, $rootScope, interviewResource, Vendor, openRequestedPopupService, uiState, notificationService) {
+function LayoutHeaderController($state, imageService, authService, $rootScope, interviewResource, Vendor, openRequestedPopupService, uiState, notificationService) {
   const vm = this;
   const {moment} = Vendor;
 
+  vm.isActivity = false;
   vm.openConferenceRoom = openRequestedPopupService.openRequestedPopup;
   vm.toggleSidebar = toggleSidebar;
+  vm.logout = logout;
+  vm.toggleActivity = toggleActivity;
+  vm.clickedSomewhereElse = clickedSomewhereElse;
+  vm.getImageUrl = getImageUrl;
 
   authService.me().then((myself) => {
     vm.user = myself;
@@ -30,24 +35,23 @@ function LayoutHeaderController($state, $scope, store, imageService, authService
     vm.pageName = v;
   });
 
-  vm.getImageUrl = function() {
+  function getImageUrl() {
     return imageService.getUserImageUrl(vm.user);
-  };
-  vm.isActivity = false;
+  }
 
-  vm.logout = function() {
+  function logout() {
     authService.logout();
     $state.go('intro.login');
     notificationService.showNotification('You successfully logged out!');
-  };
+  }
 
-  vm.toggleActivity = function() {
+  function toggleActivity() {
     vm.isActivity = !vm.isActivity;
-  };
+  }
 
-  vm.clickedSomewhereElse = function() {
+  function clickedSomewhereElse() {
     vm.isActivity = false;
-  };
+  }
 
   function toggleSidebar() {
     uiState.setState(!uiState.getState());

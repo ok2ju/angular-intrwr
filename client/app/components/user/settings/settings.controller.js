@@ -1,4 +1,6 @@
-function SettingsController($state, config, countries, authService, imageService, Vendor, $mdToast, notificationService) {
+import modalTemplate from './modal.tpl.html';
+
+function SettingsController($state, config, countries, Upload, authService, imageService, Vendor, $mdToast, $mdDialog, notificationService) {
   "ngInject";
 
   const {$} = Vendor;
@@ -76,6 +78,35 @@ function SettingsController($state, config, countries, authService, imageService
       return country;
     });
   }
+
+  // Open Modal dialog
+  vm.openModal = openModal;
+  vm.onFileSelected =  onFileSelected;
+  vm.openFileDialog = openFileDialog;
+
+  function onFileSelected() {
+    if(vm.file) {
+      vm.openModal();
+    }
+  }
+
+  function openFileDialog() {
+    $('#up-photo').click();
+  }
+
+  function openModal() {
+    $mdDialog.show({
+      clickOutsideToClose: true,
+      locals: { 
+        user: vm.user,
+        file: vm.file
+      },
+      template: modalTemplate,
+      controller: 'ModalInstanceController',
+      controllerAs: 'vm'
+   });
+  }
+
 }
 
 export default SettingsController;

@@ -1,10 +1,16 @@
-<div class="modal-header">
-    <h3 class="modal-title">Crop photo</h3>
-</div>
-<div class="modal-body">
-  <img ng-src="{{vm.dataUrl}}">
-</div>
-<div class="modal-footer">
-    <a href="#" class="btn btn-primary" type="button" ng-click="vm.ok()">Crop</a>
-    <a href="#" class="btn btn-danger" type="button" ng-click="vm.cancel()">Cancel</a>
-</div>
+<md-dialog>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2 class="md-title ng-binding">Crop your avatar here</h2>
+    </div>
+  </md-toolbar>
+  <md-dialog-content>
+    <div class="modal-body">
+      <img ng-src="{{vm.dataUrl}}">
+    </div>
+  </md-dialog-content>
+  <md-dialog-actions>
+    <md-button ng-click="vm.cancel()" class="md-primary">Cancel</md-button>
+    <md-button ng-click="vm.ok()" class="md-primary">OK</md-button>
+  </md-dialog-actions>
+</md-dialog>

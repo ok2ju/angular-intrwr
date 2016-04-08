@@ -1,11 +1,12 @@
 import angular from 'angular';
+import 'ng-file-upload';
 import settingsController from './settings.controller';
 import modalController from './modal.controller';
 import settingsTemplate from './settings.tpl.html';
 import generalSettingsTemplate from './tabs/general.tpl.html';
 import experienceSettingsTemplate from './tabs/experience.tpl.html';
 
-let settingsModule = angular.module('settings', [])
+let settingsModule = angular.module('settings', ['ngFileUpload'])
 .config(($stateProvider) => {
   "ngInject";
 

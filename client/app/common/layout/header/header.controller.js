@@ -50,7 +50,7 @@ function LayoutHeaderController($state, $scope, store, imageService, authService
   };
 
   function toggleSidebar() {
-    uiState.update(!uiState.getState());
+    uiState.setState(!uiState.getState());
   }
 }
 

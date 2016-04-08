@@ -14,7 +14,7 @@ let servicesModule = angular.module('services', ['restangular'])
 .factory('authService', AuthService)
 .factory('clickAnywhereService', ClickanywhereService)
 .factory('openRequestedPopupService', OpenRequestedPopupService)
-.factory('uiState', UIState)
+.service('uiState', UIState)
 .factory('notificationService', NotificationService);
 
 export default servicesModule;

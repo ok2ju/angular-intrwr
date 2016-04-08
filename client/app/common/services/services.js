@@ -5,12 +5,14 @@ import {ImageService} from './image.service';
 import {AuthService} from './auth.service';
 import {ClickanywhereService} from './clickanywhere.service';
 import {OpenRequestedPopupService} from './openconfpopup.service';
+import UIState from './uiState.service';
 
 let servicesModule = angular.module('services', ['restangular'])
 .factory('imageService', ImageService)
 .factory('Vendor', Vendor)
 .factory('authService', AuthService)
 .factory('clickAnywhereService', ClickanywhereService)
-.factory('openRequestedPopupService', OpenRequestedPopupService);
+.factory('openRequestedPopupService', OpenRequestedPopupService)
+.factory('uiState', UIState);
 
 export default servicesModule;

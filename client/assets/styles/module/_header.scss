@@ -65,20 +65,20 @@ $header-border-bottom-color: rgba(137,137,137,0.3);
   }
 }
 
-.aside-toggle-wrapper.active .btn-aside-toggle {
+.content.active .aside-toggle-wrapper .btn-aside-toggle {
   background-color: transparent;
 }
 
-.aside-toggle-wrapper.active .btn-aside-toggle:before,
-.aside-toggle-wrapper.active .btn-aside-toggle:after {
+.content.active .aside-toggle-wrapper .btn-aside-toggle:before,
+.content.active .aside-toggle-wrapper .btn-aside-toggle:after {
   top: 0;
 }
 
-.aside-toggle-wrapper.active .btn-aside-toggle:before {
+.content.active .aside-toggle-wrapper .btn-aside-toggle:before {
   transform: rotate(45deg);
 }
 
-.aside-toggle-wrapper.active .btn-aside-toggle:after {
+.content.active .aside-toggle-wrapper .btn-aside-toggle:after {
   transform: rotate(-45deg);
 }
 

@@ -1,9 +1,13 @@
-function AppController($rootScope) {
+function AppController($rootScope, $scope, uiState) {
   const vm = this;
 
-  $rootScope.$watch('isToggled', (v) => {
-    vm.isToggled = v;
-  });
+  vm.isToggled = uiState.getState();
+
+  $scope.$watch(function() {
+    return uiState.getState();
+  }, function(newVal, oldVal) {
+    vm.isToggled = newVal;
+  }, true);
 }
 
 export default AppController;

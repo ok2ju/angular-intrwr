@@ -1,10 +1,9 @@
-function LayoutHeaderController($state, $scope, store, imageService, authService, $rootScope, interviewResource, Vendor, openRequestedPopupService) {
+function LayoutHeaderController($state, $scope, store, imageService, authService, $rootScope, interviewResource, Vendor, openRequestedPopupService, uiState) {
   const vm = this;
   const {moment} = Vendor;
 
   vm.openConferenceRoom = openRequestedPopupService.openRequestedPopup;
   vm.toggleSidebar = toggleSidebar;
-  vm.isToggled = false;
 
   authService.me().then((myself) => {
     vm.user = myself;
@@ -51,8 +50,7 @@ function LayoutHeaderController($state, $scope, store, imageService, authService
   };
 
   function toggleSidebar() {
-    vm.isToggled = !vm.isToggled;
-    $rootScope.isToggled = vm.isToggled;
+    uiState.update(!uiState.getState());
   }
 }
 

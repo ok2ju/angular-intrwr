@@ -9,14 +9,20 @@ $info-btn-color: #3498db;
 $btn-font-color: #fff;
 
 .btn {
-  font-size: rem(1.4);
+  font-size: 1.4rem;
   border-radius: 2px;
   cursor: pointer;
   display: inline-block;
   margin: 0 .29em;
-  min-width: 5.14em;
-  padding: .7em .57em;
+  min-width: 88px;
   text-align: center;
+  white-space: nowrap;
+  text-transform: uppercase;
+  line-height: 36px;
+  min-height: 36px;
+  padding: 0 6px;
+  border: 0;
+  outline: 0;
   transition: border .25s linear,color .25s linear,background-color .25s linear;
 
   &.btn--left {

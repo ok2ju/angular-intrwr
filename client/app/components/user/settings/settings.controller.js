@@ -1,34 +1,32 @@
 import modalTemplate from './modal.tpl.html';
 
-function SettingsController($state, config, countries, Upload, authService, imageService, Vendor, $mdToast, $mdDialog, notificationService) {
+function SettingsController($state, config, countries, Upload, authService, imageService, Vendor, $mdToast, $mdDialog, notificationService, myself) {
   "ngInject";
 
   const {$} = Vendor;
   const {moment} = Vendor;
   const logger = Vendor.logger.get('SettingsController');
-
   const vm = this;
-  vm.user = {};
+  
+  vm.user = myself;
 
   vm.getImageUrl = getImageUrl;
   vm.updateProfile = updateProfile;
   vm.addNewExperience = addNewExperience;
   vm.deleteExperience = deleteExperience;
 
-  authService.me().then((myself) => {
-    vm.user = myself;
-    vm.user.social = vm.user.social || {};
+  
+  vm.user.social = vm.user.social || {};
 
-    if(myself.dob) {
-      vm.user.dob = moment(myself.dob).toDate();
-    }
+  if(myself.dob) {
+    vm.user.dob = moment(myself.dob).toDate();
+  }
 
-    vm.user.dob = moment().toDate();
+  vm.user.dob = moment().toDate();
 
-    if(!vm.user.experiences) {
-      vm.user.experiences = [{}];
-    }
-  });
+  if(!vm.user.experiences) {
+    vm.user.experiences = [{}];
+  }
 
   function getImageUrl() {
     return imageService.getUserImageUrl(vm.user);

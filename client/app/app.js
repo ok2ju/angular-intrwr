@@ -56,6 +56,11 @@ angular.module('app', [
         resolve: {
           metaResource: 'metaResource',
           userResource: 'userResource',
+          authService: 'authService',
+
+          myself(authService) {
+            return authService.me();
+          },
 
           countries(metaResource) {
             return metaResource.getCountries();

@@ -2,12 +2,12 @@
   font-size: 1em;
   background: #fff;
   border-radius: 3px;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .22);
   padding: 15px;
 }
 
 .comments__header {
-  @include font-size(18px);
+  font-size: 1.8rem;
   font-weight: 500;
 }
 
@@ -72,12 +72,12 @@
   margin-left: 3.5em;
 
   .metadata {
-    @include font-size(13px);
+    font-size: 1.3rem;
     font-weight: 700;
   }
 
   .text {
-    @include font-size(14px);
+    font-size: 1.4rem;
   }
 }
 
@@ -91,7 +91,7 @@
   margin: 0 0 1em;
 
   textarea {
-    @include font-size(13px);
+    font-size: 1.3rem;
     height: 12em;
     min-height: 8em;
     max-height: 24em;

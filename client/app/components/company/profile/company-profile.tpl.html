@@ -1,0 +1,51 @@
+<div class="c-profile-header">
+  <div class="u-p-bg__overlay"></div>
+  <div class="c-profile-header__inner">
+
+    <div class="c-profile-photo">
+      <img ng-src="{{vm.getImageUrl()}}" alt="company photo">
+    </div>
+
+    <div class="c-profile-main-info">
+      <h2 class="c-profile-main-info__header">{{vm.company.name}}</h2>
+      <p class="c-profile-info__sm">
+        <span>{{vm.company.category}}</span> |
+        <span><strong>Since</strong> {{vm.company.creation_date | moment: 'DD.MM.YYYY'}} {{vm.company.location}}</span>
+      </p>
+      <ul class="vacancies">
+        <li class="c-profile-info__spec"><strong>Specialization:</strong></li>
+        <li ng-repeat="spec in vm.company.specializations" class="vacancies__item">
+          <span class="vacancies-label label-success">{{spec.text}}</span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<div class="c-profile-add-info">
+  <div class="c-profile-add-info__inner">
+
+    <div class="c-profile-addition">
+      <ul class="c-profile-addition__list">
+        <li><strong>Email:</strong> {{vm.company.email}}</li>
+        <li><strong>Phone:</strong> {{vm.company.phone}}</li>
+        <li><strong>Site:</strong> {{vm.company.site}}</li>
+      </ul>
+    </div>
+
+    <div class="c-profile-about">
+      <p>{{vm.company.description}}</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="switcher-panel">
+  <div class="switcher-panel-inner">
+    <a ui-sref="app.companyProfile.vacancies" class="switcher-panel__control" ui-sref-active="active">Vacancies</a>
+    <a ui-sref="app.companyProfile.comments" class="switcher-panel__control" ui-sref-active="active">Feedback</a>
+  </div>
+</div>
+
+<div ui-view></div>

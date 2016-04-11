@@ -1,0 +1,14 @@
+<div class="full-col">
+  <header class="content-header">
+    <h1 class="content-header__name c-header">Welcome to company cabinet</h1>
+  </header>
+
+  <div class="c-manage-menu">
+    <a class="c-manage-menu__btn btn-default" ui-sref="app.createCompany">Create Company</a>
+  </div>
+
+  <company-card
+      ng-repeat="company in vm.companies"
+      company="company" editable="true">
+  </company-card>
+</div>

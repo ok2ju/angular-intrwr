@@ -17,20 +17,34 @@
                   <div ng-message="minlength">Your company name is too short</div>
                   <div ng-message="maxlength">Your company name is too long</div>
                 </div>
-                <span class="inputAdd-item"><i class="sidebar-ico icon-user"></i></span>
+                <span class="inputAdd-item"><i class="sidebar-ico fa fa-building-o"></i></span>
                 <input ng-model="vm.company.name" name="companyName" type="text" id="up-name" class="inputAdd-field" placeholder="Name" ng-minlength="5" ng-maxlength="20" required>
               </div>
               <div class="inputAdd">
                 <div ng-show="createCompany.$submitted || createCompany.location.$touched" class="v-form-error">
                   <div ng-show="createCompany.location.$error.required">You did not enter a location</div>
                 </div>
-                <span class="inputAdd-item"><i class="sidebar-ico icon-globe"></i></span>
-                <ui-select ng-model="vm.company.location" theme="selectize" ng-disabled="disabled" name="location" required>
-                  <ui-select-match placeholder="Country">{{$select.selected.name}}</ui-select-match>
-                  <ui-select-choices repeat="country.name as country in vm.countries | filter: $select.search">
-                    <span ng-bind-html="country.name | highlight: $select.search"></span>
-                  </ui-select-choices>
-                </ui-select>
+                <span class="inputAdd-item"><i class="sidebar-ico fa fa-globe"></i></span>
+                <md-autocomplete
+                    ng-disabled="vm.isDisabled"
+                    md-no-cache="vm.noCache"
+                    md-selected-item="vm.company.location"
+                    md-search-text="vm.searchCountryText"
+                    md-items="item in vm.querySearchCountries(vm.searchText)"
+                    md-item-text="item.name"
+                    md-min-length="0"
+                    placeholder="Country"
+                    required>
+                  <md-item-template>
+                    <span md-highlight-text="vm.searchCountryText" md-highlight-flags="^i">{{item.name}}</span>
+                  </md-item-template>
+                  <md-not-found>
+                    No states matching "{{vm.searchCountryText}}" were found.
+                  </md-not-found>
+                  <div ng-messages="fillForm.autocomplete.$error">
+                    <div ng-message="required">This field is required</div>
+                  </div>
+                </md-autocomplete>
               </div>
             </div>
             <div class="grid-cell">
@@ -38,18 +52,32 @@
                 <div ng-show="createCompany.$submitted || createCompany.category.$touched" class="v-form-error">
                   <div ng-show="createCompany.category.$error.required">You did not enter a category</div>
                 </div>
-                <span class="inputAdd-item"><i class="sidebar-ico icon-qrcode"></i></span>
-                <ui-select ng-model="vm.company.category" theme="selectize" ng-disabled="disabled" name="category" required>
-                  <ui-select-match placeholder="Category">{{$select.selected.name}}</ui-select-match>
-                  <ui-select-choices repeat="category.name as category in vm.categories | filter: $select.search">
-                    <span ng-bind-html="category.name | highlight: $select.search"></span>
-                  </ui-select-choices>
-                </ui-select>
+                <span class="inputAdd-item"><i class="sidebar-ico fa fa-qrcode"></i></span>
+                <md-autocomplete
+                    ng-disabled="vm.isDisabled"
+                    md-no-cache="vm.noCache"
+                    md-selected-item="vm.company.category"
+                    md-search-text="vm.searchCategoryText"
+                    md-items="item in vm.querySearchCategories(vm.searchText)"
+                    md-item-text="item.name"
+                    md-min-length="0"
+                    placeholder="Category"
+                    required>
+                  <md-item-template>
+                    <span md-highlight-text="vm.searchCategoryText" md-highlight-flags="^i">{{item.name}}</span>
+                  </md-item-template>
+                  <md-not-found>
+                    No states matching "{{vm.searchCategoryText}}" were found.
+                  </md-not-found>
+                  <div ng-messages="fillForm.autocomplete.$error">
+                    <div ng-message="required">This field is required</div>
+                  </div>
+                </md-autocomplete>
               </div>
               <div class="inputAdd">
-                <span class="inputAdd-item"><i class="sidebar-ico icon-calendar-empty"></i></span>
-                <input id="cp-yof" type="text" class="inputAdd-field datepicker-input" uib-datepicker-popup="{{vm.format}}" ng-model="vm.company.creation_date" is-open="vm.status.opened" max-date="vm.maxDate" datepicker-options="vm.dateOptions" ng-required="true" show-button-bar="false" show-weeks="false" />
-                <button type="button" class="inputAdd-item inputAdd-append-item" ng-click="vm.openDatepicker($event)"><i class="icon-calendar"></i></button>
+                <span class="inputAdd-item"><i class="sidebar-ico fa fa-calendar"></i></span>
+                <!-- <input id="cp-yof" type="text" class="inputAdd-field datepicker-input" uib-datepicker-popup="{{vm.format}}" ng-model="vm.company.creation_date" is-open="vm.status.opened" max-date="vm.maxDate" datepicker-options="vm.dateOptions" ng-required="true" show-button-bar="false" show-weeks="false" /> -->
+                <button type="button" class="inputAdd-item inputAdd-append-item" ng-click="vm.openDatepicker($event)"><i class="fa fa-angle-double-down"></i></button>
               </div>
             </div>
           </div>
@@ -61,7 +89,7 @@
                   <div ng-message="required">You did not enter a email field</div>
                   <div ng-message="email">Your email address is invalid</div>
                 </div>
-                <span class="inputAdd-item"><i class="sidebar-ico icon-mail"></i></span>
+                <span class="inputAdd-item"><i class="sidebar-ico fa fa-envelope-o"></i></span>
                 <input name="companyEmail" ng-model="vm.company.email" type="email" placeholder="Email" class="inputAdd-field" id="cp-email" required>
               </div>
               <div class="inputAdd">
@@ -69,7 +97,7 @@
                   <div ng-message="required">You did not enter a phone</div>
                   <div ng-message="pattern">Must be a valid 10 digit phone number</div>
                 </div>
-                <span class="inputAdd-item"><i class="sidebar-ico icon-mobile"></i></span>
+                <span class="inputAdd-item"><i class="sidebar-ico fa fa-phone"></i></span>
                 <input name="companyPhone" ng-model="vm.company.phone" type="text" placeholder="Phone" class="inputAdd-field" id="cp-phone" ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/" required>
               </div>
             </div>
@@ -79,7 +107,7 @@
                   <div ng-message="required">You did not enter a site url</div>
                   <div ng-message="pattern">Must be a valid url</div>
                 </div>
-                <span class="inputAdd-item"><i class="sidebar-ico icon-link"></i></span>
+                <span class="inputAdd-item"><i class="sidebar-ico fa fa-location-arrow"></i></span>
                 <input name="companySite" ng-model="vm.company.site" type="text" placeholder="Company site" class="inputAdd-field" id="cp-site" ng-pattern="/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/" required>
               </div>
             </div>
@@ -130,7 +158,7 @@
       </div>
 
       <div class="btn-col">
-        <button type="submit" class="form-row-group__submit-btn btn-info">Create</button>
+        <button type="submit" class="btn btn-info">Create</button>
       </div>
 
     </form>

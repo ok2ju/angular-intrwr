@@ -9,18 +9,20 @@ var cropKeys = [
   'scaleY'
 ];
 
-module.exports = function ModalController($uibModalInstance, $timeout, Upload, config, companyResource, file, company) {
-  var vm = this;
+module.exports = function ModalController($mdDialog, $timeout, Upload, config, companyResource, file, company) {
+  const vm = this;
 
   vm.file = file;
+  vm.cropData = {};
+  vm.ok = ok;
+  vm.cancel = cancel;
+
   Upload.dataUrl(file).then(function(url) {
     vm.dataUrl = url;
     $timeout(init.bind(this));
   });
 
-  vm.cropData = {};
-
-  vm.ok = function () {
+  function ok() {
     var data = {
       file: vm.file,
       x: vm.cropData.x,
@@ -40,11 +42,11 @@ module.exports = function ModalController($uibModalInstance, $timeout, Upload, c
         vm.cancel();
       }
     });
-  };
+  }
 
-  vm.cancel = function () {
-    $uibModalInstance.dismiss('cancel');
-  };
+  function cancel() {
+    $mdDialog.hide();
+  }
 
   function init() {
     vm.cropper = $('.modal-body > img').cropper({
@@ -60,4 +62,5 @@ module.exports = function ModalController($uibModalInstance, $timeout, Upload, c
       scalable: false
     });
   }
+  
 };

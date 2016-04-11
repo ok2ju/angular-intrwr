@@ -1,0 +1,30 @@
+<div class="c-vacancies">
+  <div class="c-vacancies__inner">
+
+    <div class="comments">
+      <h3 class="comments__header">Comments</h3>
+      <div ng-repeat="comment in vm.comments" class="comment">
+        <a ui-sref="app.userProfile({id: comment.author.id})" href="#" class="comment__avatar">
+          <img ng-src="{{vm.getUserImageUrl(comment.author)}}" src="http://semantic-ui.com/images/avatar/small/jenny.jpg">
+        </a>
+        <div class="comment__content">
+          <a ui-sref="app.userProfile({id: comment.author.id})" href="#" class="author">{{comment.author.name}} {{comment.author.surname}}</a>
+          <div class="metadata">
+            <span>{{comment.createdAt | fromNow}}</span>
+            <a class="remove-comment-btn" ng-click="vm.removeComment(comment._id)"><i class="i-card icon-cancel"></i></a>
+          </div>
+          <div class="text">{{comment.text}}</div>
+        </div>
+      </div>
+      <form class="comment-reply">
+        <div class="comment-reply__field">
+          <textarea ng-model="vm.comment.text" placeholder="Comment text..."></textarea>
+        </div>
+        <div class="comment-reply__submit-btn">
+          <a ng-click="vm.leaveComment()" class="btn btn-info">Leave a comment</a>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>

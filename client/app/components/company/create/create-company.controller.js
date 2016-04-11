@@ -1,11 +1,11 @@
+import modalTemplate from './modal.tpl.html';
+
 function CompanyCreateController(companyResource, $scope,
-                            toastr, $state, $uibModal, config, countries, categories, imageService, Vendor) {
+                                $state, countries, categories, imageService, Vendor, notificationService, $mdDialog) {
   const vm = this;
   const {$} = Vendor;
 
   vm.company = {};
-  vm.countries = countries.data;
-  vm.categories = categories.data;
   vm.registerCompany = registerCompany;
   vm.getImageUrl = getImageUrl;
 
@@ -16,11 +16,11 @@ function CompanyCreateController(companyResource, $scope,
   function registerCompany(isValid) {
     if(isValid) {
       companyResource.create(vm.company).then(function() {
-        toastr.success('Company created.', 'Yay!');
+        notificationService.showNotification('Company created!');
         $state.go('app.companies');
         console.log('Company Saved');
       }, function(err) {
-          toastr.error('Error while creating company.', 'Error!');
+        notificationService.showNotification('Error while creating company!');
       });
     }
   }
@@ -29,59 +29,80 @@ function CompanyCreateController(companyResource, $scope,
     return imageService.getCompanyImageUrl(vm.company);
   }
 
-  //file upload
-  vm.onFileSelected = function() {
-    if(vm.file) {
-      vm.open();
-    }
+  // Select component
+  vm.countries = loadCountries();
+  vm.categories = loadCategories();
+  vm.isDisabled = false;
+  vm.noCache = true;
+
+  vm.querySearchCountries = function(query) {
+    let results = query ? vm.countries.filter( vm.createFilterForCountries(query) ) : vm.countries;
+    return results;
   };
 
-  vm.openFileDialog = function() {
-    $('#up-photo').click();
+  vm.createFilterForCountries = function(query) {
+    let lowercaseQuery = angular.lowercase(query);
+    return function filterFn(state) {
+      return (state.value.indexOf(lowercaseQuery) === 0);
+    };
   };
 
-  vm.open = function(size) {
-    $uibModal.open({
-      animation: true,
-      templateUrl: `${ROOT_DIR}/src/components/company/create/modal.tpl.html`,
-      controller: 'CompanyModalController',
-      controllerAs: 'vm',
-      size: size,
-      resolve: {
-        file() {
-          return vm.file;
-        },
-        company() {
-          return vm.company;
-        }
-      }
+  vm.querySearchCategories = function(query) {
+    let results = query ? vm.categories.filter( vm.createFilterForCategories(query) ) : vm.categories;
+    return results;
+  };
+
+  vm.createFilterForCategories = function(query) {
+    let lowercaseQuery = angular.lowercase(query);
+    return function filterFn(state) {
+      return (state.value.indexOf(lowercaseQuery) === 0);
+    };
+  };
+
+  function loadCountries() {
+    let countriesArray = countries.data;
+    return countriesArray.map((country) => {
+      country.value = country.name.toLowerCase();
+      return country;
     });
-  };
+  }
 
-  // Datepicker options
-  vm.today = function() {
-    vm.company.creation_date = new Date();
-  };
+  function loadCategories() {
+    let categoriesArray = categories.data;
+    return categoriesArray.map((category) => {
+      category.value = category.name.toLowerCase();
+      return category;
+    });
+  }
 
-  vm.today();
+  // Open Modal dialog
+  vm.openModal = openModal;
+  vm.onFileSelected =  onFileSelected;
+  vm.openFileDialog = openFileDialog;
 
-  vm.maxDate = new Date(2020, 5, 22);
+  function onFileSelected() {
+    if(vm.file) {
+      vm.openModal();
+    }
+  }
 
-  vm.openDatepicker = function($event) {
-    vm.status.opened = true;
-  };
+  function openFileDialog() {
+    $('#up-photo').click();
+  }
 
-  vm.dateOptions = {
-    formatYear: 'yy',
-    startingDay: 1
-  };
+  function openModal() {
+    $mdDialog.show({
+      clickOutsideToClose: true,
+      locals: { 
+        company: vm.company,
+        file: vm.file
+      },
+      template: modalTemplate,
+      controller: 'CompanyModalController',
+      controllerAs: 'vm'
+   });
+  }
 
-  vm.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-  vm.format = vm.formats[0];
-
-  vm.status = {
-    opened: false
-  };
 }
 
 export default CompanyCreateController;

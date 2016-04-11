@@ -3,8 +3,8 @@
     <img ng-src="{{vm.getImageUrl(vm.company)}}" alt="company photo">
   </div>
   <div class="company-card__body">
-    <div ng-if="settings.withEditButton" class="v-edit">
-      <i class="sidebar-ico icon-pencil" ui-sref="app.editCompany({id: vm.company._id})"></i>
+    <div ng-if="vm.settings.withEditButton" class="v-edit">
+      <i class="sidebar-ico fa fa-pencil" ui-sref="app.editCompany({id: vm.company._id})"></i>
     </div>
     <a ui-sref="app.companyProfile({ id: vm.company._id })" class="company-card__header">{{vm.company.name}}</a>
     <div class="company-card__meta">

@@ -17,13 +17,13 @@ $grid-controls-hover-color: #59728e;
   margin-top: 5px;
 
   .grid-controls__label {
-    @include font-size(11px);
+    font-size: 1.1rem;
     vertical-align: middle;
     text-transform: uppercase;
   }
 
   i {
-    @include font-size(18px);
+    font-size: 1.8rem;
     cursor: pointer;
     color: #999;
     vertical-align: middle;
@@ -57,7 +57,7 @@ $grid-controls-hover-color: #59728e;
 }
 
 .switcher-panel__control {
-  @include font-size(14px);
+  font-size: 1.4rem;
   color: $secondary-font-color;
   padding: 0 15px;
   display: inline-block;
@@ -86,7 +86,7 @@ $grid-controls-hover-color: #59728e;
 // Validation fields errors!
 
 .v-form-error {
-  @include font-size(11px);
+  font-size: 1.1rem;
   position: absolute;
   top: -16px;
   color: #d9534f;
@@ -126,13 +126,13 @@ $grid-controls-hover-color: #59728e;
 }
 
 .c-profile-main-info__header {
-  @include font-size(26px);
+  font-size: 2.6rem;
   color: #fff;
   margin-bottom: 5px;
 }
 
 .c-profile-info__sm {
-  @include font-size(14px);
+  font-size: 1.4rem;
   color: $secondary-font-color;
   font-weight: 600;
 }
@@ -152,7 +152,7 @@ $grid-controls-hover-color: #59728e;
 
 .c-profile-about {
   p {
-    @include font-size(14px);
+    font-size: 1.4rem;
     color: #999;
   }
 }
@@ -165,7 +165,7 @@ $grid-controls-hover-color: #59728e;
 
 .c-profile-addition__list {
   li {
-    @include font-size(14px);
+    font-size: 1.4rem;
     color: #999;
     display: inline-block;
     padding: 0 15px;
@@ -178,7 +178,7 @@ $grid-controls-hover-color: #59728e;
 }
 
 .c-profile-info__spec {
-  @include font-size(14px);
+  font-size: 1.4rem;
   display: inline-block;
   color: #fff;
   margin-top: 15px;

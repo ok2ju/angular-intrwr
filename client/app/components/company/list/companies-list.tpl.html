@@ -1,0 +1,31 @@
+<div class="filter">
+  <div class="filter-group filter-group--left">
+    <!-- <ui-select ng-model="vm.category.name" theme="selectize" ng-disabled="disabled">
+      <ui-select-match placeholder="Category">{{$select.selected.name}}</ui-select-match>
+      <ui-select-choices repeat="category.name as category in vm.categories | filter: $select.search">
+        <span ng-bind-html="category.name | highlight: $select.search"></span>
+      </ui-select-choices>
+    </ui-select> -->
+  </div>
+  <div class="filter-group">
+    <div class="filter-group-input">
+      <input ng-model="vm.company.name" type="text" class="input" placeholder="all">
+    </div>
+  </div>
+  <div class="filter-group">
+    <!-- <ui-select ng-model="vm.country.name" theme="selectize" ng-disabled="disabled">
+      <ui-select-match placeholder="Country">{{$select.selected.name}}</ui-select-match>
+      <ui-select-choices repeat="country.name as country in vm.countries | filter: $select.search">
+        <span ng-bind-html="country.name | highlight: $select.search"></span>
+      </ui-select-choices>
+    </ui-select> -->
+  </div>
+  <a ng-click="vm.resetFilter()" class="btn btn-sm btn-default">Reset</a>
+</div>
+
+<div class="full-col">
+  <company-card
+      ng-repeat="company in vm.companies | filter:{category: vm.category.name, location: vm.country.name, name: vm.company.name}"
+      company="company" editable="false">
+  </company-card>
+</div>

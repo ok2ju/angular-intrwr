@@ -1,0 +1,138 @@
+<div class="full-col">
+  <div class="form-content">
+    <div class="s-content-head">
+      <h2 class="s-content-head__header">Fill company profile fields</h2>
+    </div>
+    <form class="settings-form" name="createCompany" ng-submit="vm.registerCompany(createCompany.$valid)" novalidate>
+
+      <div class="settings-form__row">
+
+        <div class="form-fields">
+
+          <div class="grid">
+            <div class="grid-cell">
+              <div class="inputAdd">
+                <div class="v-form-error" ng-messages="createCompany.companyName.$error" ng-if="createCompany.companyName.$dirty || createCompany.$submitted">
+                  <div ng-message="required">You did not enter a company name</div>
+                  <div ng-message="minlength">Your company name is too short</div>
+                  <div ng-message="maxlength">Your company name is too long</div>
+                </div>
+                <span class="inputAdd-item"><i class="sidebar-ico icon-user"></i></span>
+                <input ng-model="vm.company.name" name="companyName" type="text" id="up-name" class="inputAdd-field" placeholder="Name" ng-minlength="5" ng-maxlength="20" required>
+              </div>
+              <div class="inputAdd">
+                <div ng-show="createCompany.$submitted || createCompany.location.$touched" class="v-form-error">
+                  <div ng-show="createCompany.location.$error.required">You did not enter a location</div>
+                </div>
+                <span class="inputAdd-item"><i class="sidebar-ico icon-globe"></i></span>
+                <ui-select ng-model="vm.company.location" theme="selectize" ng-disabled="disabled" name="location" required>
+                  <ui-select-match placeholder="Country">{{$select.selected.name}}</ui-select-match>
+                  <ui-select-choices repeat="country.name as country in vm.countries | filter: $select.search">
+                    <span ng-bind-html="country.name | highlight: $select.search"></span>
+                  </ui-select-choices>
+                </ui-select>
+              </div>
+            </div>
+            <div class="grid-cell">
+              <div class="inputAdd">
+                <div ng-show="createCompany.$submitted || createCompany.category.$touched" class="v-form-error">
+                  <div ng-show="createCompany.category.$error.required">You did not enter a category</div>
+                </div>
+                <span class="inputAdd-item"><i class="sidebar-ico icon-qrcode"></i></span>
+                <ui-select ng-model="vm.company.category" theme="selectize" ng-disabled="disabled" name="category" required>
+                  <ui-select-match placeholder="Category">{{$select.selected.name}}</ui-select-match>
+                  <ui-select-choices repeat="category.name as category in vm.categories | filter: $select.search">
+                    <span ng-bind-html="category.name | highlight: $select.search"></span>
+                  </ui-select-choices>
+                </ui-select>
+              </div>
+              <div class="inputAdd">
+                <span class="inputAdd-item"><i class="sidebar-ico icon-calendar-empty"></i></span>
+                <input id="cp-yof" type="text" class="inputAdd-field datepicker-input" uib-datepicker-popup="{{vm.format}}" ng-model="vm.company.creation_date" is-open="vm.status.opened" max-date="vm.maxDate" datepicker-options="vm.dateOptions" ng-required="true" show-button-bar="false" show-weeks="false" />
+                <button type="button" class="inputAdd-item inputAdd-append-item" ng-click="vm.openDatepicker($event)"><i class="icon-calendar"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid">
+            <div class="grid-cell">
+              <div class="inputAdd">
+                <div class="v-form-error" ng-messages="createCompany.companyEmail.$error" ng-if="createCompany.companyEmail.$dirty || createCompany.$submitted">
+                  <div ng-message="required">You did not enter a email field</div>
+                  <div ng-message="email">Your email address is invalid</div>
+                </div>
+                <span class="inputAdd-item"><i class="sidebar-ico icon-mail"></i></span>
+                <input name="companyEmail" ng-model="vm.company.email" type="email" placeholder="Email" class="inputAdd-field" id="cp-email" required>
+              </div>
+              <div class="inputAdd">
+                <div class="v-form-error" ng-messages="createCompany.companyPhone.$error" ng-if="createCompany.companyPhone.$dirty || createCompany.$submitted">
+                  <div ng-message="required">You did not enter a phone</div>
+                  <div ng-message="pattern">Must be a valid 10 digit phone number</div>
+                </div>
+                <span class="inputAdd-item"><i class="sidebar-ico icon-mobile"></i></span>
+                <input name="companyPhone" ng-model="vm.company.phone" type="text" placeholder="Phone" class="inputAdd-field" id="cp-phone" ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/" required>
+              </div>
+            </div>
+            <div class="grid-cell">
+              <div class="inputAdd">
+                <div class="v-form-error" ng-messages="createCompany.companySite.$error" ng-if="createCompany.companySite.$dirty || createCompany.$submitted">
+                  <div ng-message="required">You did not enter a site url</div>
+                  <div ng-message="pattern">Must be a valid url</div>
+                </div>
+                <span class="inputAdd-item"><i class="sidebar-ico icon-link"></i></span>
+                <input name="companySite" ng-model="vm.company.site" type="text" placeholder="Company site" class="inputAdd-field" id="cp-site" ng-pattern="/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid">
+            <div class="grid-cell">
+              <div class="inputAdd">
+                <div class="v-form-error" ng-messages="createCompany.tags.$error" ng-if="createCompany.tags.$touched || createCompany.$submitted">
+                  <div ng-message="required">You did not enter at least one tag</div>
+                </div>
+                <tags-input name="tags" ng-model="vm.company.specializations" min-tags="1" max-tags="3" required></tags-input>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid">
+            <div class="grid-cell">
+              <div class="inputAdd">
+                <div class="v-form-error" ng-messages="createCompany.description.$error" ng-if="createCompany.description.$dirty || createCompany.$submitted">
+                  <div ng-message="required">You did not enter a description</div>
+                  <div ng-message="minlength">Description field is too short</div>
+                </div>
+                <textarea ng-model="vm.company.description" class="inputAdd-field" name="description" placeholder="About" id="cp-about" ng-minlength="50" required></textarea>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="form-photo">
+          <div class="form-photo-inner">
+            <img ng-src="{{vm.getImageUrl()}}" alt="avatar">
+            <div class="form-photo-info">
+              <p>
+                You can upload an avatar here or change it.
+              </p>
+              <hr>
+              <a href="#" class="upload-btn" ng-click="vm.openFileDialog()">
+                <i class="sidebar-ico icon-camera sidebar-ico-full"></i>
+                <span>Choose file ...</span>
+              </a>
+              <input type="file" ngf-select="vm.onFileSelected()" ng-model="vm.file" name="file" accept="image/*" ngf-max-size="1MB" name="upload" id="up-photo">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="btn-col">
+        <button type="submit" class="form-row-group__submit-btn btn-info">Create</button>
+      </div>
+
+    </form>
+  </div>
+</div>

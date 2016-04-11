@@ -9,18 +9,20 @@ var cropKeys = [
   'scaleY'
 ];
 
-function CompanyPhotoModalController($uibModalInstance, $timeout, Upload, config, file, company) {
+function CompanyPhotoModalController($mdDialog, $timeout, Upload, config, file, company) {
   const vm = this;
 
   vm.file = file;
+  vm.cropData = {};
+  vm.ok = ok;
+  vm.cancel = cancel;
+
   Upload.dataUrl(file).then(function(url) {
     vm.dataUrl = url;
     $timeout(init.bind(this));
   });
 
-  vm.cropData = {};
-
-  vm.ok = function () {
+  function ok() {
     const data = {
       file: vm.file,
       "Content-Type": vm.file.type !== '' ? vm.file.type : 'application/octet-stream',
@@ -40,11 +42,11 @@ function CompanyPhotoModalController($uibModalInstance, $timeout, Upload, config
         vm.cancel();
       }
     });
-  };
+  }
 
-  vm.cancel = function () {
-    $uibModalInstance.dismiss('cancel');
-  };
+  function cancel() {
+    $mdDialog.hide();
+  }
 
   function init() {
     vm.cropper = $('.modal-body > img').cropper({

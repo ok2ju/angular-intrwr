@@ -17,6 +17,13 @@ let editCompanyModule = angular.module('company.edit', [])
       data: {
         requiresLogin: true,
         pageTitle: 'Edit Company'
+      },
+      resolve: {
+        companyResource: 'companyResource',
+
+        company(companyResource, $stateParams) {
+          return companyResource.one($stateParams.id);
+        }
       }
     });
 })

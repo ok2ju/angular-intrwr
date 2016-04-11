@@ -3,7 +3,7 @@
     <div class="s-content-head">
       <h2 class="s-content-head__header">Fill company profile fields</h2>
     </div>
-    <form class="settings-form" method="post" ng-submit="vm.updateCompany()" name="createCompany">
+    <form class="settings-form" name="createCompany" ng-submit="vm.updateCompany()" novalidate>
 
       <div class="settings-form__row">
 
@@ -12,38 +12,72 @@
           <div class="grid">
             <div class="grid-cell">
               <div class="inputAdd">
-                <div class="v-form-error" ng-messages="createCompany.companyName.$error" ng-if="createCompany.companyName.$dirty">
+                <div class="v-form-error" ng-messages="createCompany.companyName.$error" ng-if="createCompany.companyName.$dirty || createCompany.$submitted">
                   <div ng-message="required">You did not enter a company name</div>
                   <div ng-message="minlength">Your company name is too short</div>
                   <div ng-message="maxlength">Your company name is too long</div>
                 </div>
-                <span class="inputAdd-item"><i class="sidebar-ico icon-user"></i></span>
+                <span class="inputAdd-item"><i class="sidebar-ico fa fa-building-o"></i></span>
                 <input ng-model="vm.company.name" name="companyName" type="text" id="up-name" class="inputAdd-field" placeholder="Name" ng-minlength="5" ng-maxlength="20" required>
               </div>
               <div class="inputAdd">
-                <span class="inputAdd-item"><i class="sidebar-ico icon-user"></i></span>
-                <ui-select ng-model="vm.company.location" theme="selectize" ng-disabled="disabled">
-                  <ui-select-match placeholder="Country">{{$select.selected.name}}</ui-select-match>
-                  <ui-select-choices repeat="country.name as country in vm.countries | filter: $select.search">
-                    <span ng-bind-html="country.name | highlight: $select.search"></span>
-                  </ui-select-choices>
-                </ui-select>
+                <div ng-show="createCompany.$submitted || createCompany.location.$touched" class="v-form-error">
+                  <div ng-show="createCompany.location.$error.required">You did not enter a location</div>
+                </div>
+                <span class="inputAdd-item"><i class="sidebar-ico fa fa-globe"></i></span>
+                <md-autocomplete
+                    ng-disabled="vm.isDisabled"
+                    md-no-cache="vm.noCache"
+                    md-selected-item="vm.company.location"
+                    md-search-text="vm.searchCountryText"
+                    md-items="item in vm.querySearchCountries(vm.searchText)"
+                    md-item-text="item.name"
+                    md-min-length="0"
+                    placeholder="Country"
+                    required>
+                  <md-item-template>
+                    <span md-highlight-text="vm.searchCountryText" md-highlight-flags="^i">{{item.name}}</span>
+                  </md-item-template>
+                  <md-not-found>
+                    No states matching "{{vm.searchCountryText}}" were found.
+                  </md-not-found>
+                  <div ng-messages="fillForm.autocomplete.$error">
+                    <div ng-message="required">This field is required</div>
+                  </div>
+                </md-autocomplete>
               </div>
             </div>
             <div class="grid-cell">
               <div class="inputAdd">
-                <span class="inputAdd-item"><i class="sidebar-ico icon-user"></i></span>
-                <ui-select ng-model="vm.company.category" theme="selectize" ng-disabled="disabled">
-                  <ui-select-match placeholder="Category">{{$select.selected.name}}</ui-select-match>
-                  <ui-select-choices repeat="category.name as category in vm.categories | filter: $select.search">
-                    <span ng-bind-html="category.name | highlight: $select.search"></span>
-                  </ui-select-choices>
-                </ui-select>
+                <div ng-show="createCompany.$submitted || createCompany.category.$touched" class="v-form-error">
+                  <div ng-show="createCompany.category.$error.required">You did not enter a category</div>
+                </div>
+                <span class="inputAdd-item"><i class="sidebar-ico fa fa-qrcode"></i></span>
+                <md-autocomplete
+                    ng-disabled="vm.isDisabled"
+                    md-no-cache="vm.noCache"
+                    md-selected-item="vm.company.category"
+                    md-search-text="vm.searchCategoryText"
+                    md-items="item in vm.querySearchCategories(vm.searchText)"
+                    md-item-text="item.name"
+                    md-min-length="0"
+                    placeholder="Category"
+                    required>
+                  <md-item-template>
+                    <span md-highlight-text="vm.searchCategoryText" md-highlight-flags="^i">{{item.name}}</span>
+                  </md-item-template>
+                  <md-not-found>
+                    No states matching "{{vm.searchCategoryText}}" were found.
+                  </md-not-found>
+                  <div ng-messages="fillForm.autocomplete.$error">
+                    <div ng-message="required">This field is required</div>
+                  </div>
+                </md-autocomplete>
               </div>
               <div class="inputAdd">
-                <span class="inputAdd-item"><i class="sidebar-ico icon-mail"></i></span>
-                <input id="cp-yof" type="text" class="inputAdd-field datepicker-input" uib-datepicker-popup="{{vm.format}}" ng-model="vm.company.creation_date" is-open="vm.status.opened" max-date="vm.maxDate" datepicker-options="vm.dateOptions" ng-required="true" show-button-bar="false" show-weeks="false" />
-                <button type="button" class="inputAdd-item inputAdd-append-item" ng-click="vm.openDatepicker($event)"><i class="icon-calendar"></i></button>
+                <span class="inputAdd-item"><i class="sidebar-ico fa fa-calendar"></i></span>
+                <!-- <input id="cp-yof" type="text" class="inputAdd-field datepicker-input" uib-datepicker-popup="{{vm.format}}" ng-model="vm.company.creation_date" is-open="vm.status.opened" max-date="vm.maxDate" datepicker-options="vm.dateOptions" ng-required="true" show-button-bar="false" show-weeks="false" /> -->
+                <button type="button" class="inputAdd-item inputAdd-append-item" ng-click="vm.openDatepicker($event)"><i class="fa fa-angle-double-down"></i></button>
               </div>
             </div>
           </div>
@@ -51,29 +85,29 @@
           <div class="grid">
             <div class="grid-cell">
               <div class="inputAdd">
-                <div class="v-form-error" ng-messages="createCompany.companyEmail.$error" ng-if="createCompany.companyEmail.$dirty">
+                <div class="v-form-error" ng-messages="createCompany.companyEmail.$error" ng-if="createCompany.companyEmail.$dirty || createCompany.$submitted">
                   <div ng-message="required">You did not enter a email field</div>
                   <div ng-message="email">Your email address is invalid</div>
                 </div>
-                <span class="inputAdd-item"><i class="sidebar-ico icon-user"></i></span>
+                <span class="inputAdd-item"><i class="sidebar-ico fa fa-envelope-o"></i></span>
                 <input name="companyEmail" ng-model="vm.company.email" type="email" placeholder="Email" class="inputAdd-field" id="cp-email" required>
               </div>
               <div class="inputAdd">
-                <div class="v-form-error" ng-messages="createCompany.companyPhone.$error" ng-if="createCompany.companyPhone.$dirty">
+                <div class="v-form-error" ng-messages="createCompany.companyPhone.$error" ng-if="createCompany.companyPhone.$dirty || createCompany.$submitted">
                   <div ng-message="required">You did not enter a phone</div>
                   <div ng-message="pattern">Must be a valid 10 digit phone number</div>
                 </div>
-                <span class="inputAdd-item"><i class="sidebar-ico icon-user"></i></span>
+                <span class="inputAdd-item"><i class="sidebar-ico fa fa-phone"></i></span>
                 <input name="companyPhone" ng-model="vm.company.phone" type="text" placeholder="Phone" class="inputAdd-field" id="cp-phone" ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/" required>
               </div>
             </div>
             <div class="grid-cell">
               <div class="inputAdd">
-                <div class="v-form-error" ng-messages="createCompany.companySite.$error" ng-if="createCompany.companySite.$dirty">
+                <div class="v-form-error" ng-messages="createCompany.companySite.$error" ng-if="createCompany.companySite.$dirty || createCompany.$submitted">
                   <div ng-message="required">You did not enter a site url</div>
                   <div ng-message="pattern">Must be a valid url</div>
                 </div>
-                <span class="inputAdd-item"><i class="sidebar-ico icon-user"></i></span>
+                <span class="inputAdd-item"><i class="sidebar-ico fa fa-location-arrow"></i></span>
                 <input name="companySite" ng-model="vm.company.site" type="text" placeholder="Company site" class="inputAdd-field" id="cp-site" ng-pattern="/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/" required>
               </div>
             </div>
@@ -82,7 +116,10 @@
           <div class="grid">
             <div class="grid-cell">
               <div class="inputAdd">
-                <tags-input ng-model="vm.company.specializations"></tags-input>
+                <div class="v-form-error" ng-messages="createCompany.tags.$error" ng-if="createCompany.tags.$touched || createCompany.$submitted">
+                  <div ng-message="required">You did not enter at least one tag</div>
+                </div>
+                <tags-input name="tags" ng-model="vm.company.specializations" min-tags="1" max-tags="3" required></tags-input>
               </div>
             </div>
           </div>
@@ -90,7 +127,7 @@
           <div class="grid">
             <div class="grid-cell">
               <div class="inputAdd">
-                <div class="v-form-error" ng-messages="createCompany.description.$error" ng-if="createCompany.description.$dirty">
+                <div class="v-form-error" ng-messages="createCompany.description.$error" ng-if="createCompany.description.$dirty || createCompany.$submitted">
                   <div ng-message="required">You did not enter a description</div>
                   <div ng-message="minlength">Description field is too short</div>
                 </div>
@@ -121,8 +158,8 @@
       </div>
 
       <div class="btn-col">
-        <button ng-disabled="createCompany.$invalid" type="submit" class="form-row-group__submit-btn btn-info">Update</button>
-        <a ng-click="vm.openModal()" class="btn btn-sm btn-danger">Delete</a>
+        <button ng-disabled="createCompany.$invalid" type="submit" class="btn btn-info">Update</button>
+        <a ng-click="vm.openDeleteModal($event)" class="btn btn-danger">Delete</a>
       </div>
 
     </form>

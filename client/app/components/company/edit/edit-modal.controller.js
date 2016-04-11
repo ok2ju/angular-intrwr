@@ -1,23 +1,25 @@
-function EditCompanyModalController($uibModalInstance, $state, toastr, companyResource, companyId) {
+function EditCompanyModalController($mdDialog, $state, companyResource, companyId, notificationService) {
   var vm = this;
 
+  vm.ok = ok;
+  vm.cancel = cancel;
   vm.deleteCompany = deleteCompany;
 
-  vm.ok = function () {
+  function ok() {
     vm.deleteCompany(companyId);
-  };
+  }
 
-  vm.cancel = function () {
-    $uibModalInstance.dismiss('cancel');
-  };
+  function cancel() {
+    $mdDialog.hide();
+  }
 
   function deleteCompany(id) {
     companyResource.delete(id).then(function() {
       vm.cancel();
       $state.go('app.manageCompany');
-      toastr.success('Company was successfully deleted.', 'Yay!');
+      notificationService.showNotification('Company was successfully deleted!');
     }, function(err) {
-        console.log('Error while deleting company!');
+      notificationService.showNotification('Error while deleting company!');
     });
   }
 

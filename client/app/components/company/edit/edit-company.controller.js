@@ -1,47 +1,20 @@
-function EditCompanyController(companyResource, $scope,
-                          toastr, $state, $uibModal, config,
-                          $stateParams, countries, categories, imageService, Vendor) {
+import companyPhotoModalTemplate from './photo-modal.tpl.html';
+import companyDeleteTemplate from './edit-modal.tpl.html';
+
+function EditCompanyController(company, $scope,
+                          $state, config,
+                          $stateParams, countries, categories, imageService, Vendor, notificationService, $mdDialog) {
   const {moment} = Vendor;
+  const {$} = Vendor;
   const vm = this;
 
-  vm.company = {};
+  vm.company = company;
+  vm.company.creation_date = moment(company.creation_date).toDate();
+  vm.countries = countries.data;
+  vm.categories = categories.data;
   vm.updateCompany = updateCompany;
   vm.getImageUrl = getImageUrl;
 
-  // Fetching data for countries dropdown
-  vm.countries = countries.data;
-
-  // Fetching data for categories dropdown
-  vm.categories = categories.data;
-
-  companyResource.one($stateParams.id).then(function(company) {
-    company.creation_date = moment(company.creation_date).toDate();
-    vm.company = company;
-  });
-
-  // Datepicker options
-  /*vm.today = function() {
-    vm.company.yof = new Date();
-  };
-  vm.today();*/
-
-  vm.maxDate = new Date(2020, 5, 22);
-
-  vm.openDatepicker = function($event) {
-    vm.status.opened = true;
-  };
-
-  vm.dateOptions = {
-    formatYear: 'yy',
-    startingDay: 1
-  };
-
-  vm.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-  vm.format = vm.formats[0];
-
-  vm.status = {
-    opened: false
-  };
 
   function getImageUrl() {
     return imageService.getCompanyImageUrl(vm.company);
@@ -50,55 +23,100 @@ function EditCompanyController(companyResource, $scope,
   function updateCompany() {
     vm.company.put().then(function() {
       $state.go('app.manageCompany');
-      toastr.success('Company settings was successfully updated.', 'Yay!');
+      notificationService.showNotification('Company settings was successfully updated!');
     }, function(err) {
-        toastr.error('Error while updating.', 'Error!');
+      notificationService.showNotification('Error while updating!');
+    });
+  }
+
+  // Select component
+  vm.countries = loadCountries();
+  vm.categories = loadCategories();
+  vm.isDisabled = false;
+  vm.noCache = true;
+
+  vm.querySearchCountries = function(query) {
+    let results = query ? vm.countries.filter( vm.createFilterForCountries(query) ) : vm.countries;
+    return results;
+  };
+
+  vm.createFilterForCountries = function(query) {
+    let lowercaseQuery = angular.lowercase(query);
+    return function filterFn(state) {
+      return (state.value.indexOf(lowercaseQuery) === 0);
+    };
+  };
+
+  vm.querySearchCategories = function(query) {
+    let results = query ? vm.categories.filter( vm.createFilterForCategories(query) ) : vm.categories;
+    return results;
+  };
+
+  vm.createFilterForCategories = function(query) {
+    let lowercaseQuery = angular.lowercase(query);
+    return function filterFn(state) {
+      return (state.value.indexOf(lowercaseQuery) === 0);
+    };
+  };
+
+  function loadCountries() {
+    let countriesArray = countries.data;
+    return countriesArray.map((country) => {
+      country.value = country.name.toLowerCase();
+      return country;
+    });
+  }
+
+  function loadCategories() {
+    let categoriesArray = categories.data;
+    return categoriesArray.map((category) => {
+      category.value = category.name.toLowerCase();
+      return category;
     });
   }
 
   // Open modal when delete company
-  vm.openModal = () => {
-    $uibModal.open({
-      animation: true,
-      templateUrl: `${config.ROOT_DIR}/src/components/company/edit/modal.tpl.html`,
-      controller: 'CompanyEditModalController',
-      controllerAs: 'vm',
-      resolve: {
-        companyId() {
-          return vm.company._id;
-        }
-      }
-    });
-  };
+  vm.openDeleteModal = openDeleteModal;
 
-  // Open modal with company logo
-  vm.onFileSelected = function() {
+  function openDeleteModal() {
+    $mdDialog.show({
+      clickOutsideToClose: true,
+      locals: { 
+        companyId: vm.company._id
+      },
+      template: companyDeleteTemplate,
+      controller: 'EditCompanyModalController',
+      controllerAs: 'vm'
+   });
+  }
+
+  // Open Modal dialog
+  vm.openModal = openModal;
+  vm.onFileSelected =  onFileSelected;
+  vm.openFileDialog = openFileDialog;
+
+  function onFileSelected() {
     if(vm.file) {
-      vm.opePhotonModal();
+      vm.openModal();
     }
-  };
+  }
 
-  vm.openFileDialog = function() {
+  function openFileDialog() {
     $('#up-photo').click();
-  };
+  }
 
-  vm.opePhotonModal = (size) => {
-    $uibModal.open({
-      animation: true,
-      templateUrl: `${config.ROOT_DIR}/src/components/company/edit/photo-modal.tpl.html`,
+  function openModal() {
+    $mdDialog.show({
+      clickOutsideToClose: true,
+      locals: { 
+        company: vm.company,
+        file: vm.file
+      },
+      template: companyPhotoModalTemplate,
       controller: 'CompanyPhotoModalController',
-      controllerAs: 'vm',
-      size: size,
-      resolve: {
-        file() {
-          return vm.file;
-        },
-        company() {
-          return vm.company;
-        }
-      }
-    });
-  };
+      controllerAs: 'vm'
+   });
+  }
 
 }
 

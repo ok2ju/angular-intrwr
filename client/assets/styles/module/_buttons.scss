@@ -60,6 +60,10 @@ $btn-font-color: #fff;
   @include card(1);
 }
 
+.raised-btn--light {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
+}
+
 .btn-primary {
   background-color: $primary-btn-color;
   color: $btn-font-color;
@@ -115,6 +119,11 @@ $btn-font-color: #fff;
   }
 }
 
+.btn-simple {
+  background: #fff;
+  color: #000;
+}
+
 .btn-info {
   background: linear-gradient(135deg, rgba(12,107,149,1) 50%,
                                       rgba(32,124,202,1) 50%,
@@ -129,5 +138,11 @@ $btn-font-color: #fff;
                                         rgba(32,124,202,1) 50%, 
                                         rgba(12,107,149,1) 50%, 
                                         rgba(12,107,149,1) 100%);
+  }
+}
+
+.btn-tab {
+  &.active {
+    border-bottom: 2px solid #86ad73;
   }
 }

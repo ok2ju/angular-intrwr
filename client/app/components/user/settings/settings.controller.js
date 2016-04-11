@@ -1,6 +1,8 @@
 import modalTemplate from './modal.tpl.html';
 
-function SettingsController($state, config, countries, Upload, authService, imageService, Vendor, $mdToast, $mdDialog, $mdConstant, notificationService, myself) {
+function SettingsController($state, config, countries, Upload, authService,
+                            imageService, Vendor, $mdToast, $mdDialog, $mdConstant,
+                            notificationService, myself) {
   "ngInject";
 
   const {$} = Vendor;

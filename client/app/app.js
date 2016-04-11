@@ -55,7 +55,6 @@ angular.module('app', [
         template: mainTemplate,
         resolve: {
           metaResource: 'metaResource',
-          userResource: 'userResource',
           authService: 'authService',
 
           myself(authService) {

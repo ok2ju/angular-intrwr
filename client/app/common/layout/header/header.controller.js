@@ -1,4 +1,5 @@
-function LayoutHeaderController($state, imageService, authService, $rootScope, interviewResource, Vendor, openRequestedPopupService, uiState, notificationService) {
+function LayoutHeaderController($state, imageService, authService, $rootScope, interviewResource,
+                                Vendor, openRequestedPopupService, uiState, notificationService) {
   const vm = this;
   const {moment} = Vendor;
 

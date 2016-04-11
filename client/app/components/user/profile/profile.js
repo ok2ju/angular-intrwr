@@ -15,6 +15,13 @@ let profileModule = angular.module('profile', [])
       data: {
         requiresLogin: true,
         pageTitle: 'Profile'
+      },
+      resolve: {
+        userResource: 'userResource',
+
+        user(userResource, $stateParams) {
+          return userResource.one($stateParams.id);
+        }
       }
     });
 })

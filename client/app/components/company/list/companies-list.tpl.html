@@ -1,26 +1,25 @@
 <div class="filter">
-  <div class="filter-group filter-group--left">
-    <!-- <ui-select ng-model="vm.category.name" theme="selectize" ng-disabled="disabled">
-      <ui-select-match placeholder="Category">{{$select.selected.name}}</ui-select-match>
-      <ui-select-choices repeat="category.name as category in vm.categories | filter: $select.search">
-        <span ng-bind-html="category.name | highlight: $select.search"></span>
-      </ui-select-choices>
-    </ui-select> -->
+  <div layout="row" class="layout-row">
+    <md-input-container>
+      <label>Category</label>
+      <md-select ng-model="vm.category">
+        <md-option ng-value="category" ng-repeat="category in vm.categories">{{ category.name }}</md-option>
+      </md-select>
+    </md-input-container>
+    <md-input-container>
+      <label>Country</label>
+      <md-select ng-model="vm.country">
+        <md-option ng-value="country" ng-repeat="country in vm.countries">{{ country.name }}</md-option>
+      </md-select>
+    </md-input-container>
+    <md-input-container>
+      <label>Company name</label>
+      <input type="text" ng-model="vm.company.name">
+    </md-input-container>
+    <md-input-container>
+      <a ng-click="vm.resetFilter()" class="btn btn-default">Reset</a>
+    </md-input-container>
   </div>
-  <div class="filter-group">
-    <div class="filter-group-input">
-      <input ng-model="vm.company.name" type="text" class="input" placeholder="all">
-    </div>
-  </div>
-  <div class="filter-group">
-    <!-- <ui-select ng-model="vm.country.name" theme="selectize" ng-disabled="disabled">
-      <ui-select-match placeholder="Country">{{$select.selected.name}}</ui-select-match>
-      <ui-select-choices repeat="country.name as country in vm.countries | filter: $select.search">
-        <span ng-bind-html="country.name | highlight: $select.search"></span>
-      </ui-select-choices>
-    </ui-select> -->
-  </div>
-  <a ng-click="vm.resetFilter()" class="btn btn-sm btn-default">Reset</a>
 </div>
 
 <div class="full-col">

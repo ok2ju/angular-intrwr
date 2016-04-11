@@ -1,9 +1,12 @@
 .filter {
   @include clearfix;
-  margin-bottom: 20px;
   background-color: darken($body-color, 3%);
-  padding: 15px 30px;
+  padding: 0 30px;
   box-shadow: rgba(0, 0, 0, .05) 0 1px;
+
+  md-input-container {
+    margin-right: 10px;
+  }
 }
 
 .filter-group {

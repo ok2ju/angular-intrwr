@@ -1,6 +1,6 @@
 import modalTemplate from './modal.tpl.html';
 
-function SettingsController($state, config, countries, Upload, authService, imageService, Vendor, $mdToast, $mdDialog, notificationService, myself) {
+function SettingsController($state, config, countries, Upload, authService, imageService, Vendor, $mdToast, $mdDialog, $mdConstant, notificationService, myself) {
   "ngInject";
 
   const {$} = Vendor;
@@ -14,7 +14,6 @@ function SettingsController($state, config, countries, Upload, authService, imag
   vm.updateProfile = updateProfile;
   vm.addNewExperience = addNewExperience;
   vm.deleteExperience = deleteExperience;
-
   
   vm.user.social = vm.user.social || {};
 
@@ -103,6 +102,17 @@ function SettingsController($state, config, countries, Upload, authService, imag
       controller: 'ModalInstanceController',
       controllerAs: 'vm'
    });
+  }
+
+  // Tags settings
+  vm.tagsIsReadOnly = false;
+  vm.tagsSeparatorKeys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA];
+  vm.newTag = newTag;
+
+  function newTag(chip) {
+    return {
+      text: chip
+    };
   }
 
 }

@@ -137,9 +137,21 @@
               <div class="v-form-error" ng-messages="fillForm.tags.$error" ng-if="fillForm.tags.$touched || fillForm.$submitted">
                 <div ng-message="required">You did not enter at least one tag</div>
               </div>
-              <tags-input name="tags" ng-model="vm.user.skills" add-on-paste="true" placeholder="add skill" min-tags="1" required>
+              <!-- <tags-input name="tags" ng-model="vm.user.skills" add-on-paste="true" placeholder="add skill" min-tags="1" required>
                 <auto-complete source="vm.loadTags($query)"></auto-complete>
-              </tags-input>
+              </tags-input> -->
+              <md-chips ng-model="vm.user.skills" 
+                        readonly="vm.tagsIsReadOnly" 
+                        md-transform-chip="vm.newTag($chip)"
+                        md-separator-keys="vm.tagsSeparatorKeys"
+                        placeholder="Add at least one skill tag"
+                        secondary-placeholder="Add skills">
+                <md-chip-template>
+                  <span>
+                    <strong>{{$chip.text}}</strong>
+                  </span>
+                </md-chip-template>
+              </md-chips>
             </div>
           </div>
         </div>

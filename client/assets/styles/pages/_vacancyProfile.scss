@@ -10,7 +10,7 @@
   text-align: center;
 
   h2 {
-    @include font-size(24px);
+    font-size: 2.4rem;
     font-weight: 100;
     color: #fff;
   }
@@ -28,7 +28,7 @@
   }
 
   label {
-    @include font-size(14px);
+    font-size: 1.4rem;
     display: block;
     margin-bottom: 5px;
     font-weight: 700;
@@ -37,7 +37,7 @@
   }
 
   p {
-    @include font-size(13px);
+    font-size: 1.3rem;
     color: #999;
   }
 }
@@ -54,7 +54,7 @@
 }
 
 .v-si-text {
-  @include font-size(14px);
+  font-size: 1.4rem;
   margin: 0 15px;
   vertical-align: middle;
 

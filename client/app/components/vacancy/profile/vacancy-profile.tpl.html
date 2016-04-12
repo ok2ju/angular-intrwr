@@ -1,0 +1,68 @@
+<div class="full-col">
+  <header class="content-header">
+    <h1 class="content-header__name c-header">Vacancy Details</h1>
+  </header>
+
+  <div class="vacancyBox">
+
+    <div class="vacancyBox__header">
+      <h2>{{vm.vacancy.title}}</h2>
+    </div>
+
+    <div class="vacancyBox__body">
+
+      <div class="vacancyInfo-secondary">
+        <img class="ui avatar image" src="{{vm.getImage(vm.vacancy.type)}}">
+        <span class="v-si-text">{{vm.vacancy.type}}</span>
+        <span ng-class="{Junior: 'junior', Middle: 'middle', Senior: 'senior'}[vm.vacancy.position]" class="v-si-text v-p-pos">{{vm.vacancy.position}}</span>
+        <span class="v-si-text">
+          <i class="icon-location"></i>
+          {{vm.vacancy.location}}
+        </span>
+        <span class="v-si-text pull-right">
+          <i class="icon-calendar"></i>
+          {{vm.vacancy.creation_date | moment: 'DD MMM, YY'}}
+        </span>
+      </div>
+
+      <div class="vacancyInfo-group">
+        <label>About</label>
+        <p>{{vm.vacancy.description}}</p>
+      </div>
+
+      <div class="vacancyInfo-group v-skills-group">
+        <label>Required skills</label>
+        <ul class="n-skills">
+          <li class="n-skills__item" ng-repeat="skill in vm.vacancy.required_skills">
+            <span>{{skill.text}}</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="vacancyInfo-group v-followers-group">
+        <label>Followers</label>
+        <ul ng-if="vm.subscriptions.length" class="v-followers-list">
+          <li ng-repeat="subscriber in vm.subscriptions" class="v-followers-list__item">
+            <a ui-sref="app.userProfile({id: subscriber.candidate._id})">
+              <img ng-src="{{vm.getUserImageUrl(subscriber.candidate)}}">
+            </a>
+          </li>
+        </ul>
+        <div ng-if="!vm.subscriptions.length">
+          <h2>There are no subscribers</h2>
+        </div>
+      </div>
+
+      <div class="vacancyInfo-btns">
+        <div ng-show="!vm.isSubscribed(vm.vacancy)">
+          <a ng-click="vm.subscribe(vm.vacancy)" class="btn btn-sm btn-info">Follow vacancy</a>
+        </div>
+        <div ng-show="vm.isSubscribed(vm.vacancy)">
+          <a ng-click="vm.unsubscribe(vm.vacancy)" class="btn btn-sm btn-info">Unsubscribe</a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

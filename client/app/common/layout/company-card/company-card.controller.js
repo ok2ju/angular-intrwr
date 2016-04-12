@@ -9,10 +9,6 @@ function CompanyCardController(config, Vendor, imageService) {
     withEditButton: vm.editable || false,
   };
 
-  const urlTransformer = (url) => {
-    return (!_.isEmpty(url)) ? `${config.ROOT_DIR}/${url}`: url;
-  };
-
 }
 
 export default CompanyCardController;

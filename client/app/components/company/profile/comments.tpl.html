@@ -11,7 +11,7 @@
           <a ui-sref="app.userProfile({id: comment.author.id})" href="#" class="author">{{comment.author.name}} {{comment.author.surname}}</a>
           <div class="metadata">
             <span>{{comment.createdAt | fromNow}}</span>
-            <a class="remove-comment-btn" ng-click="vm.removeComment(comment._id)"><i class="i-card icon-cancel"></i></a>
+            <a class="remove-comment-btn" ng-click="vm.removeComment(comment._id)"><i class="i-card fa fa-times"></i></a>
           </div>
           <div class="text">{{comment.text}}</div>
         </div>

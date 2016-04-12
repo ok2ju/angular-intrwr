@@ -5,7 +5,7 @@
         <a ng-if="!vm.settings.withCandidates" ui-sref="app.vacanciesProfile({id: vm.vacancy._id})" class="card-content__header">{{vm.vacancy.title}}</a>
         <a ng-if="vm.settings.withCandidates" ui-sref="app.candidates({id: vm.vacancy._id})" class="card-content__header">{{vm.vacancy.title}}</a>
         <div ng-if="vm.settings.withEditButton" class="v-edit">
-          <i ui-sref="app.vacanciesEdit({id: vm.vacancy._id})" class="sidebar-ico icon-pencil"></i>
+          <i ui-sref="app.vacanciesEdit({id: vm.vacancy._id})" class="sidebar-ico fa fa-pencil"></i>
         </div>
       </div>
       <div class="card-content__meta">

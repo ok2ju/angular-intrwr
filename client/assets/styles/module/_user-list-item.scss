@@ -1,6 +1,3 @@
-// imports
-@import '../utils/index';
-
 $progress-empty-bg: #eee;
 $progress-fill-bg: #8dc63f;
 
@@ -44,8 +41,8 @@ $progress-fill-bg: #8dc63f;
 }
 
 .user-card-item__name {
-  @include font-size(14px);
-  color: rgba(0, 0, 0, 0.87);
+  font-size: 1.4rem;
+  color: rgba(0, 0, 0, .87);
   font-weight: 500;
   line-height: 50px;
   margin-left: 15px;
@@ -86,7 +83,7 @@ $progress-fill-bg: #8dc63f;
 }
 
 .card-list-group {
-  @include font-size(12px);
+  font-size: 1.2rem;
   color: $secondary-font-color;
   display: inline-block;
 }
@@ -113,7 +110,7 @@ $progress-fill-bg: #8dc63f;
 }
 
 .card-list__test-score {
-  @include font-size(12px);
+  font-size: 1.2rem;
   color: #999;
 }
 
@@ -124,5 +121,5 @@ $progress-fill-bg: #8dc63f;
 }
 
 .uc-interview-date {
-  @include font-size(14px);
+  font-size: 1.4rem;
 }

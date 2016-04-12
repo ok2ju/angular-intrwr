@@ -1,0 +1,22 @@
+<ul class="user-cards-list">
+  <li class="user-card-item" ng-repeat="company in vm.companies">
+    <div class="u-main-info">
+      <a ui-sref="app.vacanciesManage.vacancies({company_id: company._id})" class="u-main-info-link">
+        <img ng-src="{{vm.getImageUrl(company)}}" alt="candidate" class="user-card-item__photo">
+        <h1 class="user-card-item__name">{{company.name}}</h1>
+      </a>
+      <div class="u-main-info-pos">
+        <span class="card-list-group">{{company.category}}</span>
+      </div>
+    </div>
+    <div class="u-second-info">
+      <span class="card-list__ico-wrapper">
+        <span class="card-list__test-score">Vacancies: {{company.vacancies.length}}</span>
+      </span>
+      <span class="card-list__ico-wrapper">
+        <i class="fa i-card fa-clock-o"></i>
+        <span class="card-list__test-score">{{company.creation_date | date:'dd.MM.yyyy'}}</span>
+      </span>
+    </div>
+  </li>
+</ul>

@@ -59,7 +59,7 @@ h1 {
 }
 
 h2 {
-  @include font-size(14px);
+  font-size: 1.4rem;
   color: $secondary-font-color;
   font-weight: 600;
 }

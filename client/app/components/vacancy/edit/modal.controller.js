@@ -1,4 +1,4 @@
-module.exports = function VacancyEditModalController($uibModalInstance, $state, toastr, vacancyResource, vacancyId) {
+function VacancyEditModalController($mdDialog, $state, vacancyResource, vacancyId, notificationService) {
   var vm = this;
 
   vm.deleteVacancy = deleteVacancy;
@@ -8,16 +8,18 @@ module.exports = function VacancyEditModalController($uibModalInstance, $state, 
   };
 
   vm.cancel = function () {
-    $uibModalInstance.dismiss('cancel');
+    $mdDialog.hide();
   };
 
   function deleteVacancy(id) {
     vacancyResource.delete(id).then(function() {
       vm.cancel();
       $state.go('app.vacanciesManage.companies');
-      toastr.success('Vacancy was successfully deleted.', 'Yay!');
+      notificationService.showNotification('Vacancy was successfully deleted!');
     }, function(err) {
-        console.log('Error while deleting vacancy!');
+      notificationService.showNotification('Error while deleting vacancy!');
     });
   }
-};
+}
+
+export default VacancyEditModalController;

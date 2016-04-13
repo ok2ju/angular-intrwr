@@ -17,7 +17,7 @@
                   <div ng-message="maxlength">Your vacancy title is too long</div>
                 </div>
                 <span class="inputAdd-item"><i class="sidebar-ico fa fa-newspaper-o" aria-hidden="true"></i></span>
-                <input class="inputAdd-field" ng-model="vm.vacancy.title" type="text" placeholder="Title" name="title" ng-minlength="5" ng-maxlength="30" required>
+                <input class="inputAdd-field" ng-model="vm.title" type="text" placeholder="Title" name="title" ng-minlength="5" ng-maxlength="30" required>
               </div>
               <div class="inputAdd">
                 <div class="v-form-error" ng-messages="createVacancy.location.$error" ng-if="createVacancy.location.$dirty || createVacancy.$submitted">
@@ -26,7 +26,7 @@
                   <div ng-message="maxlength">Your location is too long</div>
                 </div>
                 <span class="inputAdd-item"><i class="sidebar-ico fa fa-globe" aria-hidden="true"></i></span>
-                <input class="inputAdd-field" ng-model="vm.vacancy.location" type="text" placeholder="Location" name="location" ng-minlength="5" ng-maxlength="20" required>
+                <input class="inputAdd-field" ng-model="vm.location" type="text" placeholder="Location" name="location" ng-minlength="5" ng-maxlength="20" required>
               </div>
             </div>
 
@@ -39,7 +39,7 @@
                 <md-autocomplete
                     ng-disabled="vm.isDisabled"
                     md-no-cache="vm.noCache"
-                    md-selected-item="vm.vacancy.type"
+                    md-selected-item="vm.type"
                     md-search-text="vm.searchTypeText"
                     md-items="item in vm.queryTypeSearch(vm.searchTypeText)"
                     md-item-text="item.name"
@@ -65,7 +65,7 @@
                 <md-autocomplete
                     ng-disabled="vm.isDisabled"
                     md-no-cache="vm.noCache"
-                    md-selected-item="vm.vacancy.position"
+                    md-selected-item="vm.position"
                     md-search-text="vm.searchPositionText"
                     md-items="item in vm.queryPositionSearch(vm.searchPositionText)"
                     md-item-text="item.name"
@@ -97,7 +97,7 @@
                 <md-autocomplete
                     ng-disabled="vm.isDisabled"
                     md-no-cache="vm.noCache"
-                    md-selected-item="vm.vacancy.company_id"
+                    md-selected-item="vm.company"
                     md-search-text="vm.searchCompaniesText"
                     md-items="item in vm.queryCompanySearch(vm.searchCompaniesText)"
                     md-item-text="item.name"
@@ -124,7 +124,7 @@
                 <div class="v-form-error" ng-messages="createVacancy.tags.$error" ng-if="createVacancy.tags.$touched || createVacancy.$submitted">
                   <div ng-message="required">You did not enter at least one tag</div>
                 </div>
-                <md-chips ng-model="vm.vacancy.required_skills" 
+                <md-chips ng-model="vm.required_skills" 
                           readonly="vm.tagsIsReadOnly" 
                           md-transform-chip="vm.newTag($chip)"
                           md-separator-keys="vm.tagsSeparatorKeys"
@@ -147,7 +147,7 @@
                   <div ng-message="required">You did not enter a description</div>
                   <div ng-message="minlength">Description field is too short</div>
                 </div>
-                <textarea ng-model="vm.vacancy.description" class="inputAdd-field" name="description" placeholder="Description" id="cp-about" ng-minlength="50" required></textarea>
+                <textarea ng-model="vm.description" class="inputAdd-field" name="description" placeholder="Description" id="cp-about" ng-minlength="50" required></textarea>
               </div>
             </div>
           </div>

@@ -1,9 +1,9 @@
 <div class="full-col">
   <div class="form-content">
     <div class="s-content-head">
-      <h2 class="s-content-head__header">Edit main vacancy info</h2>
+      <h2 class="s-content-head__header">Fill vacancy profile</h2>
     </div>
-    <form class="settings-form" method="post" ng-submit="vm.updateVacancy()" name="createVacancy">
+    <form class="settings-form" name="createVacancy" ng-submit="vm.updateVacancy()" novalidate>
       <div class="settings-form__row">
         <div class="form-fields">
 
@@ -11,43 +11,77 @@
 
             <div class="grid-cell">
               <div class="inputAdd">
-                <div class="v-form-error" ng-messages="createVacancy.title.$error" ng-if="createVacancy.title.$dirty">
+                <div class="v-form-error" ng-messages="createVacancy.title.$error" ng-if="createVacancy.title.$dirty || createVacancy.$submitted">
                   <div ng-message="required">You did not enter a vacancy title</div>
                   <div ng-message="minlength">Your vacancy title is too short</div>
                   <div ng-message="maxlength">Your vacancy title is too long</div>
                 </div>
-                <span class="inputAdd-item"><i class="sidebar-ico icon-user"></i></span>
+                <span class="inputAdd-item"><i class="sidebar-ico fa fa-newspaper-o" aria-hidden="true"></i></span>
                 <input class="inputAdd-field" ng-model="vm.vacancy.title" type="text" placeholder="Title" name="title" ng-minlength="5" ng-maxlength="30" required>
               </div>
               <div class="inputAdd">
-                <div class="v-form-error" ng-messages="createVacancy.location.$error" ng-if="createVacancy.location.$dirty">
+                <div class="v-form-error" ng-messages="createVacancy.location.$error" ng-if="createVacancy.location.$dirty || createVacancy.$submitted">
                   <div ng-message="required">You did not enter a location</div>
                   <div ng-message="minlength">Your location is too short</div>
                   <div ng-message="maxlength">Your location is too long</div>
                 </div>
-                <span class="inputAdd-item"><i class="sidebar-ico icon-location"></i></span>
+                <span class="inputAdd-item"><i class="sidebar-ico fa fa-globe" aria-hidden="true"></i></span>
                 <input class="inputAdd-field" ng-model="vm.vacancy.location" type="text" placeholder="Location" name="location" ng-minlength="5" ng-maxlength="20" required>
               </div>
             </div>
 
             <div class="grid-cell">
               <div class="inputAdd">
-                <span class="inputAdd-item"><i class="sidebar-ico icon-user"></i></span>
-                <ui-select ng-model="vm.vacancy.type" theme="selectize" ng-disabled="disabled">
-                  <ui-select-match placeholder="Type">{{$select.selected.name}}</ui-select-match>
-                  <ui-select-choices repeat="vacancy.name as vacancy in vm.vacancyTypes | filter: $select.search">
-                    <span ng-bind-html="vacancy.name | highlight: $select.search"></span>
-                  </ui-select-choices>
-                </ui-select>
+                <div ng-show="createVacancy.$submitted || createVacancy.vacancyType.$touched" class="v-form-error">
+                  <div ng-show="createVacancy.vacancyType.$error.required">You did not enter a vacancy type</div>
+                </div>
+                <span class="inputAdd-item"><i class="sidebar-ico fa fa-share-alt" aria-hidden="true"></i></span>
+                <md-autocomplete
+                    ng-disabled="vm.isDisabled"
+                    md-no-cache="vm.noCache"
+                    md-selected-item="vm.vacancy.type"
+                    md-search-text="vm.searchTypeText"
+                    md-items="item in vm.queryTypeSearch(vm.searchTypeText)"
+                    md-item-text="item.name"
+                    md-min-length="0"
+                    placeholder="Type"
+                    required>
+                  <md-item-template>
+                    <span md-highlight-text="vm.searchTypeText" md-highlight-flags="^i">{{item.name}}</span>
+                  </md-item-template>
+                  <md-not-found>
+                    No states matching "{{vm.searchTypeText}}" were found.
+                  </md-not-found>
+                  <div ng-messages="fillForm.autocomplete.$error">
+                    <div ng-message="required">This field is required</div>
+                  </div>
+                </md-autocomplete>
               </div>
               <div class="inputAdd">
-                <span class="inputAdd-item"><i class="sidebar-ico icon-pencil"></i></span>
-                <ui-select ng-model="vm.vacancy.position" theme="selectize" ng-disabled="disabled">
-                  <ui-select-match placeholder="Position">{{$select.selected.name}}</ui-select-match>
-                  <ui-select-choices repeat="position.name as position in vm.positions | filter: $select.search">
-                    <span ng-bind-html="position.name | highlight: $select.search"></span>
-                  </ui-select-choices>
-                </ui-select>
+                <div ng-show="createVacancy.$submitted || createVacancy.vacancyPosition.$touched" class="v-form-error">
+                  <div ng-show="createVacancy.vacancyPosition.$error.required">You did not enter a vacancy position</div>
+                </div>
+                <span class="inputAdd-item"><i class="sidebar-ico fa fa-book" aria-hidden="true"></i></span>
+                <md-autocomplete
+                    ng-disabled="vm.isDisabled"
+                    md-no-cache="vm.noCache"
+                    md-selected-item="vm.vacancy.position"
+                    md-search-text="vm.searchPositionText"
+                    md-items="item in vm.queryPositionSearch(vm.searchPositionText)"
+                    md-item-text="item.name"
+                    md-min-length="0"
+                    placeholder="Type"
+                    required>
+                  <md-item-template>
+                    <span md-highlight-text="vm.searchPositionText" md-highlight-flags="^i">{{item.name}}</span>
+                  </md-item-template>
+                  <md-not-found>
+                    No states matching "{{vm.searchPositionText}}" were found.
+                  </md-not-found>
+                  <div ng-messages="fillForm.autocomplete.$error">
+                    <div ng-message="required">This field is required</div>
+                  </div>
+                </md-autocomplete>
               </div>
             </div>
 
@@ -56,7 +90,21 @@
           <div class="grid">
             <div class="grid-cell">
               <div class="inputAdd">
-                <tags-input ng-model="vm.vacancy.required_skills"></tags-input>
+                <div class="v-form-error" ng-messages="createVacancy.tags.$error" ng-if="createVacancy.tags.$touched || createVacancy.$submitted">
+                  <div ng-message="required">You did not enter at least one tag</div>
+                </div>
+                <md-chips ng-model="vm.vacancy.required_skills" 
+                          readonly="vm.tagsIsReadOnly" 
+                          md-transform-chip="vm.newTag($chip)"
+                          md-separator-keys="vm.tagsSeparatorKeys"
+                          placeholder="Add at least one skill tag"
+                          secondary-placeholder="Add required skills">
+                  <md-chip-template>
+                    <span>
+                      <strong>{{$chip.text}}</strong>
+                    </span>
+                  </md-chip-template>
+                </md-chips>
               </div>
             </div>
           </div>
@@ -64,7 +112,7 @@
           <div class="grid">
             <div class="grid-cell">
               <div class="inputAdd">
-                <div class="v-form-error" ng-messages="createVacancy.description.$error" ng-if="createVacancy.description.$dirty">
+                <div class="v-form-error" ng-messages="createVacancy.description.$error" ng-if="createVacancy.description.$dirty || createVacancy.$submitted">
                   <div ng-message="required">You did not enter a description</div>
                   <div ng-message="minlength">Description field is too short</div>
                 </div>
@@ -77,8 +125,8 @@
       </div>
 
       <div class="btn-col">
-        <button ng-disabled="createVacancy.$invalid" type="submit" class="form-row-group__submit-btn btn-info">Update</button>
-        <a ng-click="vm.openModal()" class="btn btn-sm btn-danger">Delete</a>
+        <button type="submit" class="btn btn-info">Update</button>
+        <a ng-click="vm.openDeleteModal()" class="btn btn-danger">Delete</a>
       </div>
 
     </form>

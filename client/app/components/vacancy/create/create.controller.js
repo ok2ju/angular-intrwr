@@ -3,25 +3,23 @@ function VacancyCreateController($state, vacancyResource, positions, vacancyType
   const vm = this;
   const {_} = Vendor;
 
-  vm.vacancy = {};
-  vm.vacancy.required_skills = [];
-  vm.company = {};
+  vm.required_skills = [];
   vm.registerVacancy = registerVacancy;
 
   function registerVacancy(isValid) {
     if(isValid) {
 
-      vm.vacancy1 = {
-        company_id: vm.vacancy.company_id._id,
-        description: vm.vacancy.description,
-        location: vm.vacancy.location,
-        position: vm.vacancy.position.name,
-        required_skills: vm.vacancy.required_skills,
-        title: vm.vacancy.title,
-        type: vm.vacancy.type.name
+      vm.vacancy = {
+        company_id: vm.company._id,
+        description: vm.description,
+        location: vm.location,
+        position: vm.position.name,
+        required_skills: vm.required_skills,
+        title: vm.title,
+        type: vm.type.name
       };
 
-      vacancyResource.create(vm.vacancy1).then(function() {
+      vacancyResource.create(vm.vacancy).then(function() {
         notificationService.showNotification('Vacancy created!');
         $state.go('app.vacanciesList');
       }, function(err) {

@@ -18,7 +18,7 @@
                   <div ng-message="maxlength">Your company name is too long</div>
                 </div>
                 <span class="inputAdd-item"><i class="sidebar-ico fa fa-building-o"></i></span>
-                <input ng-model="vm.company.name" name="companyName" type="text" id="up-name" class="inputAdd-field" placeholder="Name" ng-minlength="5" ng-maxlength="20" required>
+                <input ng-model="vm.name" name="companyName" type="text" id="up-name" class="inputAdd-field" placeholder="Name" ng-minlength="5" ng-maxlength="20" required>
               </div>
               <div class="inputAdd">
                 <div ng-show="createCompany.$submitted || createCompany.location.$touched" class="v-form-error">
@@ -28,7 +28,7 @@
                 <md-autocomplete
                     ng-disabled="vm.isDisabled"
                     md-no-cache="vm.noCache"
-                    md-selected-item="vm.company.location"
+                    md-selected-item="vm.location"
                     md-search-text="vm.searchCountryText"
                     md-items="item in vm.querySearchCountries(vm.searchText)"
                     md-item-text="item.name"
@@ -56,7 +56,7 @@
                 <md-autocomplete
                     ng-disabled="vm.isDisabled"
                     md-no-cache="vm.noCache"
-                    md-selected-item="vm.company.category"
+                    md-selected-item="vm.category"
                     md-search-text="vm.searchCategoryText"
                     md-items="item in vm.querySearchCategories(vm.searchText)"
                     md-item-text="item.name"
@@ -90,7 +90,7 @@
                   <div ng-message="email">Your email address is invalid</div>
                 </div>
                 <span class="inputAdd-item"><i class="sidebar-ico fa fa-envelope-o"></i></span>
-                <input name="companyEmail" ng-model="vm.company.email" type="email" placeholder="Email" class="inputAdd-field" id="cp-email" required>
+                <input name="companyEmail" ng-model="vm.email" type="email" placeholder="Email" class="inputAdd-field" id="cp-email" required>
               </div>
               <div class="inputAdd">
                 <div class="v-form-error" ng-messages="createCompany.companyPhone.$error" ng-if="createCompany.companyPhone.$dirty || createCompany.$submitted">
@@ -98,7 +98,7 @@
                   <div ng-message="pattern">Must be a valid 10 digit phone number</div>
                 </div>
                 <span class="inputAdd-item"><i class="sidebar-ico fa fa-phone"></i></span>
-                <input name="companyPhone" ng-model="vm.company.phone" type="text" placeholder="Phone" class="inputAdd-field" id="cp-phone" ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/" required>
+                <input name="companyPhone" ng-model="vm.phone" type="text" placeholder="Phone" class="inputAdd-field" id="cp-phone" ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/" required>
               </div>
             </div>
             <div class="grid-cell">
@@ -108,7 +108,7 @@
                   <div ng-message="pattern">Must be a valid url</div>
                 </div>
                 <span class="inputAdd-item"><i class="sidebar-ico fa fa-location-arrow"></i></span>
-                <input name="companySite" ng-model="vm.company.site" type="text" placeholder="Company site" class="inputAdd-field" id="cp-site" ng-pattern="/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/" required>
+                <input name="companySite" ng-model="vm.site" type="text" placeholder="Company site" class="inputAdd-field" id="cp-site" ng-pattern="/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/" required>
               </div>
             </div>
           </div>
@@ -119,7 +119,19 @@
                 <div class="v-form-error" ng-messages="createCompany.tags.$error" ng-if="createCompany.tags.$touched || createCompany.$submitted">
                   <div ng-message="required">You did not enter at least one tag</div>
                 </div>
-                <tags-input name="tags" ng-model="vm.company.specializations" min-tags="1" max-tags="3" required></tags-input>
+                <!-- <tags-input name="tags" ng-model="vm.company.specializations" min-tags="1" max-tags="3" required></tags-input> -->
+                <md-chips ng-model="vm.specializations" 
+                          readonly="vm.tagsIsReadOnly" 
+                          md-transform-chip="vm.newTag($chip)"
+                          md-separator-keys="vm.tagsSeparatorKeys"
+                          placeholder="Add at least one specialization tag"
+                          secondary-placeholder="Add required skills">
+                  <md-chip-template>
+                    <span>
+                      <strong>{{$chip.text}}</strong>
+                    </span>
+                  </md-chip-template>
+                </md-chips>
               </div>
             </div>
           </div>
@@ -131,7 +143,7 @@
                   <div ng-message="required">You did not enter a description</div>
                   <div ng-message="minlength">Description field is too short</div>
                 </div>
-                <textarea ng-model="vm.company.description" class="inputAdd-field" name="description" placeholder="About" id="cp-about" ng-minlength="50" required></textarea>
+                <textarea ng-model="vm.description" class="inputAdd-field" name="description" placeholder="About" id="cp-about" ng-minlength="50" required></textarea>
               </div>
             </div>
           </div>

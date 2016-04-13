@@ -1,24 +1,36 @@
 import modalTemplate from './modal.tpl.html';
 
 function CompanyCreateController(companyResource, $scope,
-                                $state, countries, categories, imageService, Vendor, notificationService, $mdDialog) {
+                                $state, countries, categories, imageService, Vendor, notificationService, $mdDialog, $mdConstant) {
   const vm = this;
   const {$} = Vendor;
 
-  vm.company = {};
+  vm.specializations = [];
   vm.registerCompany = registerCompany;
   vm.getImageUrl = getImageUrl;
 
-  $scope.$watch('vm.company.description', function(current, original) {
-    vm.company.short_description = vm.company.description ? current.substring(0, 180) + '...' : '';
+  $scope.$watch('vm.description', function(current, original) {
+    vm.short_description = vm.description ? current.substring(0, 180) + '...' : '';
   });
 
   function registerCompany(isValid) {
     if(isValid) {
+
+      vm.company = {
+        category: vm.category.name,
+        description: vm.description,
+        email: vm.email,
+        location: vm.location.name,
+        name: vm.name,
+        phone: vm.phone,
+        short_description: vm.short_description,
+        site: vm.site,
+        specializations: vm.specializations
+      };
+
       companyResource.create(vm.company).then(function() {
-        notificationService.showNotification('Company created!');
         $state.go('app.companies');
-        console.log('Company Saved');
+        notificationService.showNotification('Company created!');
       }, function(err) {
         notificationService.showNotification('Error while creating company!');
       });
@@ -101,6 +113,17 @@ function CompanyCreateController(companyResource, $scope,
       controller: 'CompanyModalController',
       controllerAs: 'vm'
    });
+  }
+
+  // Tags settings
+  vm.tagsIsReadOnly = false;
+  vm.tagsSeparatorKeys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA];
+  vm.newTag = newTag;
+
+  function newTag(chip) {
+    return {
+      text: chip
+    };
   }
 
 }

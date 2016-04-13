@@ -1,9 +1,8 @@
 import companyPhotoModalTemplate from './photo-modal.tpl.html';
 import companyDeleteTemplate from './edit-modal.tpl.html';
 
-function EditCompanyController(company, $scope,
-                          $state, config,
-                          $stateParams, countries, categories, imageService, Vendor, notificationService, $mdDialog) {
+function EditCompanyController(company, $scope, companyResource, $state,
+                countries, categories, imageService, Vendor, notificationService, $mdDialog) {
   const {moment} = Vendor;
   const {$} = Vendor;
   const vm = this;
@@ -15,13 +14,30 @@ function EditCompanyController(company, $scope,
   vm.updateCompany = updateCompany;
   vm.getImageUrl = getImageUrl;
 
+  $scope.$watch('vm.company.description', function(current, original) {
+    vm.company.short_description = vm.company.description ? current.substring(0, 180) + '...' : '';
+  });
 
   function getImageUrl() {
     return imageService.getCompanyImageUrl(vm.company);
   }
 
   function updateCompany() {
-    vm.company.put().then(function() {
+
+    vm.updatedCompany = {
+      category: vm.company.category.name,
+      description: vm.company.description,
+      email: vm.company.email,
+      location: vm.company.location.name,
+      name: vm.company.name,
+      phone: vm.company.phone,
+      short_description: vm.company.short_description,
+      site: vm.company.site,
+      specializations: vm.company.specializations,
+      imageId: vm.company.imageId
+    };
+
+    companyResource.update(vm.company._id, vm.updatedCompany).then(() => {
       $state.go('app.manageCompany');
       notificationService.showNotification('Company settings was successfully updated!');
     }, function(err) {
@@ -73,6 +89,26 @@ function EditCompanyController(company, $scope,
       category.value = category.name.toLowerCase();
       return category;
     });
+  }
+
+  // Selected Category
+  vm.company.category = selectedCategory();
+
+  function selectedCategory() {
+    let categoryString = company.category;
+    let formattedCategories = loadCategories();
+    let index = _.findIndex(formattedCategories, ['name', categoryString]);
+    return formattedCategories[index];
+  }
+
+  // Selected Location
+  vm.company.location = selectedLocation();
+
+  function selectedLocation() {
+    let locationString = company.location;
+    let formattedLocations = loadCountries();
+    let index = _.findIndex(formattedLocations, ['name', locationString]);
+    return formattedLocations[index];
   }
 
   // Open modal when delete company

@@ -1,11 +1,12 @@
 import modalTemplate from './modal.tpl.html';
 
-function SettingsController($state, config, countries, Upload, authService,
+function SettingsController($state, countries,
                             imageService, Vendor, $mdDialog, $mdConstant,
-                            notificationService, myself) {
+                            notificationService, myself, userResource) {
   "ngInject";
 
   const {$} = Vendor;
+  const {_} = Vendor;
   const {moment} = Vendor;
   const logger = Vendor.logger.get('SettingsController');
   const vm = this;
@@ -45,7 +46,22 @@ function SettingsController($state, config, countries, Upload, authService,
 
   function updateProfile(isValid) {
     if(isValid) {
-      vm.user.put().then(function() {
+      vm.updatedUser = {
+        about: vm.user.about,
+        country: vm.user.country.name,
+        dob: vm.user.dob,
+        email: vm.user.email,
+        experiences: vm.user.experiences,
+        imageId: vm.user.imageId,
+        name: vm.user.name,
+        phone: vm.user.phone,
+        skills: vm.user.skills,
+        social: vm.user.social,
+        surname: vm.user.surname
+      };
+
+      userResource.update(vm.user._id, vm.updatedUser).then(() => {
+        $state.go('app.userProfile', {'id': myself._id});
         notificationService.showNotification('Successfully updated!');
       }, function(err) {
         notificationService.showNotification('Error while updating!');
@@ -76,6 +92,16 @@ function SettingsController($state, config, countries, Upload, authService,
       country.value = country.name.toLowerCase();
       return country;
     });
+  }
+
+  // Selected Country
+  vm.user.country = selectedCountry();
+
+  function selectedCountry() {
+    let countryString = myself.country;
+    let formattedCountries = loadCountries();
+    let index = _.findIndex(formattedCountries, ['name', countryString]);
+    return formattedCountries[index];
   }
 
   // Open Modal dialog

@@ -1,0 +1,27 @@
+<div class="filter">
+  <div class="filter-group filter-group--left">
+    <!-- <ui-select ng-model="vm.position.name" theme="selectize" ng-disabled="disabled">
+      <ui-select-match placeholder="Position">{{$select.selected.name}}</ui-select-match>
+      <ui-select-choices repeat="position.name as position in vm.positions | filter: $select.search">
+        <span ng-bind-html="position.name | highlight: $select.search"></span>
+      </ui-select-choices>
+    </ui-select> -->
+  </div>
+  <div class="filter-group">
+    <div class="filter-group-input">
+      <input ng-model="vm.vacancy.name" type="text" class="input" placeholder="Title">
+    </div>
+  </div>
+  <a ng-click="vm.resetFilter()" class="btn btn-sm btn-default">Reset</a>
+</div>
+
+<div class="full-col">
+  <div class="vacancy-row">
+
+    <vacancy-card
+      ng-repeat="vacancy in vm.vacancies | filter:{title: vm.vacancy.name, position: vm.position.name}"
+      vacancy="vacancy" with-follow="false" editable="false" with-candidates="true">
+    </vacancy-card>
+
+  </div>
+</div>

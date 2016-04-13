@@ -1,6 +1,3 @@
-// imports
-@import '../utils/index';
-
 // variables
 $company-page-bg-color: #f9f9f9;
 $company-page-header-bg-color: #fff;
@@ -23,7 +20,7 @@ $grid-controls-hover-color: #59728e;
   }
 
   i {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     cursor: pointer;
     color: #999;
     vertical-align: middle;

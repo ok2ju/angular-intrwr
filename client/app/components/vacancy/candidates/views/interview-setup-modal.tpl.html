@@ -1,0 +1,34 @@
+<md-dialog class="deletingDialog">
+  <md-dialog-content>
+    <div class="modal-header">
+      <h3 class="modal-title">Setup interview date</h3>
+    </div>
+    <div class="modal-body">
+      <p>Setup exact date and time of future interview</p>
+      <md-datepicker 
+        ng-model="vm.myDate" 
+        md-placeholder="Enter date"
+        md-min-date="vm.minDate" 
+        md-max-date="vm.maxDate"></md-datepicker>
+        <h2>Time:</h2>
+        <md-input-container class="md-block">
+          <label>Hours</label>
+          <input required type="number" step="any" name="hours" ng-model="vm.time.hours" min="0" max="23" />
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Minutes</label>
+          <input required type="number" step="any" name="minutes" ng-model="vm.time.minutes" min="0" max="60" />
+        </md-input-container>
+    </div>
+    {{vm.myDate}}
+    <p></p>
+    {{vm.time}}
+    <p></p>
+    {{vm.mergedData}}
+    <a ng-click="vm.test()">test</a>
+  </md-dialog-content>
+  <md-dialog-actions>
+    <md-button ng-click="vm.cancel()" class="md-primary">Cancel</md-button>
+    <md-button ng-click="vm.ok()" class="md-primary">OK</md-button>
+  </md-dialog-actions>
+</md-dialog>

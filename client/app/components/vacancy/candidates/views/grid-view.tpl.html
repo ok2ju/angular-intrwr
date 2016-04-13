@@ -1,0 +1,30 @@
+<ul class="user-cards">
+    <li class="ui-card" ng-repeat="subscriber in vm.subscriptions | queryFilter:vm.candidateFilter">
+        <div class="ui-card-inner">
+            <div class="card-image">
+                <a href="#" class="check-profile-link">
+                    <img ng-src="{{vm.getUserImageUrl(subscriber.candidate)}}">
+                </a>
+                <div class="card-overlay">
+                    <div ng-if="!subscriber.interview" class="btns-wrap">
+                      <a href="#" class="card-overlay-link" ng-click="vm.openInterviewModal($event, subscriber)">Set Date</a>
+                      <a ui-sref="app.userProfile({id: subscriber.candidate._id})" class="card-overlay-link">More</a>
+                    </div>
+                    <div ng-if="subscriber.interview" class="btns-wrap">
+                      <h1 class="interview-appointed-time">{{subscriber.interview.date | moment: 'h:mm a'}}</h1>
+                      <h1 class="interview-appointed-date">{{subscriber.interview.date | moment: 'DD.MM.YYYY'}}</h1>
+                      <a href="#" class="card-overlay-link" ng-click="vm.cancelInterview(subscriber.interview._id)">Cancel</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <h1>{{subscriber.candidate.name}} {{subscriber.candidate.surname}}</h1>
+                <div class="meta"><span class="indicate {{subscriber.candidate.posColor}}"></span><a href="#" class="group">{{candidate.position}}</a></div>
+            </div>
+            <div class="test-result">
+                <span class="card-footer"><i class="i-card icon-doc-text"></i><span class="test-score">{{subscriber.candidate.testResult}}%</span></span>
+                <span class="card-footer"><i class="i-card icon-clock"></i><span class="test-score">{{subscriber.createdAt | date:'dd.MM.yyyy'}}</span></span>
+            </div>
+        </div>
+    </li>
+</ul>

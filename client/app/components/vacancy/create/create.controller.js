@@ -11,10 +11,15 @@ function VacancyCreateController($state, vacancyResource, positions, vacancyType
   function registerVacancy(isValid) {
     if(isValid) {
 
-      vm.vacancy1 = _.mapValues(vm.vacancy, (o) => {
-
-        return o.name || o;
-      });
+      vm.vacancy1 = {
+        company_id: vm.vacancy.company_id._id,
+        description: vm.vacancy.description,
+        location: vm.vacancy.location,
+        position: vm.vacancy.position.name,
+        required_skills: vm.vacancy.required_skills,
+        title: vm.vacancy.title,
+        type: vm.vacancy.type.name
+      };
 
       vacancyResource.create(vm.vacancy1).then(function() {
         notificationService.showNotification('Vacancy created!');

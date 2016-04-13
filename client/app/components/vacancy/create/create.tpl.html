@@ -93,7 +93,7 @@
                 <div ng-show="createVacancy.$submitted || createVacancy.vacancyCompany.$touched" class="v-form-error">
                   <div ng-show="createVacancy.vacancyCompany.$error.required">You did not choose company</div>
                 </div>
-                <span class="inputAdd-item"><i class="sidebar-ico icon-user"></i></span>
+                <span class="inputAdd-item"><i class="sidebar-ico fa fa-building-o" aria-hidden="true"></i></span>
                 <md-autocomplete
                     ng-disabled="vm.isDisabled"
                     md-no-cache="vm.noCache"
@@ -124,7 +124,6 @@
                 <div class="v-form-error" ng-messages="createVacancy.tags.$error" ng-if="createVacancy.tags.$touched || createVacancy.$submitted">
                   <div ng-message="required">You did not enter at least one tag</div>
                 </div>
-                <!-- <tags-input name="tags" ng-model="vm.vacancy.required_skills" min-tags="1" max-tags="3" required></tags-input> -->
                 <md-chips ng-model="vm.vacancy.required_skills" 
                           readonly="vm.tagsIsReadOnly" 
                           md-transform-chip="vm.newTag($chip)"

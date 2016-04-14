@@ -19,6 +19,11 @@
             </div>
             <div class="card-content">
                 <h1>{{subscriber.candidate.name}} {{subscriber.candidate.surname}}</h1>
+                <ul class="vacancies">
+                    <li ng-repeat="skill in subscriber.candidate.skills | limitTo:3" class="vacancies__item">
+                      <span class="vacancies-label label-success">{{skill.text}}</span>
+                    </li>
+                  </ul>
                 <div class="meta"><span class="indicate {{subscriber.candidate.posColor}}"></span><a href="#" class="group">{{candidate.position}}</a></div>
             </div>
             <div class="test-result">

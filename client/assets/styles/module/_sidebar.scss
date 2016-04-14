@@ -119,13 +119,17 @@ side-bar {
   }
 
   a {
-    font-size: rem(1.2);
+    font-size: 1.4rem;
     color: lighten(#161616, 50%);
     line-height: 35px;
     display: inline;
     padding: 0 22px;
-    font-weight: 600;
-    text-transform: uppercase;
+    font-weight: 400;
+
+    i {
+      min-width: 18px;
+      text-align: center;
+    }
 
     @include respond-to('medium') {
       display: block;

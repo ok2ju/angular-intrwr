@@ -48,7 +48,10 @@ module.exports = {
     }]),
 
     new webpack.ProvidePlugin({
-      '_': 'lodash'
+      '_': 'lodash',
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery'
     })
   ]
 };

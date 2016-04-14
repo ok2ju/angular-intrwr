@@ -1,4 +1,5 @@
 import angular from 'angular';
+import 'fullcalendar';
 import 'angular-ui-calendar';
 import calendarController from './calendar.controller';
 import calendarTemplate from './calendar.tpl.html';

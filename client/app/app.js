@@ -5,7 +5,6 @@ import 'angular-storage';
 import 'angular-messages';
 import 'angular-material';
 import 'angular-loading-bar';
-import 'fullcalendar';
 import Common from './common/common';
 import Components from './components/components';
 import AppComponent from './app.component';

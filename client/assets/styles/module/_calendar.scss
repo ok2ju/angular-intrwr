@@ -32,7 +32,7 @@ $secondary-color: #9987B5;
     border-bottom: 1px solid #eee;
 
     li {
-      @include font-size(12px);
+      font-size: 1.2rem;
       text-transform: uppercase;
       margin-bottom: .5em
     }
@@ -128,19 +128,19 @@ $secondary-color: #9987B5;
 }
 
 .fc th {
-  @include font-size(14px);
+  font-size: 1.4rem;
   font-weight: 500;
 }
 
 .fc-ltr .fc-basic-view .fc-day-number {
-  @include font-size(14px);
+  font-size: 1.4rem;
   color: #999;
   text-align: left;
 }
 
 .fc-left {
   h2 {
-    @include font-size(24px);
+    font-size: 2.4rem;
     color: #6EB590;
     font-weight: 100;
   }
@@ -157,12 +157,12 @@ $secondary-color: #9987B5;
   border-radius: 8px;
 
   span {
-    @include font-size(11px);
+    font-size: 1.1rem;
   }
 }
 
 .fc-ltr .fc-axis {
-  @include font-size(14px);
+  font-size: 1.4rem;
   color: #999;
 }
 

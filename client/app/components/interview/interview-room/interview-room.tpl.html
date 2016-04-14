@@ -33,6 +33,10 @@
               </tr>
             </table>
           </div>
+
+          <div ng-if="!vm.candidateInterviews.length && !vm.ownerInterviews.length" class="iroom-table-row">
+            <h2>There are no upcoming interviews</h2>
+          </div>
         </md-content>
       </md-tab>
       <md-tab label="In Progress">
@@ -48,6 +52,9 @@
               </tr>
             </table>
           </div>
+          <div ng-if="!vm.inprogressInterviews.length" class="iroom-table-row">
+            <h2>There are no interviews in progress</h2>
+          </div>
         </md-content>
       </md-tab>
       <md-tab label="Completed">
@@ -62,6 +69,9 @@
                 <td><a ui-sref="app.interviewfeedback({id: interview._id})">Go to feedback</a></td>
               </tr>
             </table>
+          </div>
+          <div ng-if="!vm.completedInterviews.length" class="iroom-table-row">
+            <h2>There are no completed interviews</h2>
           </div>
         </md-content>
       </md-tab>

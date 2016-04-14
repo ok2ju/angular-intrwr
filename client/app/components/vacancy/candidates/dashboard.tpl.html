@@ -1,18 +1,19 @@
 <div class="filter">
-  <div class="filter-group filter-group--left">
-    <!-- <ui-select ng-model="vm.position.name" theme="selectize" ng-disabled="disabled">
-      <ui-select-match placeholder="Position">{{$select.selected.name}}</ui-select-match>
-      <ui-select-choices repeat="position.name as position in vm.positions | filter: $select.search">
-        <span ng-bind-html="position.name | highlight: $select.search"></span>
-      </ui-select-choices>
-    </ui-select> -->
+  <div layout="row" class="layout-row">
+    <md-input-container>
+      <label>Position</label>
+      <md-select ng-model="vm.position">
+        <md-option ng-value="position" ng-repeat="position in vm.positions">{{ position.name }}</md-option>
+      </md-select>
+    </md-input-container>
+    <md-input-container>
+      <label>Title</label>
+      <input type="text" ng-model="vm.vacancy.name">
+    </md-input-container>
+    <md-input-container>
+      <a ng-click="vm.resetFilter()" class="btn btn-default">Reset</a>
+    </md-input-container>
   </div>
-  <div class="filter-group">
-    <div class="filter-group-input">
-      <input ng-model="vm.vacancy.name" type="text" class="input" placeholder="Title">
-    </div>
-  </div>
-  <a ng-click="vm.resetFilter()" class="btn btn-sm btn-default">Reset</a>
 </div>
 
 <div class="full-col">

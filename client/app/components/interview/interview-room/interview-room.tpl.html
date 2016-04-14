@@ -1,0 +1,33 @@
+<div class="iroom">
+
+  <header class="content-header">
+    <h1 class="content-header__name c-header">List of upcoming interview's</h1>
+  </header>
+
+  <div ng-if="vm.ownerInterviews.length" class="iroom-table-row">
+    <h1 class="iroom-table-row__title">I'm owner:</h1>
+    <table class="iroom__table">
+      <tr ng-repeat="interview in vm.ownerInterviews | orderBy: 'interview.date'">
+        <td><a ui-sref="app.userProfile({id: interview.candidate._id})">{{interview.title}}</a></td>
+        <td>{{interview.date | moment: 'DD.MM.YYYY - hh:mm a'}}</td>
+        <td>{{interview.date | fromNow}}</td>
+        <td><a ui-sref="app.vacanciesProfile({id: interview.vacancy._id})">{{interview.vacancy.title}}</a></td>
+        <td><a ng-click="vm.openConferenceRoom(interview._id)">Link To Conference Room</a></td>
+      </tr>
+    </table>
+  </div>
+
+  <div ng-if="vm.candidateInterviews.length" class="iroom-table-row">
+    <h1 class="iroom-table-row__title">I'm candidate:</h1>
+    <table class="iroom__table">
+      <tr ng-repeat="interview in vm.candidateInterviews | orderBy: 'interview.date'">
+        <td><a ui-sref="app.companyProfile({id: interview.company._id})">{{interview.title}}</a></td>
+        <td>{{interview.date | moment: 'DD.MM.YYYY - hh:mm a'}}</td>
+        <td>{{interview.date | fromNow}}</td>
+        <td><a ui-sref="app.vacanciesProfile({id: interview.vacancy._id})">{{interview.vacancy.title}}</a></td>
+        <td><a ng-click="vm.openConferenceRoom(interview._id)">Link To Conference Room</a></td>
+      </tr>
+    </table>
+  </div>
+
+</div>

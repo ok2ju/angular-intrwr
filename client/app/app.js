@@ -4,6 +4,8 @@ import 'angular-jwt';
 import 'angular-storage';
 import 'angular-messages';
 import 'angular-material';
+import 'angular-loading-bar';
+import 'fullcalendar';
 import Common from './common/common';
 import Components from './components/components';
 import AppComponent from './app.component';
@@ -16,6 +18,7 @@ angular.module('app', [
     'angular-storage',
     'ngMessages',
     'ngMaterial',
+    'angular-loading-bar',
     Common.name,
     Components.name
   ])
@@ -28,7 +31,7 @@ angular.module('app', [
       CANDIDATES_GRID: 'app.candidates.grid'
     }
   })
-  .config(($locationProvider, $stateProvider, $urlRouterProvider, $httpProvider, jwtInterceptorProvider, RestangularProvider) => {
+  .config(($locationProvider, $stateProvider, $urlRouterProvider, $httpProvider, jwtInterceptorProvider, RestangularProvider, cfpLoadingBarProvider) => {
     "ngInject";
 
     RestangularProvider.setBaseUrl('http://localhost:3000/api/v1');
@@ -48,6 +51,9 @@ angular.module('app', [
     };
 
     $httpProvider.interceptors.push('jwtInterceptor');
+
+    // angular loading bar config
+    cfpLoadingBarProvider.includeSpinner = false;
 
     $stateProvider
       .state('intro', {

@@ -1,0 +1,70 @@
+<div class="full-col">
+  <header class="content-header">
+    <h1 class="content-header__name c-header">Leave feedback about candidate</h1>
+  </header>
+
+  <div class="feedbackBox">
+
+    <div class="feedbackBox__header">
+      <h2>Feedback for <a ui-sref="app.userProfile({id: vm.interview.candidate._id})" href="#">{{vm.interview.candidate.name}} {{vm.interview.candidate.surname}}</a></h2>
+      <p><a ui-sref="app.vacanciesProfile({id: vm.interview.vacancy._id})" href="#">{{vm.interview.vacancy.title}}</a> - {{vm.interview.date | moment:'DD.MM.YYYY'}}</p>
+    </div>
+
+    <div class="feedbackBox__body feedbackBox__body--form">
+
+      <form ng-submit="vm.submitFeedback()" name="feedbackForm" class="settings-form feedback-form" novalidate>
+        <div class="feedbackForm-row">
+          <h2 class="feedbackForm-group-header">Comment</h2>
+          <div class="grid">
+            <div class="grid-cell">
+              <div class="inputAdd">
+                <textarea ng-model="vm.feedback.comment" type="text" class="inputAdd-field" name="comment" id="up-about" ng-minlength="50" required></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feedbackForm-row">
+          <h2 class="feedbackForm-group-header">Personal skills</h2>
+          <div class="grid feedback-form__skills-row" ng-repeat="personal in vm.feedback.personal">
+            <div class="grid-cell">
+              <div class="inputAdd">
+                <span class="inputAdd-item">Skill</span>
+                <input ng-model="personal.skill" type="text" id="up-name" class="inputAdd-field" ng-minlength="3" ng-maxlength="25" required>
+              </div>
+              <div class="inputAdd">
+                <span class="inputAdd-item">Score</span>
+                <input ng-model="personal.score" type="number" class="inputAdd-field" id="up-surname" required>
+              </div>
+              <a ng-click="vm.removePersonalSkill(personal.id)" class="feedback-form__remove-btn">Remove</a>
+            </div>
+          </div>
+          <a ng-click="vm.addPersonalSkill()" class="btn btn-info feedback-form__addnew-btn">Add personal skill</a>
+        </div>
+
+        <div class="feedbackForm-row">
+          <h2 class="feedbackForm-group-header">Technical skills</h2>
+          <div class="grid feedback-form__skills-row" ng-repeat="technical in vm.feedback.technical">
+            <div class="grid-cell">
+              <div class="inputAdd">
+                <span class="inputAdd-item">Skill</span>
+                <input ng-model="technical.skill" type="text" id="up-name" class="inputAdd-field" ng-minlength="3" ng-maxlength="25" required>
+              </div>
+              <div class="inputAdd">
+                <span class="inputAdd-item">Score</span>
+                <input ng-model="technical.score" type="number" class="inputAdd-field" id="up-surname" required>
+              </div>
+              <a ng-click="vm.removeTechnicalSkill(technical.id)" class="feedback-form__remove-btn">Remove</a>
+            </div>
+          </div>
+          <a ng-click="vm.addTechnicalSkill()" class="btn btn-info feedback-form__addnew-btn">Add technical skill</a>
+        </div>
+
+        <button type="submit" class="form-row-group__submit-btn btn-info">Submit</button>
+
+      </form>
+
+    </div>
+
+  </div>
+</div>

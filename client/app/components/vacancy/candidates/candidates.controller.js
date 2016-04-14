@@ -20,31 +20,6 @@ function VacancyCandidatesController(subscriptions, interviewResource, imageServ
 
   $state.go(CANDIDATES_GRID);
 
-  /*vm.openInterviewModal = function(subscription) {
-    const modalInstance = $uibModal.open({
-      animation: true,
-      templateUrl: `${config.ROOT_DIR}/src/components/vacancy/candidates/views/interview-setup-modal.tpl.html`,
-      controller: 'InterviewSetupModalCtrl',
-      controllerAs: 'vm'
-    });
-
-    modalInstance.result.then(onInterviewSetupModalOk);
-
-    function onInterviewSetupModalOk(data) {
-      const date = mergeDateAndTime(data.date, data.time);
-      const interview = {
-        date: date.toDate(),
-        candidate: subscription.candidate._id,
-        vacancy: vacancyId,
-        company: subscription.vacancy.company_id,
-        title: `Interview with ${subscription.candidate.name} ${subscription.candidate.surname}`
-      };
-      interviewResource.create(interview).then(() => {
-        $state.go(CALENDAR);
-      });
-    }
-  };*/
-
   vm.openInterviewModal = function($event, subscription) {
     $mdDialog.show({
       targetEvent: $event,

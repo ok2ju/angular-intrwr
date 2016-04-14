@@ -9,12 +9,12 @@
   border-bottom: 1px solid #e5e5e5;
 
   h2 {
-    @include font-size(24px);
+    font-size: 2.4rem;
     font-weight: 100;
   }
 
   p {
-    @include font-size(13px);
+    font-size: 1.3rem;
     margin-top: 5px;
   }
 }
@@ -38,7 +38,7 @@
   }
 
   label {
-    @include font-size(14px);
+    font-size: 1.4rem;
     display: block;
     margin-bottom: 15px;
     font-weight: 700;
@@ -47,13 +47,13 @@
   }
 
   p {
-    @include font-size(13px);
+    font-size: 1.3rem;
     color: #999;
   }
 }
 
 .feedback-skills {
-  @include font-size(14px);
+  font-size: 1.4rem;
   width: 100%;
   table-layout: fixed;
 }
@@ -79,7 +79,7 @@
 
 .feedback-form {
   .inputAdd-item {
-    @include font-size(13px);
+    font-size: 1.3rem;
     min-width: 80px;
     text-align: right;
   }
@@ -98,14 +98,14 @@
 }
 
 .feedback-form__remove-btn {
-  @include font-size(13px);
+  font-size: 1.3rem;
   color: red;
   display: block;
   text-align: right;
 }
 
 .feedback-form__addnew-btn {
-  @include font-size(13px);
+  font-size: 1.3rem;
   display: block;
   text-align: center;
   max-width: 200px;

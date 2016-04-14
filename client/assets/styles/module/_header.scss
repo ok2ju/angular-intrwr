@@ -11,18 +11,6 @@ $header-border-bottom-color: rgba(137,137,137,0.3);
   background-color: $company-page-header-bg-color;
   border-bottom: 1px solid #e5e5e5;
   transition: all .2s ease-in-out;
-
-  /*@include respond-to('medium') {
-    padding-left: 230px;
-  }
-
-  &.active {
-    transform: translateX(230px);
-
-    @include respond-to('medium') {
-      transform: translateX(0);
-    }
-  }*/
 }
 
 .header-inner {
@@ -271,7 +259,7 @@ $header-border-bottom-color: rgba(137,137,137,0.3);
     height: 8px;
     border-radius: 50%;
     background: #f0ad4e;
-    top: 0;
-    right: 2px;
+    top: -2px;
+    right: -1px;
   }
 }

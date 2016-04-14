@@ -30,13 +30,13 @@
 }
 
 .activity-header {
-  @include font-size(13px);
+  font-size: 1.3rem;
   font-weight: 500;
   color: #000;
 }
 
 .activity-info {
-  @include font-size(12px);
+  font-size: 1.2rem;
   color: #999;
 
   &.activity-info--interivew {
@@ -46,7 +46,7 @@
 }
 
 .activity-time {
-  @include font-size(9px);
+  font-size: 0.9rem;
   font-weight: 500;
   display: block;
   color: #999;

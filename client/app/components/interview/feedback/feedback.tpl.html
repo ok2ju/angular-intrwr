@@ -1,0 +1,51 @@
+<div class="full-col">
+  <header class="content-header">
+    <h1 class="content-header__name c-header">Interview feedback details</h1>
+  </header>
+
+  <div class="feedbackBox">
+
+    <div class="feedbackBox__header">
+      <h2>Candidate <a ui-sref="app.userProfile({id: vm.interview.candidate._id})" href="#">{{vm.interview.candidate.name}} {{vm.interview.candidate.surname}}</a></h2>
+      <p><a ui-sref="app.vacanciesProfile({id: vm.interview.vacancy._id})" href="#">{{vm.interview.vacancy.title}}</a> - {{vm.interview.date | moment:'DD.MM.YYYY'}}</p>
+    </div>
+
+    <div class="feedbackBox__body">
+
+      <div class="feedbackInfo-group">
+        <label>Comment</label>
+        <p>{{vm.feedback.comment}}</p>
+      </div>
+
+      <div class="feedbackInfo-group">
+        <label>Personal skills</label>
+        <div class="feedback-table-row">
+          <table class="feedback-skills">
+            <tr ng-repeat="personal in vm.feedback.personal" class="feedback-skills__row">
+              <td class="feedback-skills__col">{{personal.skill}}</td>
+              <td class="feedback-skills__col feedback-rating">
+                <div star-rating rating-value="personal.score" max="10" ></div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="feedbackInfo-group">
+        <label>Technical skills</label>
+        <div class="feedback-table-row">
+          <table class="feedback-skills">
+            <tr ng-repeat="technical in vm.feedback.technical" class="feedback-skills__row">
+              <td class="feedback-skills__col">{{technical.skill}}</td>
+              <td class="feedback-skills__col feedback-rating">
+                <div star-rating rating-value="technical.score" max="10" ></div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

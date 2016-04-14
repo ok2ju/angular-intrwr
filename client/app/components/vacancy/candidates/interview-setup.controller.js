@@ -1,4 +1,4 @@
-function InterviewSetupModalCtrl($mdDialog, subscription, vacancyId, interviewResource, config, Vendor) {
+function InterviewSetupModalCtrl($mdDialog, $state, subscription, vacancyId, interviewResource, config, Vendor) {
   const vm = this;
   const {moment} = Vendor;
   const {CALENDAR, CANDIDATES_GRID} = config.states;
@@ -14,14 +14,9 @@ function InterviewSetupModalCtrl($mdDialog, subscription, vacancyId, interviewRe
   vm.minDate = vm.myDate;
   vm.maxDate = new Date(vm.myDate.getFullYear(), vm.myDate.getMonth() + 3, vm.myDate.getDate());
 
-  vm.test = function() {
-    vm.mergedData = mergeDateAndTime(vm.myDate, vm.time);
-  }
-
-
   function ok() {
 
-    const date = mergeDateAndTime(data.date, data.time);
+    const date = mergeDateAndTime(vm.myDate, vm.time);
     const interview = {
       date: date.toDate(),
       candidate: vm.subscription.candidate._id,
@@ -44,6 +39,7 @@ function InterviewSetupModalCtrl($mdDialog, subscription, vacancyId, interviewRe
     const date = moment(_date);
     /*const time = moment(_time);*/
 
+    date.day(date.day());
     date.second(0);
     date.minutes(_time.minutes);
     date.hours(_time.hours);

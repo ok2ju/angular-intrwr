@@ -24,6 +24,7 @@ Thumbs.db
 *.un~
 
 .idea
+.vscode
 node_modules
 bower_components
 dist

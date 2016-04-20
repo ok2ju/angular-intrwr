@@ -22,9 +22,9 @@ function SettingsController($state, countries,
 
   if(myself.dob) {
     vm.user.dob = moment(myself.dob).toDate();
+  } else {
+    vm.user.dob = moment().toDate();
   }
-
-  vm.user.dob = moment().toDate();
 
   if(!vm.user.experiences) {
     vm.user.experiences = [{}];

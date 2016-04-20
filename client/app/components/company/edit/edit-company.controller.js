@@ -34,7 +34,8 @@ function EditCompanyController(company, $scope, companyResource, $state,
       short_description: vm.company.short_description,
       site: vm.company.site,
       specializations: vm.company.specializations,
-      imageId: vm.company.imageId
+      imageId: vm.company.imageId,
+      creation_date: vm.company.creation_date
     };
 
     companyResource.update(vm.company._id, vm.updatedCompany).then(() => {

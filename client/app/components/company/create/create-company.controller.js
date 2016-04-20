@@ -8,6 +8,7 @@ function CompanyCreateController(companyResource, $scope,
   vm.specializations = [];
   vm.registerCompany = registerCompany;
   vm.getImageUrl = getImageUrl;
+  vm.company = {};
 
   $scope.$watch('vm.description', function(current, original) {
     vm.short_description = vm.description ? current.substring(0, 180) + '...' : '';
@@ -25,7 +26,9 @@ function CompanyCreateController(companyResource, $scope,
         phone: vm.phone,
         short_description: vm.short_description,
         site: vm.site,
-        specializations: vm.specializations
+        specializations: vm.specializations,
+        imageId: vm.company.imageId,
+        creation_date: vm.creation_date
       };
 
       companyResource.create(vm.company).then(function() {

@@ -30,7 +30,8 @@
           <div class="grid-cell">
             <div class="inputAdd">
               <span class="inputAdd-item"><i class="sidebar-ico fa fa-calendar-check-o"></i></span>
-              <input id="cp-yof" type="text" class="inputAdd-field datepicker-input" uib-datepicker-popup="{{vm.format}}" ng-model="vm.user.dob" is-open="vm.status.opened" max-date="vm.maxDate" datepicker-options="vm.dateOptions" ng-required="true" show-button-bar="false" show-weeks="false" />
+              <!--<input id="cp-yof" type="text" class="inputAdd-field datepicker-input" uib-datepicker-popup="{{vm.format}}" ng-model="vm.user.dob" is-open="vm.status.opened" max-date="vm.maxDate" datepicker-options="vm.dateOptions" ng-required="true" show-button-bar="false" show-weeks="false" />-->
+              <j-md-datepicker class="datepicker-input" ng-model="vm.user.dob" placeholder="Enter date of birth" orientation="portrait"></j-md-datepicker>
               <button type="button" class="inputAdd-item inputAdd-append-item" ng-click="vm.openDatepicker($event)"><i class="fa fa-angle-double-down"></i></button>
             </div>
             <div class="inputAdd">

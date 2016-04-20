@@ -7,9 +7,11 @@ import generalSettingsTemplate from './tabs/general.tpl.html';
 import experienceSettingsTemplate from './tabs/experience.tpl.html';
 
 let settingsModule = angular.module('settings', ['ngFileUpload'])
-.config(($stateProvider) => {
+.config(($stateProvider, $urlRouterProvider) => {
   "ngInject";
-
+  
+  $urlRouterProvider.when('/settings', '/settings/general');
+  
   $stateProvider
     .state('app.userSettings', {
       abstract: true,
@@ -24,11 +26,19 @@ let settingsModule = angular.module('settings', ['ngFileUpload'])
     })
     .state('app.userSettings.general', {
       url: '/general',
-      template: generalSettingsTemplate
+      template: generalSettingsTemplate,
+      data: {
+        requiresLogin: true,
+        pageTitle: 'General'
+      }
     })
     .state('app.userSettings.experience', {
       url: '/experience',
-      template: experienceSettingsTemplate
+      template: experienceSettingsTemplate,
+      data: {
+        requiresLogin: true,
+        pageTitle: 'Experience'
+      }
     });
 })
 .controller('UserSettingsController', settingsController)

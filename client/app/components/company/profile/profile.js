@@ -37,6 +37,7 @@ let companyProfileModule = angular.module('company.profile', [])
       redirectTo: 'app.companyProfile.vacancies'
     })
     .state('app.companyProfile.vacancies', {
+      url: '',
       template: companyVacanciesTemplate,
     })
     .state('app.companyProfile.comments', {

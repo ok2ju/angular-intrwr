@@ -19,6 +19,7 @@ function SettingsController($state, countries,
   vm.deleteExperience = deleteExperience;
   
   vm.user.social = vm.user.social || {};
+  vm.user.skills = vm.user.skills || [];
 
   if(myself.dob) {
     vm.user.dob = moment(myself.dob).toDate();
@@ -92,16 +93,6 @@ function SettingsController($state, countries,
       country.value = country.name.toLowerCase();
       return country;
     });
-  }
-
-  // Selected Country
-  vm.user.country = selectedCountry();
-
-  function selectedCountry() {
-    let countryString = myself.country;
-    let formattedCountries = loadCountries();
-    let index = _.findIndex(formattedCountries, ['name', countryString]);
-    return formattedCountries[index];
   }
 
   // Open Modal dialog

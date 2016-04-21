@@ -7,20 +7,12 @@
           <i class="fa fa-th" ui-sref-active="active" ui-sref="app.candidates.grid"></i>
       </div>
   </header>
-  <div class="sortBox">
-    <a ng-click="vm.checkAll()" class="btn btn--left btn-default">All</a>
-    <a ng-click="vm.checkNotAssigned()" class="btn btn-default">Not assigned</a>
-    <a ng-click="vm.checkAssigned()" class="btn btn-default">Assigned</a>
-  </div>
   <div class="vacancies-container">
       <ul class="vacancies">
-          <li class="vacancies__item vacancies-tag">Vacancies:</li>
-          <li class="vacancies__item"><span class="vacancies-label label-default">WEB-Designer</span></li>
-          <li class="vacancies__item"><span class="vacancies-label label-primary">Android Engineer</span></li>
-          <li class="vacancies__item"><span class="vacancies-label label-success">HR Manager</span></li>
-          <li class="vacancies__item"><span class="vacancies-label label-info">iOS Developer</span></li>
-          <li class="vacancies__item"><span class="vacancies-label label-warning">Front-End Engineer</span></li>
-          <li class="vacancies__item"><span class="vacancies-label label-danger">QA Engineer</span></li>
+          <li class="vacancies__item vacancies-tag"><i class="fa fa-tags" aria-hidden="true"></i>&nbsp; Candidates:</li>
+          <li class="vacancies__item" ng-click="vm.checkAll()"><span class="vacancies-label label-primary">All</span></li>
+          <li class="vacancies__item" ng-click="vm.checkAssigned()"><span class="vacancies-label label-success">Assigned</span></li>
+          <li class="vacancies__item" ng-click="vm.checkNotAssigned()"><span class="vacancies-label label-danger">Not assigned</span></li>
       </ul>
   </div>
   <div ui-view></div>

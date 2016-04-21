@@ -1,15 +1,18 @@
 .user-cards {
   @include make-row;
+  display: flex;
+  flex: 1 0 auto;
+  flex-flow: row wrap;
 }
 
 .ui-card {
   border: none;
   margin-bottom: 2em;
   position: relative;
-  float: left;
   padding-left: 15px;
   padding-right: 15px;
   width: 100%;
+  display: flex;
 
   @media only screen and (min-width: 468px) {
     width: 50%;
@@ -36,6 +39,8 @@
   background-color: #fff;
   border-radius: 4px;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .22);
+  display: flex;
+  flex-direction: column;
 }
 
 .card-image {
@@ -72,6 +77,9 @@
   .card-content {  
     text-align: center;
     padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
 
     h1 {
       font-size: 1.4rem;

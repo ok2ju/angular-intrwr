@@ -1,7 +1,7 @@
 <ul class="user-cards-list">
     <li class="user-card-item" ng-repeat="subscriber in vm.subscriptions">
         <div class="u-main-info">
-            <a href="#" class="u-main-info-link">
+            <a ui-sref="app.userProfile({id: subscriber.candidate._id})" class="u-main-info-link">
                 <img ng-src="{{vm.getUserImageUrl(subscriber.candidate)}}" alt="candidate" class="user-card-item__photo">
                 <h1 class="user-card-item__name">{{subscriber.candidate.name}} {{subscriber.candidate.surname}}</h1>
             </a>
@@ -14,10 +14,12 @@
         <div class="u-second-info">
             <span>
               <a href="#" ng-if="!subscriber.interview" ng-click="vm.openInterviewModal(subscriber)">
-                <i class="i-card icon-cog"></i>
+                <md-tooltip md-autohide>Setup interview</md-tooltip>
+                <i class="i-card fa fa-cog"></i>
               </a>
               <a href="#" ng-if="subscriber.interview" ng-click="vm.cancelInterview(subscriber.interview._id)">
-                <i class="i-card icon-cancel"></i>
+                <md-tooltip md-autohide>Cancel interview</md-tooltip>
+                <i class="i-card fa fa-times"></i>
               </a>
             </span>
             <span class="card-list__ico-wrapper">

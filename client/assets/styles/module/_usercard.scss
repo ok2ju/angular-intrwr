@@ -68,63 +68,88 @@
   }
 }
 
-.card-content {
-  background: 0 0;
-  margin: 0;
-  padding: 6px 12px;
-  box-shadow: none;
-  font-size: 1em;
-  border: none;
-  border-radius: 0;
+.ui-card-inner {
+  .card-content {  
+    text-align: center;
+    padding: 20px 15px;
 
-  h1 {
-    font-size: 1.4rem;
-    color: $primary-font-color;
-    font-weight: 600;
-    white-space: nowrap;
-    overflow: hidden;
-  }
+    h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      margin: 0 0 10px;
+      color: #333333;
+      text-transform: uppercase;
+      
+      a {
+        color: #333333;
+      }
+    }
 
-  .meta {
-    font-size: 1.2rem;
-    color: rgba(0,0,0,0.70);
-  }
+    .meta {
+      font-size: 1.2rem;
+      color: rgba(0,0,0,0.70);
+    }
 
-  .indicate {
-    content: '';
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 5px;
-  }
+    .indicate {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 5px;
+    }
 
-  .group {
-    color: $secondary-font-color;
-    display: inline-block;
-  }
+    .group {
+      color: $secondary-font-color;
+      display: inline-block;
+    }
 
-  .description {
-    font-size: 1.2rem;
-    margin-top: .5em;
-    text-align: left;
+    .description {
+      font-size: 1.2rem;
+      margin-top: .5em;
+      text-align: left;
+    }
+    
+    .card-content__skills {
+      font-size: 1.2rem;
+      color: #666;
+      
+      span {
+        &:after {
+          content: ', ';
+        }
+        
+        &:last-child {
+          &:after {
+            content: '';
+          }
+        }
+      }
+    }
   }
 }
 
 .test-result {
-  font-size: 1.2rem;
   @include clearfix;
+  font-size: 1.2rem;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
-  padding: 6px 12px;
+  padding: 10px 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
-.card-footer:nth-child(2) {
-  margin-left: 5px;
+.card-footer {
+  flex: 1 1 auto;
 }
 
 .test-score {
   font-size: 1.1rem;
   color: #999;
+  margin-left: 5px;
 }
 
 .test-text {
@@ -173,6 +198,7 @@
   .interview-appointed-time {
     color: #fff;
     font-weight: 100;
+    cursor: default;
   }
 
   .interview-appointed-date {
@@ -182,5 +208,37 @@
 
   .interview-appointed-time {
     font-size: 35px;
+  }
+}
+
+.setup-interview {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+  padding: 6px 10px;
+  color: #333333;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: normal;
+  text-decoration: none;
+  text-transform: uppercase;
+  z-index: 100;
+}
+
+.interview-isAssigned-indicator {
+  width: 8px;
+  height: 8px;
+  display: inline-block;
+  border-radius: 50%;
+  
+  &.interview-isAssigned-indicator--notAssigned {
+    background: #f0ad4e;
+  }
+
+  &.interview-isAssigned-indicator--assidged {
+    background: #86ad73;
   }
 }

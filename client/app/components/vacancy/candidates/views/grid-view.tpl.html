@@ -2,33 +2,28 @@
     <li class="ui-card" ng-repeat="subscriber in vm.subscriptions | queryFilter:vm.candidateFilter">
         <div class="ui-card-inner">
             <div class="card-image">
-                <a href="#" class="check-profile-link">
+              <!--<div class="card-image__avatar" style="background-image: url(&quot;{{vm.getUserImageUrl(subscriber.candidate)}}&quot;);""></div>-->
+                <a ui-sref="app.userProfile({id: subscriber.candidate._id})" class="check-profile-link">
                     <img ng-src="{{vm.getUserImageUrl(subscriber.candidate)}}">
                 </a>
-                <div class="card-overlay">
-                    <div ng-if="!subscriber.interview" class="btns-wrap">
-                      <a href="#" class="card-overlay-link" ng-click="vm.openInterviewModal($event, subscriber)">Set Date</a>
-                      <a ui-sref="app.userProfile({id: subscriber.candidate._id})" class="card-overlay-link">More</a>
-                    </div>
-                    <div ng-if="subscriber.interview" class="btns-wrap">
-                      <h1 class="interview-appointed-time">{{subscriber.interview.date | moment: 'h:mm a'}}</h1>
-                      <h1 class="interview-appointed-date">{{subscriber.interview.date | moment: 'DD.MM.YYYY'}}</h1>
-                      <a href="#" class="card-overlay-link" ng-click="vm.cancelInterview(subscriber.interview._id)">Cancel</a>
-                    </div>
+                <a href="#" class="setup-interview" ng-if="!subscriber.interview" ng-click="vm.openInterviewModal($event, subscriber)">Setup</a>
+                <a href="#" class="setup-interview" ng-if="subscriber.interview" ng-click="vm.cancelInterview(subscriber.interview._id)">Cancel</a>
+                <div ng-if="subscriber.interview" class="card-overlay">
+                  <div class="btns-wrap">
+                    <h1 class="interview-appointed-time">{{subscriber.interview.date | moment: 'h:mm a'}}</h1>
+                    <h1 class="interview-appointed-date">{{subscriber.interview.date | moment: 'DD.MM.YYYY'}}</h1>
+                  </div>
                 </div>
             </div>
             <div class="card-content">
-                <h1>{{subscriber.candidate.name}} {{subscriber.candidate.surname}}</h1>
-                <ul class="vacancies">
-                    <li ng-repeat="skill in subscriber.candidate.skills | limitTo:3" class="vacancies__item">
-                      <span class="vacancies-label label-success">{{skill.text}}</span>
-                    </li>
-                  </ul>
-                <div class="meta"><span class="indicate {{subscriber.candidate.posColor}}"></span><a href="#" class="group">{{candidate.position}}</a></div>
+                <h1><a ui-sref="app.userProfile({id: subscriber.candidate._id})">{{subscriber.candidate.name}} {{subscriber.candidate.surname}}</a></h1>
+                <div class="card-content__skills">
+                  <span ng-repeat="skill in subscriber.candidate.skills | limitTo:4">{{skill.text}}</span>
+                </div>
             </div>
             <div class="test-result">
-                <span class="card-footer"><i class="i-card fa fa-file-text-o" aria-hidden="true"></i><span class="test-score">{{subscriber.candidate.testResult}}%</span></span>
                 <span class="card-footer"><i class="i-card fa fa-clock-o" aria-hidden="true"></i><span class="test-score">{{subscriber.createdAt | date:'dd.MM.yyyy'}}</span></span>
+                <span class="interview-isAssigned-indicator interview-isAssigned-indicator--notAssigned" ng-class="{'interview-isAssigned-indicator--assidged': subscriber.interview}"></span>
             </div>
         </div>
     </li>

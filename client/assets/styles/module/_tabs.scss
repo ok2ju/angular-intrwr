@@ -1,0 +1,31 @@
+.tabs {
+  display: flex;
+  border-bottom: 1px solid rgba(0, 0, 0, .12);
+}
+
+.tab {
+  cursor: pointer;
+  padding: 5px 30px;
+  font-size: 12px;
+  border-bottom: 2px solid transparent;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, .54)
+}
+
+.tab.is-tab-selected {
+  color: #0e6f98;
+  border-bottom-color: #0e6f98;
+}
+
+// Angular Material Tabs Override
+md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar{
+  background: #0e6f98;
+}
+
+.md-tab {
+  font-size: 1.2rem;
+}
+
+.md-tab.md-active {
+  color: #0e6f98 !important;
+}

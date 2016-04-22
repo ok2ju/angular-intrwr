@@ -5,8 +5,8 @@
   </header>
 
   <md-content class="interview-room-content">
-    <md-tabs md-dynamic-height md-border-bottom>
-      <md-tab label="Not Started">
+    <md-tabs md-dynamic-height md-border-bottom md-no-ink>
+      <md-tab label="Not Started" md-ink-ripple="0">
         <md-content class="md-padding">
           <div ng-if="vm.ownerInterviews.length" class="iroom-table-row">
             <h1 class="iroom-table-row__title">I'm owner:</h1>
@@ -39,7 +39,7 @@
           </div>
         </md-content>
       </md-tab>
-      <md-tab label="In Progress">
+      <md-tab label="In Progress" md-ink-ripple="0">
         <md-content class="md-padding">
           <div ng-if="vm.inprogressInterviews.length" class="iroom-table-row">
             <table class="iroom__table">
@@ -57,7 +57,7 @@
           </div>
         </md-content>
       </md-tab>
-      <md-tab label="Completed">
+      <md-tab label="Completed" md-ink-ripple="0">
         <md-content class="md-padding">
           <div ng-if="vm.completedInterviews.length" class="iroom-table-row">
             <table class="iroom__table">

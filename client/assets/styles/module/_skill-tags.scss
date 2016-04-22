@@ -1,144 +1,20 @@
-tags-input {
-  display: block;
-  width: 100%;
-}
-tags-input *, tags-input *:before, tags-input *:after {
-  box-sizing: border-box;
-}
-tags-input .host {
-  position: relative;
-  height: 100%;
-}
-tags-input .host:active {
-  outline: none;
+// Angular Material Chips Override
+.md-chips {
+  font-size: 1.3rem;
+  padding: 0 0 0 3px;
 }
 
-tags-input .tags {
-  padding: 2px;
+.md-chips .md-chip {
   border-radius: 3px;
-  overflow: hidden;
-  word-wrap: break-word;
-  cursor: text;
-  border: 1px solid rgba(34,36,38,.15);
-  height: 100%;
-
-  &:focus {
-    outline: none;
-  }
-}
-tags-input .tags.focused {
-  outline: none;
-}
-tags-input .tags .tag-list {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-tags-input .tags .tag-item {
-  @include font-size(11px);
-  color: #fff;
-  margin: 2px;
-  padding: 2px 5px;
-  display: inline-block;
-  float: left;
-  line-height: 20px;
-  border-radius: 2px;
-  background-color: #a2c093;
-}
-tags-input .tags .tag-item.selected {
-  background: linear-gradient(to bottom, #febbbb 0%, #fe9090 45%, #ff5c5c 100%);
-}
-tags-input .tags .tag-item .remove-button {
-  margin: 0 0 0 5px;
-  padding: 0;
-  border: none;
-  background: none;
-  cursor: pointer;
-  color: #585858;
-}
-tags-input .tags .tag-item .remove-button:active {
-  color: #ff0000;
-}
-tags-input .tags .input {
-  border: 0;
-  outline: none;
-  margin: 2px 1px;
-  padding: 0;
-  padding-left: 5px;
-  float: left;
-  line-height: 22px;
-  min-width: 60px;
-  padding: 0 5px;
-}
-tags-input .tags .input.invalid-tag {
-  color: #ff0000;
-}
-tags-input .tags .input::-ms-clear {
-  display: none;
-}
-tags-input.ng-invalid .tags {
-  box-shadow: 0 0 3px 1px rgba(255, 0, 0, 0.6);
-}
-tags-input[disabled] .host:focus {
-  outline: none;
-}
-tags-input[disabled] .tags {
-  background-color: #eee;
-  cursor: default;
-}
-tags-input[disabled] .tags .tag-item {
-  opacity: .65;
-  background: linear-gradient(to bottom, #f0f9ff 0%, rgba(203, 235, 255, 0.75) 47%, rgba(161, 219, 255, 0.62) 100%);
-}
-tags-input[disabled] .tags .tag-item .remove-button {
-  cursor: default;
-}
-tags-input[disabled] .tags .tag-item .remove-button:active {
-  color: #585858;
-}
-tags-input[disabled] .tags .input {
-  background-color: #eee;
-  cursor: default;
+  height: 24px;
+  line-height: 24px;
 }
 
-tags-input .autocomplete {
-  margin-top: 5px;
-  position: absolute;
-  padding: 5px 0;
-  z-index: 999;
-  width: 100%;
-  background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+.md-chips .md-chip .md-chip-remove-container {
+  line-height: 8px;
 }
-tags-input .autocomplete .suggestion-list {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  max-height: 280px;
-  overflow-y: auto;
-  position: relative;
-}
-tags-input .autocomplete .suggestion-item {
-  @include font-size(14px);
-  color: rgba(0, 0, 0, .87);
-  padding: 5px 10px;
-  cursor: pointer;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color: #000;
-  background-color: #fff;
-}
-tags-input .autocomplete .suggestion-item.selected {
-  color: #000;
-  background-color: rgba(0, 0, 0, .04);
-}
-tags-input .autocomplete .suggestion-item.selected em {
-  color: #fff;
-  background-color: #0097cf;
-}
-tags-input .autocomplete .suggestion-item em {
-  color: #000;
-  background-color: #fff;
+
+.md-chips .md-chip .md-chip-remove {
+  width: 24px;
+  height: 24px;
 }

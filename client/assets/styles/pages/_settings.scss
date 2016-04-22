@@ -95,11 +95,18 @@ $content-header-bg-color: rgba(242, 242, 242, .3);
 
 .btn-col,
 .exp-row {
+  @include clearfix;
   padding: 0 15px;
+  margin-bottom: 15px;
 }
 
 .inc-exp-form {
   text-align: center;
+  
+  a {
+    font-size: 1.2rem;
+    text-decoration: underline;
+  }
 }
 
 .row-box {
@@ -111,4 +118,9 @@ $content-header-bg-color: rgba(242, 242, 242, .3);
   @extend .btn;
   @extend .btn-default;
   padding: .5em .57em;
+}
+
+
+.exp-delete-group {
+  float: right;
 }

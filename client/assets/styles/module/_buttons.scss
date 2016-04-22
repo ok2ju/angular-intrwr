@@ -39,7 +39,10 @@ $btn-font-color: #fff;
 }
 
 .btn-sm {
-  padding: 5px 10px;
+  font-size: 1.2rem;
+  line-height: 24px;
+  min-height: 24px;
+  text-transform: none;
 }
 
 .btn-link {

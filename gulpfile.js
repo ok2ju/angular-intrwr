@@ -4,7 +4,6 @@ var path = require('path');
 var gutil = require('gulp-util');
 var serve = require('browser-sync');
 var webpackDevMiddelware = require('webpack-dev-middleware');
-var webpachHotMiddelware = require('webpack-hot-middleware');
 var historyApiFallback = require('connect-history-api-fallback');
 
 var root = 'client';
@@ -83,6 +82,16 @@ gulp.task('serve', function() {
       }),
       webpachHotMiddelware(compiler)
     ]
+  });
+});
+
+gulp.task('server', function() {
+  serve({
+    port: 4000,
+    open: false,
+    server: 'dist',
+    ghostMode: false,
+    middleware: [historyApiFallback()]
   });
 });
 

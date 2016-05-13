@@ -42,10 +42,16 @@ module.exports = {
 
     new ExtractTextPlugin('styles.css'),
 
-    new CopyWebpackPlugin([{
-      from: './client/assets/images',
-      to: './images/'
-    }]),
+    new CopyWebpackPlugin([
+      {
+        from: './client/assets/images',
+        to: './images/'
+      },
+      {
+        from: './client/favicon.ico',
+        to: './'
+      }
+    ]),
 
     new webpack.ProvidePlugin({
       '_': 'lodash',
